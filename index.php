@@ -6,7 +6,6 @@ $dir['path'] = $_SERVER['REQUEST_URI'];
 $dir['queries'] = $_SERVER['QUERY_STRING'];
 
 // Remove query string from path
-// $dir['path'] = str_replace($dir['queries'], '', $dir['path']);
 $parts = explode('?', $dir['path']);
 $dir['path'] = $parts[0];
 
@@ -35,81 +34,147 @@ $table .= '	<caption>'.$dir['path'].'</caption>';
 // $table .= '		<col id="col-modified">';
 // $table .= '	</colgroup>';
 
+// Up link
+// $table .= '	<thead>';
+// $table .= '		<tr>';
+// if ($dir['path'] !== '/') {
+// 	$table .= '<th class="faded "><a href="../">Up</a></th>';
+// } else {
+// 	$table .= '<th class="faded "></th>';
+// }
+
 // Table head
 $table .= '	<thead>';
 $table .= '		<tr>';
-if ($dir['path'] !== '/') {
-	$table .= '<th><a href="../">Up</a></th>';
-} else {
-	$table .= '<th></th>';
-}
-// $table .= '			<th class="head-file">File</th>';
-$table .= '			<th class="head-size">Size</th>';
-$table .= '			<th class="head-modified">Modified</th>';
+$table .= '			<th class="faded smallcaps head-file">File</th>';
+$table .= '			<th class="faded smallcaps head-size">Size</th>';
+$table .= '			<th class="faded smallcaps head-modified">Modified</th>';
 $table .= '		</tr>';
 $table .= '	</thead>';
 $table .= '	<tbody>';
 
 // Get dir list & count
-$files = scandir($dir['full']);
-$count = count($files) - 2;
+$items['all'] = scandir($dir['full']);
+$count['all'] = count($items['all']) - 2;
+$count['folders'] = $count['all'];
+$count['files'] = $count['all'];
 
 // Show "Parent" link
-// if ($dir['path'] !== '/') {
+if ($dir['path'] !== '/') {
+
+	$table .= '<tr>';
+	$table .= '	<td class="faded col-file"><a href="../">Parent</a></td>';
+	$table .= '	<td class="faded col-size"><a href="../">-</a></td>';
+	$table .= '	<td class="faded col-modified"><a href="../">-</a></td>';
+	$table .= '</tr>';
+
+}
+
+$items['folders'] = array();
+$items['files'] = array();
+
+// echo '<pre>';
+// var_dump($items['all']);
+
+// Split folders and files
+foreach ($items['all'] as $item) {
+	if ($item !== '.' && $item !== '..') {
+		if (is_dir($dir['full'].$item)) {
+			array_push($items['folders'], $item);
+		} else {
+			array_push($items['files'], $item);
+		}
+	}
+}
+
+// Show folders
+foreach ($items['folders'] as $key => $folder) {
+
+	// Get folder stats
+	$stats = stat($dir['full'].$folder);
+	
+	$table .= '<tr>';
+
+	$table .= '<td class="col-file"><a href="'.$folder.'">'.$folder.'</a></td>';
+	$table .= ' <span class="faded">-</span>';
+	$table .= '<td class="col-modified"><a href="'.$folder.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
+
+	$table .= '</tr>';
+
+}
+
+// Show files
+foreach ($items['files'] as $key => $file) {
+
+	// Get file stats
+	$stats = stat($dir['full'].$file);
+	
+	$table .= '<tr>';
+
+	// Filename
+	$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
+
+	// Size
+	if ($stats['size'] >= 1073741824) {
+		$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
+		$stats['size'] = round($stats['size'], 2);
+	} elseif ($stats['size'] >= 1048576){
+		$stats['size'] = $stats['size'] / 1024 / 1024;
+		$stats['size'] = round($stats['size'], 2);
+		$stats['size'] .= ' <span class="faded">MB</span>';
+	} elseif ($stats['size'] >= 1024) {
+		$stats['size'] = $stats['size'] / 1024;
+		$stats['size'] = round($stats['size'], 2);
+		$stats['size'] .= ' <span class="faded">KB</span>';
+	} else {
+		$stats['size'] .= ' <span class="faded">B</span>';
+	}
+
+	// Modified
+	$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
+
+	$table .= '</tr>';
+
+}
+
+// Show each file/folder
+// foreach ($items['files'] as $key => $file) {
 
 // 	$table .= '<tr>';
-// 	$table .= '	<td></td>';
-// 	$table .= '	<td><a href="../">Parent</a></td>';
-// 	$table .= '	<td></td>';
-// 	$table .= '	<td></td>';
+// 	$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
+
+// 	$stats = stat($dir['full'].$file);
+
+// 	if (is_dir($dir['full'].$file)) {
+// 		$stats['size'] = 'dir';
+// 	} else {
+
+// 		// File size
+// 		if ($stats['size'] >= 1073741824) {
+// 			$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
+// 			$stats['size'] = round($stats['size'], 2);
+// 			$stats['size'] .= ' <span class="faded">GB</span>';
+// 		} elseif ($stats['size'] >= 1048576){
+// 			$stats['size'] = $stats['size'] / 1024 / 1024;
+// 			$stats['size'] = round($stats['size'], 2);
+// 			$stats['size'] .= ' <span class="faded">MB</span>';
+// 		} elseif ($stats['size'] >= 1024) {
+// 			$stats['size'] = $stats['size'] / 1024;
+// 			$stats['size'] = round($stats['size'], 2);
+// 			$stats['size'] .= ' <span class="faded">KB</span>';
+// 		} else {
+// 			$stats['size'] .= ' <span class="faded">B</span>';
+// 		}
+	
+// 	}
+
+// 	$table .= '<td class="col-size"><a href="'.$file.'">'.$stats['size'].'</a></td>';
+	
+// 	$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
+
 // 	$table .= '</tr>';
 
 // }
-
-// Show each file/folder
-foreach ($files as $key => $file) {
-
-	if ($file !== '.' && $file !== '..') {
-
-		$table .= '<tr>';
-		// $table .= '<td class="col-icon">i</td>';
-		$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
-
-		$stats = stat($dir['full'].$file);
-
-		if (is_file($file)) {
-			$stats['size'] = 'file';
-		} else {
-
-			// File size
-			$stats['size'] = 'dir';
-			// if ($stats['size'] > 1073741824) {
-			// 	$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
-			// 	$stats['size'] = substr($stats['size'], 0, 4);
-			// 	$stats['size'] .= ' <span class="faded">GB</span>';
-			// } elseif ($stats['size'] > 1048576){
-			// 	$stats['size'] = $stats['size'] / 1024 / 1024;
-			// 	$stats['size'] = substr($stats['size'], 0, 4);
-			// 	$stats['size'] .= ' <span class="faded">GB</span>';
-			// } elseif ($stats['size'] > 1024) {
-			// 	$stats['size'] = $stats['size'] / 1024;
-			// 	$stats['size'] = substr($stats['size'], 0, 4);
-			// 	$stats['size'] .= ' <span class="faded">KB</span>';
-			// } else {
-			// 	$stats['size'] .= ' <span class="faded">B</span>';
-			// }
-		
-		}
-
-		$table .= '<td class="col-size">'.$stats['size'].'</td>';
-		
-		$table .= '<td class="col-modified">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\"\>D\<\/\s\p\a\n\> Y-m-d', $stats['mtime']).'</td>';
-
-		$table .= '</tr>';
-		
-	}
-
-}
 
 // Close table
 $table .= '	</tbody>';
@@ -134,19 +199,9 @@ $table .= '</table>';
 				font-family: Raleway, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
 				font-size: 1.1em;
 				background: #e5e5e5;
+				color: #555;
 				padding: 1.6em;
 				word-wrap: break-word
-			}
-			a,
-			body {
-				color: #555;
-			}
-			a {
-				text-decoration: none;
-			}
-			a:hover {
-				text-decoration: underline;
-				color: #555;
 			}
 			.wrapper {
 				max-width: 40em;
@@ -156,6 +211,10 @@ $table .= '</table>';
 				border-radius: 3px;
 				border: 1px solid #ccc;
 				box-shadow: 0 2px 2px rgba(0,0,0,.1);
+			}
+			a {
+				color: #555;
+				text-decoration: none;
 			}
 			h1 {
 				margin: 0;
@@ -170,34 +229,24 @@ $table .= '</table>';
 				font-size: 1.6em;
 				margin-bottom: .8em;
 			}
-			tr:nth-child(even) td {
-				background: #f6f6f6;
+			tbody tr {
+				border-bottom: 1px solid #eee;
 			}
 			tr:hover td {
-				background: #eee;
-			}
-			th,
-			td {
-				padding: 0 .5em;
-				text-align: left;
+				background: #f7f7f7;
 			}
 			th {
-				font-size: .8em;
+				/*padding: 0 .5em;*/
+				text-align: left;
+				text-transform: uppercase;
+			}
+			th {
 				font-weight: normal;
 			}
-			th,
-			th a {
-				color: #aaa;
-			}
-			td:first-child {
-				border-radius: 3px 0 0 3px;
-			}
-			td:last-child {
-				border-radius: 0 3px 3px 0;
-			}
 			table a {
-				display: inline-block;
-				padding: .5em 0;
+				padding: 0 .5em;
+				display: block;
+				padding: .6em 0;
 			}
 			.summary {
 				margin-top: 1.6em;
@@ -207,16 +256,18 @@ $table .= '</table>';
 			}
 			.faded {
 				color: #aaa;
-				text-transform: uppercase;
-				font-size: .6em;
 			}
-			@media all and (max-width: 40em) {
+			.smallcaps {
+				font-size: .7em;
+				text-transform: uppercase;
+			}
+			@media all and (max-width: 30em) {
 				.col-modified,
 				.head-modified {
 					display: none;
 				}
 			}
-			@media all and (max-width: 35em) {
+			@media all and (max-width: 20em) {
 				.col-size,
 				.head-size {
 					display: none;
@@ -227,7 +278,7 @@ $table .= '</table>';
 	<body>
 		<div class="wrapper">
 			<?=$table;?>
-			<section class="summary"><?=$count;?> items</section>
+			<section class="summary"><?=$count['folders'];?> Folders | <?=$count['files'];?> Files</section>
 		</div>
 	</body>
 </html>
