@@ -16,7 +16,7 @@ $dir['full'] = $dir['root'].$dir['path'];
 $table = '<table>';
 
 // Path as caption
-$table .= '	<caption>'.$dir['path'].'</caption>';
+$table .= '	<caption>Root'.$dir['path'].'</caption>';
 // $parts = explode('/', $dir['path']);
 // $parts = array_filter($parts);
 // $table .= '	<caption>';
@@ -25,23 +25,6 @@ $table .= '	<caption>'.$dir['path'].'</caption>';
 // 	$table .= $part.'/';
 // }
 // $table .= '</caption>';
-
-// Columns
-// $table .= '	<colgroup>';
-// $table .= '		<col id="col-icon">';
-// $table .= '		<col id="col-file">';
-// $table .= '		<col id="col-size">';
-// $table .= '		<col id="col-modified">';
-// $table .= '	</colgroup>';
-
-// Up link
-// $table .= '	<thead>';
-// $table .= '		<tr>';
-// if ($dir['path'] !== '/') {
-// 	$table .= '<th class="faded "><a href="../">Up</a></th>';
-// } else {
-// 	$table .= '<th class="faded "></th>';
-// }
 
 // Table head
 $table .= '	<thead>';
@@ -70,11 +53,9 @@ if ($dir['path'] !== '/') {
 
 }
 
+// Folders and Files arrays
 $items['folders'] = array();
 $items['files'] = array();
-
-// echo '<pre>';
-// var_dump($items['all']);
 
 // Split folders and files
 foreach ($items['all'] as $item) {
@@ -96,7 +77,7 @@ foreach ($items['folders'] as $key => $folder) {
 	$table .= '<tr>';
 
 	$table .= '<td class="col-file"><a href="'.$folder.'">'.$folder.'</a></td>';
-	$table .= ' <span class="faded">-</span>';
+	$table .= '<td class="col-size"><span class="faded"><a href="'.$folder.'">-</a></span></td>';
 	$table .= '<td class="col-modified"><a href="'.$folder.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
 
 	$table .= '</tr>';
@@ -129,6 +110,7 @@ foreach ($items['files'] as $key => $file) {
 	} else {
 		$stats['size'] .= ' <span class="faded">B</span>';
 	}
+	$table .= '<td class="col-size">'.$stats['size'].'</td>';
 
 	// Modified
 	$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
@@ -136,45 +118,6 @@ foreach ($items['files'] as $key => $file) {
 	$table .= '</tr>';
 
 }
-
-// Show each file/folder
-// foreach ($items['files'] as $key => $file) {
-
-// 	$table .= '<tr>';
-// 	$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
-
-// 	$stats = stat($dir['full'].$file);
-
-// 	if (is_dir($dir['full'].$file)) {
-// 		$stats['size'] = 'dir';
-// 	} else {
-
-// 		// File size
-// 		if ($stats['size'] >= 1073741824) {
-// 			$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
-// 			$stats['size'] = round($stats['size'], 2);
-// 			$stats['size'] .= ' <span class="faded">GB</span>';
-// 		} elseif ($stats['size'] >= 1048576){
-// 			$stats['size'] = $stats['size'] / 1024 / 1024;
-// 			$stats['size'] = round($stats['size'], 2);
-// 			$stats['size'] .= ' <span class="faded">MB</span>';
-// 		} elseif ($stats['size'] >= 1024) {
-// 			$stats['size'] = $stats['size'] / 1024;
-// 			$stats['size'] = round($stats['size'], 2);
-// 			$stats['size'] .= ' <span class="faded">KB</span>';
-// 		} else {
-// 			$stats['size'] .= ' <span class="faded">B</span>';
-// 		}
-	
-// 	}
-
-// 	$table .= '<td class="col-size"><a href="'.$file.'">'.$stats['size'].'</a></td>';
-	
-// 	$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
-
-// 	$table .= '</tr>';
-
-// }
 
 // Close table
 $table .= '	</tbody>';
@@ -236,17 +179,18 @@ $table .= '</table>';
 				background: #f7f7f7;
 			}
 			th {
-				/*padding: 0 .5em;*/
 				text-align: left;
 				text-transform: uppercase;
 			}
 			th {
 				font-weight: normal;
 			}
+			th,
 			table a {
-				padding: 0 .5em;
+				padding: .5em 10px;				
+			}
+			table a {
 				display: block;
-				padding: .6em 0;
 			}
 			.summary {
 				margin-top: 1.6em;
