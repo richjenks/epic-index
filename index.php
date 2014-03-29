@@ -6,18 +6,15 @@ $dir['path'] = $_SERVER['REQUEST_URI'];
 $dir['queries'] = $_SERVER['QUERY_STRING'];
 $dir['host'] = $_SERVER['HTTP_HOST'];
 
-// Construct full URL
-$dir['url'] = $dir['host'].$dir['path'];
-
 // Remove query string from path
 $parts = explode('?', $dir['path']);
 $dir['path'] = $parts[0];
 
+// Construct full URL
+$dir['url'] = $dir['host'].$dir['path'];
+
 // Full path to current location
 $dir['full'] = $dir['root'].$dir['path'];
-
-// Start table
-$table = '<table>';
 
 // Icons
 $icons['code'] = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHGSURBVDiNlZLPSlthEMV/98t3c4PBXJtbSCEg2RQkNN34DC5cuOgL+BT1LXwAX6R7CegmReE2tHAjKsQ/pCuDBsn3504XMTeNLaUZmMUMZ86cOUzQ6/V2nHOHeZ5/ZIVQSqVa689Bt9tNW61Wp9FooJT6r+E8zxmNRlxfX3/TxphOkiQYY1YRQJIkZFnW0d57vPcrDQPM57RzDhF5pVFABQAEE0NgPXmtUvTm4ZxDWWsRkSLLJ1eou3FRV758R/fvUXdjyidXS1hrLcp7XzSi7iXh+S2+vjZT9WzRP0aYdgNfXyM8vyXqXhZ47z1qfkJ0fEF4NuRxf5s8KiEihP17/NsqPq6QRyUe97cJz4ZExxeICM65hQfB0xQBpBQUnoRfh5jOu4VHpQCBGfaFoFAw2d3Cbm6wfnQKU0cwfkZnP5nOCaaO9aNT7OYGk92tPwlEhMleG9uMUTcPlHtDbKuOr5YREdTNA7YZM9lrF/ilE+bx9OkDgfWIVovtgGvWsK038Bv2rwQAohV5s/ZSSNHjFa4gsNaitV7pE51zMw+01lmaphhjlp7kX2mMIU1TtNaZrlarB4PB4LDf779fRUEURYM4jg9+AY0DZ4cpAUR4AAAAAElFTkSuQmCC" class="icon">';
@@ -26,15 +23,40 @@ $icons['folder'] = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAA
 $icons['image'] = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIcSURBVDiNlZJNTlNhGIWf9+v9bi8FqnANjVHToCE6ANbgxGUYN8EiTGQJrsC4AgdOGOgABkCjicVII1qr/LS0vbf9fh1gwszQd36enPOeI7u7u8+MMdsxxk1mOBE5SNN0S3Z2dg6azeZGo9FAKXUjcQiBXq9Hp9M5TIwxG3meY4yZxQB5ntNutzcS5xzv9g95/votsVYhaoVMPTJ2SBmQSUAmEWVALIgXAN68eoFzjsQ5R3cwYPl+E5nXBC1MLwvi0JBahSojYWShDIgVlFeIwFl/zLxyJNZaVK1G404DVdUEAk47wnyAiUcM6GmkPC9JKxlZrYZSglRTbGGvHFSU5unjR3y6GLOgFRdjQ6xFcIJYoWYD7rYnRE1taZEs04j2VxG89yhV4ecQ1u+tcNIfczeZp55ozieRlVRzfDxgablKVCmrj5aIaQLSxXuPcs5BgBgjE+tQUVitz/HroqQYTOn1CvIsJUOhBUZDQ7c3Rny8fqLygcuzEeNRSXCBD51z/NTjho5CKnQLjy0cWX2O3u8qIkK4lV0DEufon5xSSROCD5ixYTIo8YVFoQg2XpV/BhWdXAE2Hl4DqlPLny8/ULpC9AFTTHCl+++QnH1wDWjkdU6/fZ1piSv5Iv3uvxY2nzT5/v7lTIDhcMjn/Y8kSqn23t7e2vr6OlrrG4mttbRaLZRS7WRhYWHr6Ohou9Vqrc3iIMuydr1e3/oLlTAupOJParwAAAAASUVORK5CYII=" class="icon">';
 $icons['parent'] = '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFrSURBVDiNpZO9SgNBFIW/2Y0jZmJIAhZBbYQV3EJSWfkIWyr4Fj6BxeIT2IrvsO9gK6Sws7GIsBCLLYITjWH3WrjKZjNRxAOX+Tv3DPfMHSUi/AeNH84UsA0IkJbjErwfBLpBEJwEQXAKdFeyRMQVa0mSDJRSQ6XUMEmSgYisubirBHaMMTfAHXBnjLkRkR0X11XCZhRFR9baAfACvFhrB1EUHQGbS0bVXsGbTCZ7vV7vKs9zv2Kc8n0/z7LsvN1uPwLFKhO3wjA8K5NfgbcyXvM898MwPAO2Fm6szDfiOA7SND0GslKgGlmapsdxHAfAhquEXWPMxXQ6XQdyhzcAfrPZnFlrL4EnWGyk9/F4PPQ8T+bzOZ1O57Caaa29ByiKQgHvX/tVgXGr1boGGI1GB8B+VaDRaNxqrR/K5beJ9VYuAESk4NO8b8xms0JrXdT47r+gtRY+jfsVToF+v29F5Lm2PXVx6430Z3wAjCvJuVs9SfYAAAAASUVORK5CYII=" class="icon">';
 
-// Path as caption
-// $table .= '	<caption>'.$dir['url'].'</caption>';
+// Title & breadcrumbs
+$title = '<h1>';
 $parts = explode('/', $dir['url']);
 $parts = array_filter($parts);
-$table .= '	<caption>';
-foreach ($parts as $part) {
-	$table .= $part.'/';
+$parts = array_reverse($parts);
+$count = count($parts) - 1;
+// for ($i = $count; $i >= 0; $i--) {
+// 	if ($i !== 0) {
+// 		$title .= '<a href="';
+// 		for ($i2 = 0; $i2 < $i; $i2++) {
+// 			$title .= '../';
+// 		}
+// 		$title .= '">';
+// 		$title .= $parts[$i];
+// 		$title .= '</a>';
+// 		$title .= '/';
+// 	} else {
+// 		$title .= $parts[$i].'/';
+// 	}
+// }
+for ($i = $count; $i >= 0; $i--) {
+	$title .= '<a href="';
+	for ($i2 = 0; $i2 < $i; $i2++) {
+		$title .= '../';
+	}
+	$title .= '">';
+	$title .= $parts[$i];
+	$title .= '</a>';
+	$title .= '/';
 }
-$table .= '</caption>';
+$title .= '</h1>';
+
+// Start table
+$table = '<table>';
 
 // Table head
 $table .= '	<thead>';
@@ -108,7 +130,7 @@ foreach ($items['files'] as $key => $file) {
 
 	// Icon
 	$parts = explode('.', $file);
-	$filetype = $parts[1];
+	$filetype = end($parts);
 	switch ($filetype) {
 		case 'bmp':
 		case 'png':
@@ -178,6 +200,9 @@ foreach ($items['files'] as $key => $file) {
 $table .= '	</tbody>';
 $table .= '</table>';
 
+// Summary
+$table .= '<section class="summary faded smallcaps">'.$count['folders'].' Folders | '.$count['files'].' Files</section>';
+
 ?><!doctype html>
 <html lang="en">
 	<head>
@@ -200,13 +225,17 @@ $table .= '</table>';
 				text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 			}
 
+			html {
+				overflow-y: scroll;
+			}
+
 			body {
-				font-family: Raleway, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
+				font-family: Raleway, Ubuntu, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
 				font-size: 1.1em;
 				background: #e5e5e5;
 				color: #555;
 				padding: 1.6em;
-				word-wrap: break-word
+				word-wrap: break-word;
 			}
 
 			.wrapper {
@@ -226,18 +255,29 @@ $table .= '</table>';
 
 			h1 {
 				margin: 0;
-				margin-bottom: 1em;
+				font-size: 1.6em;
+				font-weight: normal;
+				margin-bottom: .5em;
+			}
+
+			h1 a:hover {
+				color: inherit;
+				text-decoration: none;
+				background: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(white));
+				background: -webkit-linear-gradient(white, white);
+				background: -moz-linear-gradient(white, white);
+				background: -o-linear-gradient(white, white);
+				background: linear-gradient(white, white), -webkit-linear-gradient(white, white), -webkit-linear-gradient(#333332, #333332);
+				background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+				background-repeat: no-repeat, no-repeat, repeat-x;
+				text-shadow: 0.03em 0 white, -0.03em 0 white, 0 0.03em white, 0 -0.03em white, 0.06em 0 white, -0.06em 0 white, 0.09em 0 white, -0.09em 0 white, 0.12em 0 white, -0.12em 0 white, 0.15em 0 white, -0.15em 0 white;
+				background-position-y: 90%, 90%, 90%;
+				background-position-x: 0%, 100%, 0%;
 			}
 
 			table {
 				width: 100%;
 				border-collapse: collapse;
-			}
-
-			caption {
-				text-align: left;
-				font-size: 1.6em;
-				margin-bottom: .8em;
 			}
 
 			tbody tr {
@@ -256,7 +296,7 @@ $table .= '</table>';
 
 			th,
 			table a {
-				padding: .5em 10px;				
+				padding: .5em 10px;
 			}
 
 			table a {
@@ -287,6 +327,32 @@ $table .= '</table>';
 				width: 1px;
 			}
 
+			/* More padding on large screens */
+			@media all and (min-width: 1023px) {
+
+				body {
+					padding: 2.6em;
+				}
+
+				.wrapper {
+					padding: 2.6em;
+				}
+
+			}
+
+			/* Less padding on small screens */
+			@media all and (max-width: 767px) {
+
+				body {
+					padding: .5em;
+				}
+
+				.wrapper {
+					padding: 1em;
+				}
+
+			}
+
 			/* Hide "Modified" column */
 			@media all and (max-width: 30em) {
 				.col-modified,
@@ -307,8 +373,9 @@ $table .= '</table>';
 	</head>
 	<body>
 		<div class="wrapper">
+			<?=$title;?>
 			<?=$table;?>
-			<section class="summary faded smallcaps"><?=$count['folders'];?> Folders | <?=$count['files'];?> Files</section>
+			<?=$summary;?>
 		</div>
 	</body>
 </html>
