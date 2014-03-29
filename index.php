@@ -210,7 +210,7 @@ $table .= '</table>';
 			}
 
 			.wrapper {
-				max-width: 35em;
+				max-width: 60em;
 				margin: 0 auto;
 				background: white;
 				padding: 1.6em;
@@ -246,6 +246,7 @@ $table .= '</table>';
 
 			tr:hover td {
 				background: #f7f7f7;
+				background: #e5e5e5;
 			}
 
 			th {
@@ -280,6 +281,10 @@ $table .= '</table>';
 			.icon {
 				position: relative;
 				top: 2px;
+			}
+
+			.col-icon {
+				width: 1px;
 			}
 
 			/* Hide "Modified" column */
