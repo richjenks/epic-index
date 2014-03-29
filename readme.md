@@ -22,7 +22,7 @@ sudo a2enmod rewrite
 sudo service apache2 restart
 ```
 
-## 2. AllowOverride
+### 2. AllowOverride
 
 For most cases, in `/etc/apache2/sites-available/default`, ensure the `AllowOverride` directive has atleast `FileInfo`:
 
