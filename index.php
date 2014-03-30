@@ -225,17 +225,46 @@ $table .= '</table>';
 // 	$file_s = 'Files';
 // }
 // $summary = '<section class="summary faded smallcaps">'.$count['folders'].' '.$folder_s.' | '.$count['files'].' '.$file_s.'</section>';
-if ($count['folders'] === 1) {
-	$folder_s = 'Folder';
-} else {
-	$folder_s = 'Folders';
+
+// Folder summary
+if ($count['folders'] > 0) {
+
+	// Singular or plural?
+	if ($count['folders'] === 1) {
+		$folder_s = 'Folder';
+	} else {
+		$folder_s = 'Folders';
+	}
+
+	$summaries['folders'] = $count['folders'].' '.$folder_s;
+
 }
-if ($count['files'] === 1) {
-	$file_s = 'File';
-} else {
-	$file_s = 'Files';
+
+// File summary
+if ($count['files'] > 0) {
+
+	// Singular or plural?
+	if ($count['files'] === 1) {
+		$file_s = 'File';
+	} else {
+		$file_s = 'Files';
+	}
+
+	$summaries['files'] = $count['files'].' '.$file_s;
+
 }
-$summary = '<section class="summary faded smallcaps">'.$count['folders'].' '.$folder_s.' | '.$count['files'].' '.$file_s.'</section>';
+
+// Construct summary
+$summary = '<section class="summary faded smallcaps">';
+if (isset($summaries['folders']) && isset($summaries['files'])) {
+	$summary .= $summaries['folders'].' | '.$summaries['files'];
+} elseif (isset($summaries['folders'])) {
+	$summary .= $summaries['folders'];
+} elseif (isset($summaries['files'])) {
+	$summary .= $summaries['files'];
+}
+$summary .= '</section>';
+// '<section class="summary faded smallcaps">'.$count['folders'].' '.$folder_s.' | '.$count['files'].' '.$file_s.'</section>';
 
 ?><!doctype html>
 <html lang="en">
