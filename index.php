@@ -70,16 +70,16 @@ $table .= '	</thead>';
 $table .= '	<tbody>';
 
 // Get dir list
-$items['all'] = scandir($dir['full']);
+$items['all'] = array_diff(scandir($dir['full']), array('..', '.'));
 
 // Show "Parent" link
 if ($dir['path'] !== '/') {
 
 	$table .= '<tr>';
-	$table .= '	<td class="col-file"><a href="../" class="faded">'.$icons['parent'].'</a></td>';
+	$table .= '	<td class="col-file"><a href="../">'.$icons['parent'].'</a></td>';
 	$table .= '	<td class="col-file"><a href="../" class="faded">Parent</a></td>';
-	$table .= '	<td class="col-size"><a href="../" class="faded">-</a></td>';
-	$table .= '	<td class="col-modified"><a href="../" class="faded">-</a></td>';
+	$table .= '	<td class="col-size"><a href="../"></a></td>';
+	$table .= '	<td class="col-modified"><a href="../"></a></td>';
 	$table .= '</tr>';
 
 }
@@ -90,12 +90,10 @@ $items['files'] = array();
 
 // Split folders and files
 foreach ($items['all'] as $item) {
-	if ($item !== '.' && $item !== '..') {
-		if (is_dir($dir['full'].$item)) {
-			array_push($items['folders'], $item);
-		} else {
-			array_push($items['files'], $item);
-		}
+	if (is_dir($dir['full'].$item)) {
+		array_push($items['folders'], $item);
+	} else {
+		array_push($items['files'], $item);
 	}
 }
 
@@ -106,16 +104,30 @@ $count['files'] = count($items['files']);
 
 // Show folders
 foreach ($items['folders'] as $key => $folder) {
-
-	// Get folder stats
-	$stats = stat($dir['full'].$folder);
 	
 	$table .= '<tr>';
 
-	$table .= '<td class="col-icon"><a href="'.$folder.'">'.$icons['folder'].'</a></td>';
-	$table .= '<td class="col-file"><a href="'.$folder.'">'.$folder.'</a></td>';
-	$table .= '<td class="col-size"><span class="faded"><a href="'.$folder.'">-</a></span></td>';
-	$table .= '<td class="col-modified"><a href="'.$folder.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
+		// Get folder stats
+		$stats = stat($dir['full'].$folder);
+
+		// Icon
+		$table .= '<td class="col-icon"><a href="'.$folder.'">'.$icons['folder'].'</a></td>';
+
+		// Folder name
+		$table .= '<td class="col-file"><a href="'.$folder.'">'.$folder.'</a></td>';
+
+		// Child count
+		$items['children'] = array_diff(scandir($dir['full'].'/'.$folder), array('..', '.'));
+		$size = count($items['children']);
+		if ($size === 1) {
+			$file_s = 'File';
+		} else {
+			$file_s = 'Files';
+		}
+		$table .= '<td class="col-size"><a href="'.$folder.'">'.$size.' <span class="faded smallcaps">'.$file_s.'</span></a></td>';
+
+		// Modified
+		$table .= '<td class="col-modified"><a href="'.$folder.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
 
 	$table .= '</tr>';
 
@@ -123,75 +135,75 @@ foreach ($items['folders'] as $key => $folder) {
 
 // Show files
 foreach ($items['files'] as $key => $file) {
-
-	// Get file stats
-	$stats = stat($dir['full'].$file);
 	
 	$table .= '<tr>';
 
-	// Icon
-	$parts = explode('.', $file);
-	$filetype = end($parts);
-	switch ($filetype) {
-		case 'bmp':
-		case 'png':
-		case 'psd':
-		case 'gif':
-		case 'jpg':
-		case 'jpeg':
-			$icon = $icons['image'];
-			break;
-		
-		case 'html':
-		case 'css':
-		case 'php':
-		case 'py':
-		case 'rb':
-		case 'asp':
-		case 'aspx':
-		case 'jsp':
-		case 'do':
-		case 'action':
-		case 'js':
-		case 'pl':
-		case 'xml':
-		case 'rss':
-		case 'svg':
-		case 'cgi':
-		case 'dll':
-		case 'htaccess':
-			$icon = $icons['code'];
-			break;
+		// Get file stats
+		$stats = stat($dir['full'].$file);
 
-		default:
-			$icon = $icons['file'];
-			break;
-	}
-	$table .= '<td class="col-icon"><a href="'.$file.'">'.$icon.'</a></td>';
+		// Icon
+		$parts = explode('.', $file);
+		$filetype = end($parts);
+		switch ($filetype) {
+			case 'bmp':
+			case 'png':
+			case 'psd':
+			case 'gif':
+			case 'jpg':
+			case 'jpeg':
+				$icon = $icons['image'];
+				break;
+			
+			case 'html':
+			case 'css':
+			case 'php':
+			case 'py':
+			case 'rb':
+			case 'asp':
+			case 'aspx':
+			case 'jsp':
+			case 'do':
+			case 'action':
+			case 'js':
+			case 'pl':
+			case 'xml':
+			case 'rss':
+			case 'svg':
+			case 'cgi':
+			case 'dll':
+			case 'htaccess':
+				$icon = $icons['code'];
+				break;
 
-	// Filename
-	$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
+			default:
+				$icon = $icons['file'];
+				break;
+		}
+		$table .= '<td class="col-icon"><a href="'.$file.'">'.$icon.'</a></td>';
 
-	// Size
-	if ($stats['size'] >= 1073741824) {
-		$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
-		$stats['size'] = round($stats['size'], 2);
-		$stats['size'] .= ' <span class="faded smallcaps">GB</span>';
-	} elseif ($stats['size'] >= 1048576){
-		$stats['size'] = $stats['size'] / 1024 / 1024;
-		$stats['size'] = round($stats['size'], 2);
-		$stats['size'] .= ' <span class="faded smallcaps">MB</span>';
-	} elseif ($stats['size'] >= 1024) {
-		$stats['size'] = $stats['size'] / 1024;
-		$stats['size'] = round($stats['size'], 2);
-		$stats['size'] .= ' <span class="faded smallcaps">KB</span>';
-	} else {
-		$stats['size'] .= ' <span class="faded smallcaps">B</span>';
-	}
-	$table .= '<td class="col-size">'.$stats['size'].'</td>';
+		// File name
+		$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
 
-	// Modified
-	$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
+		// Size
+		if ($stats['size'] >= 1073741824) {
+			$stats['size'] = $stats['size'] / 1024 / 1024 / 1024;
+			$stats['size'] = round($stats['size'], 2);
+			$stats['size'] .= ' <span class="faded smallcaps">GB</span>';
+		} elseif ($stats['size'] >= 1048576){
+			$stats['size'] = $stats['size'] / 1024 / 1024;
+			$stats['size'] = round($stats['size'], 2);
+			$stats['size'] .= ' <span class="faded smallcaps">MB</span>';
+		} elseif ($stats['size'] >= 1024) {
+			$stats['size'] = $stats['size'] / 1024;
+			$stats['size'] = round($stats['size'], 2);
+			$stats['size'] .= ' <span class="faded smallcaps">KB</span>';
+		} else {
+			$stats['size'] .= ' <span class="faded smallcaps">B</span>';
+		}
+		$table .= '<td class="col-size"><a href="'.$file.'">'.$stats['size'].'</a></td>';
+
+		// Modified
+		$table .= '<td class="col-modified"><a href="'.$file.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
 
 	$table .= '</tr>';
 
@@ -202,7 +214,28 @@ $table .= '	</tbody>';
 $table .= '</table>';
 
 // Summary
-$summary = '<section class="summary faded smallcaps">'.$count['folders'].' Folders | '.$count['files'].' Files</section>';
+// if ($count['folders'] === 1) {
+// 	$folder_s = 'Folder';
+// } else {
+// 	$folder_s = 'Folders';
+// }
+// if ($count['files'] === 1) {
+// 	$file_s = 'File';
+// } else {
+// 	$file_s = 'Files';
+// }
+// $summary = '<section class="summary faded smallcaps">'.$count['folders'].' '.$folder_s.' | '.$count['files'].' '.$file_s.'</section>';
+if ($count['folders'] === 1) {
+	$folder_s = 'Folder';
+} else {
+	$folder_s = 'Folders';
+}
+if ($count['files'] === 1) {
+	$file_s = 'File';
+} else {
+	$file_s = 'Files';
+}
+$summary = '<section class="summary faded smallcaps">'.$count['folders'].' '.$folder_s.' | '.$count['files'].' '.$file_s.'</section>';
 
 ?><!doctype html>
 <html lang="en">
