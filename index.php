@@ -222,7 +222,8 @@ foreach ($items['files'] as $key => $file) {
 		$table .= '<td class="col-icon"><a href="'.$file.'">'.$icon.'</a></td>';
 
 		// File name
-		$table .= '<td class="col-file"><a href="'.$file.'">'.$file.'</a></td>';
+		$pathinfo = pathinfo($file);
+		$table .= '<td class="col-file"><a href="'.$file.'">'.$pathinfo['filename'].'<span class="faded">.'.$pathinfo['extension'].'</span></a></td>';
 
 		// Size
 		if ($stats['size'] >= 1073741824) {
