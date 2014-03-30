@@ -100,6 +100,7 @@ foreach ($items['all'] as $item) {
 }
 
 // Count folders and files
+$count = array();
 $count['folders'] = count($items['folders']);
 $count['files'] = count($items['files']);
 
@@ -201,7 +202,7 @@ $table .= '	</tbody>';
 $table .= '</table>';
 
 // Summary
-$table .= '<section class="summary faded smallcaps">'.$count['folders'].' Folders | '.$count['files'].' Files</section>';
+$summary = '<section class="summary faded smallcaps">'.$count['folders'].' Folders | '.$count['files'].' Files</section>';
 
 ?><!doctype html>
 <html lang="en">
