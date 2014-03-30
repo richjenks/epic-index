@@ -6,7 +6,13 @@ Responsive index pages for Apache.
 
 ## Setup
 
-Drop `index.php` and `.htaccess` (or append it's content to your current `.htaccess`) into the site root and visit a directory without a default document.
+1. Move the Teepee folder to your webserver (*e.g.* `/resources/`)
+2. Move `.htaccess` from the Teepee folder to the webroot (or append its content to your current `.htaccess`)
+3. Edit `.htaccess` so the following line points to Teepee's `index.php`:
+
+```htaccess
+RewriteRule .* /path/to/teepee/index.php [L]
+```
 
 ## Requirements
 
