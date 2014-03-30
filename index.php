@@ -338,6 +338,14 @@ $table .= '<section class="summary faded smallcaps">'.$count['folders'].' Folder
 					padding: 2.6em;
 				}
 
+				h1 {
+					margin-bottom: 1em;
+				}
+
+				.summary {
+					margin-top: 3em;
+				}
+
 			}
 
 			/* Less padding on small screens */
@@ -349,6 +357,14 @@ $table .= '<section class="summary faded smallcaps">'.$count['folders'].' Folder
 
 				.wrapper {
 					padding: 1em;
+				}
+
+				h1 {
+					margin-bottom: .3em;
+				}
+
+				.summary {
+					margin-top: 1.2em;
 				}
 
 			}
