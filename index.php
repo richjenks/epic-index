@@ -29,30 +29,30 @@ $parts = explode('/', $dir['url']);
 $parts = array_filter($parts);
 $parts = array_reverse($parts);
 $count = count($parts) - 1;
-// for ($i = $count; $i >= 0; $i--) {
-// 	if ($i !== 0) {
-// 		$title .= '<a href="';
-// 		for ($i2 = 0; $i2 < $i; $i2++) {
-// 			$title .= '../';
-// 		}
-// 		$title .= '">';
-// 		$title .= $parts[$i];
-// 		$title .= '</a>';
-// 		$title .= '/';
-// 	} else {
-// 		$title .= $parts[$i].'/';
-// 	}
-// }
 for ($i = $count; $i >= 0; $i--) {
-	$title .= '<a href="';
-	for ($i2 = 0; $i2 < $i; $i2++) {
-		$title .= '../';
+	if ($i !== 0) {
+		$title .= '<a href="';
+		for ($i2 = 0; $i2 < $i; $i2++) {
+			$title .= '../';
+		}
+		$title .= '">';
+		$title .= $parts[$i];
+		$title .= '</a>';
+		$title .= '/';
+	} else {
+		$title .= '<b>'.$parts[$i].'</b>/';
 	}
-	$title .= '">';
-	$title .= $parts[$i];
-	$title .= '</a>';
-	$title .= '/';
 }
+// for ($i = $count; $i >= 0; $i--) {
+// 	$title .= '<a href="';
+// 	for ($i2 = 0; $i2 < $i; $i2++) {
+// 		$title .= '../';
+// 	}
+// 	$title .= '">';
+// 	$title .= $parts[$i];
+// 	$title .= '</a>';
+// 	$title .= '/';
+// }
 $title .= '</h1>';
 
 // Start table
