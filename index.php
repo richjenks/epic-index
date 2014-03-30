@@ -76,10 +76,10 @@ $items['all'] = scandir($dir['full']);
 if ($dir['path'] !== '/') {
 
 	$table .= '<tr>';
-	$table .= '	<td class="faded col-file"><a href="../">'.$icons['parent'].'</a></td>';
-	$table .= '	<td class="faded col-file"><a href="../">Parent</a></td>';
-	$table .= '	<td class="faded col-size"><a href="../">-</a></td>';
-	$table .= '	<td class="faded col-modified"><a href="../">-</a></td>';
+	$table .= '	<td class="col-file"><a href="../" class="faded">'.$icons['parent'].'</a></td>';
+	$table .= '	<td class="col-file"><a href="../" class="faded">Parent</a></td>';
+	$table .= '	<td class="col-size"><a href="../" class="faded">-</a></td>';
+	$table .= '	<td class="col-modified"><a href="../" class="faded">-</a></td>';
 	$table .= '</tr>';
 
 }
@@ -240,7 +240,7 @@ $summary = '<section class="summary faded smallcaps">'.$count['folders'].' Folde
 			}
 
 			.wrapper {
-				max-width: 60em;
+				max-width: 50em;
 				margin: 0 auto;
 				background: white;
 				padding: 1.6em;
@@ -327,6 +327,31 @@ $summary = '<section class="summary faded smallcaps">'.$count['folders'].' Folde
 			.col-icon {
 				width: 1px;
 			}
+
+			.col-size,
+			.col-modified,
+			.head-size,
+			.head-modified {
+				text-align: right;
+			}
+
+			.col-size,
+			.col-modified {
+				width: 1px;
+				white-space: nowrap;
+			}
+
+			/*.col-file {
+				max-width: 100%;
+			}
+
+			.col-size {
+				max-width: 1em;
+			}
+
+			.col-modified {
+				max-width: 1em;
+			}*/
 
 			/* More padding on large screens */
 			@media all and (min-width: 1023px) {
