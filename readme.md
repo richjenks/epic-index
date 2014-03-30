@@ -1,12 +1,12 @@
-# Epic Index
+# Teepee
 
 by [richjenks.com](http://richjenks.com)
 
-An alternative to Apache's default index pages that looks great and is responsive for mobile devices.
+Responsive index pages for Apache.
 
 ## Setup
 
-Drop `index.php` and `.htaccess` (or append it's content to your current `.htaccess`) and visit a directory.
+Drop `index.php` and `.htaccess` (or append it's content to your current `.htaccess`) into the site root and visit a directory without a default document.
 
 ## Requirements
 
@@ -36,3 +36,7 @@ For most cases, in `/etc/apache2/sites-available/default`, ensure the `AllowOver
 ```
 
 Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
+
+## Props
+
+Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who gives props to [Lars Jung for h5ai](http://larsjung.de/h5ai/).
