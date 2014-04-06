@@ -48,6 +48,64 @@ class Dir {
 
 	}
 
+	/**
+	 * breadcrumbs
+	 * 
+	 * Generates breadcrumbs from the host to the current request
+	 * 
+	 * @return string HTML for the breadcrumbs of the current directory
+	 */
+
+	public function breadcrumbs() {
+
+		// Split breadcrumbs
+		$breadcrumbs = explode('/', $this->request);
+		$breadcrumbs = array_filter($breadcrumbs);
+		$breadcrumbs = array_reverse($breadcrumbs);
+
+		// Start HTML
+		$html = '<h1 class="breadcrumbs">';
+
+		// Link to root
+		$html .= '<a href="/" class="icon home"></a> /';
+
+		// Show each breadcrumb
+		$count = count($breadcrumbs) - 1;
+		for ($i = $count; $i >= 0; $i--) {
+
+			if ($i !== 0) {
+
+				// Generate href for ancestor dirs
+				$href = '';
+				for ($i2 = 0; $i2 < $i; $i2++) {
+					$href .= '../';
+				}
+				
+				// Make link for breadcrumb
+				$html .= '<a href="'.$href.'" class="breadcrumb">'.$breadcrumbs[$i].'</a>/';
+			
+			} else {
+			
+				// Don't make the current folder a link
+				$html .= '<b>'.$breadcrumbs[$i].'</b>/';
+			
+			}
+
+		}
+
+		// End HTML
+		$html .= '</h1>';
+		
+		return $html;
+
+	}
+
+	public function summary() {
+
+		$html = '';
+
+	}
+
 	public function list_files() {
 		foreach ($this->files as $file) {
 			echo $file.'<br>';

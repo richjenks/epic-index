@@ -4,9 +4,13 @@
 define('TEEPEE', '/resources/teepee/');
 
 // Required files
-require 'helper.class.php';
-require 'dir.class.php';
-require 'file.class.php';
+require 'includes/helper.class.php';
+require 'includes/dir.class.php';
+require 'includes/file.class.php';
 
 $dir = new Dir;
-$dir->list_folders();
+
+require 'template/header.php';
+echo $dir->breadcrumbs();
+echo $dir->summary();
+require 'template/footer.html';
