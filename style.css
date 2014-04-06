@@ -45,11 +45,11 @@ h1 {
 }
 
 .home {
-	background: url(<?=$icons['folder'];?>);
+	background: url('icons/folder.png');
 }
 
 .home:hover {
-	background: url(<?=$icons['home'];?>);
+	background: url('icons/folder-home.png');
 }
 
 .breadcrumb:hover {
