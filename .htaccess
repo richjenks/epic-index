@@ -1,5 +1,6 @@
 RewriteEngine On
 RewriteBase /
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index\.htm !-f
 RewriteCond %{REQUEST_FILENAME}/index\.html !-f
 RewriteCond %{REQUEST_FILENAME}/index\.shtml !-f
@@ -14,7 +15,6 @@ RewriteCond %{REQUEST_FILENAME}/default\.asp !-f
 RewriteCond %{REQUEST_FILENAME}/default\.aspx !-f
 RewriteCond %{REQUEST_FILENAME}/default\.php !-f
 RewriteCond %{REQUEST_FILENAME}/default\.cgi !-f
-RewriteCond %{REQUEST_FILENAME} -d
 
 # Path to Teepee from webroot
 RewriteRule .* /resources/teepee/ [L]
