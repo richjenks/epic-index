@@ -4,6 +4,8 @@ by [richjenks.com](http://richjenks.com)
 
 Responsive index pages for Apache.
 
+*Currently broken due to refactoring*
+
 ## Setup
 
 1. Move the Teepee folder to your webserver
@@ -11,7 +13,13 @@ Responsive index pages for Apache.
 3. Edit `.htaccess` so the following line points to the Teepee folder:
 
 ```htaccess
-RewriteRule .* /path/to/teepee/ [L]
+RewriteRule .* /resources/teepee/ [L]
+```
+
+4. Edit index.php so the following line points to the Teepee folder:
+
+```php
+$dir['teepee'] = '/resources/teepee/';
 ```
 
 ## Requirements
