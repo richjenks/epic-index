@@ -2,12 +2,21 @@
 
 class Dir {
 
+	// Path vars
 	private $path; // Local path to current dir
 	private $parent; // Local path to parent dir
 	private $request; // URL path from host — for breadcrumbs
 	private $children; // Files and folders in current dir
-	private $files; // Files in current dir
+
+	// Folder vars
 	private $folders; // Folders in current dir
+	private $folder_count; // Count of files in current dir
+	private $folder_label; // Label for folders, singular or plural
+
+	// File vars
+	private $files; // Files in current dir
+	private $file_count; // Count of files in current dir
+	private $file_label; // Label for files, singular or plural
 
 	public function __construct() {
 
@@ -16,9 +25,29 @@ class Dir {
 		$this->parent = dirname($this->path).'/';
 		$this->request = Helper::strip_query($_SERVER['REQUEST_URI']);
 
-		// Get and split dir listings
+		// Get dir listings
 		$this->children = array_diff(scandir($this->path), array('..', '.'));
+
+		// Split listing into files/folders
 		$this->split_children();
+
+		// Count files and folders
+		$this->file_count = count($this->files);
+		$this->folder_count = count($this->folders);
+
+		// Define singluar or plural labels for files
+		if ($this->file_count === 1) {
+			$this->file_label = 'File';
+		} else {
+			$this->file_label = 'Files';
+		}
+
+		// Define singluar or plural labels for folders
+		if ($this->folder_count === 1) {
+			$this->folder_label = 'Folder';
+		} else {
+			$this->folder_label = 'Folders';
+		}
 
 	}
 
@@ -51,7 +80,7 @@ class Dir {
 	/**
 	 * breadcrumbs
 	 * 
-	 * Generates breadcrumbs from the host to the current request
+	 * Generates HTML for breadcrumbs from the host to the current request
 	 * 
 	 * @return string HTML for the breadcrumbs of the current directory
 	 */
@@ -60,7 +89,11 @@ class Dir {
 
 		// Split breadcrumbs
 		$breadcrumbs = explode('/', $this->request);
+
+		// Remove empty strings
 		$breadcrumbs = array_filter($breadcrumbs);
+
+		// Reverse breadcrumbs (so 0 index is current dir)
 		$breadcrumbs = array_reverse($breadcrumbs);
 
 		// Start HTML
@@ -100,9 +133,24 @@ class Dir {
 
 	}
 
+	/**
+	 * summary
+	 * 
+	 * Generates HTML for summary of the current dir
+	 * 
+	 * @return string HTML for the summary
+	 */
+
 	public function summary() {
 
+
+		// Construct summary HTML
 		$html = '';
+		$html = '<section class="summary faded smallcaps">';
+		$html .= $this->folder_count.' '.$this->folder_label.' | '.$this->file_count.' '.$this->file_label;
+		$html .= '</section>';
+
+		return $html;
 
 	}
 
