@@ -25,8 +25,8 @@ class Dir {
 		$this->parent = dirname($this->path).'/';
 		$this->request = Helper::strip_query($_SERVER['REQUEST_URI']);
 
-		// Get dir listings
-		$this->children = array_diff(scandir($this->path), array('..', '.'));
+		// Get dir listings, without current and parent dir
+		$this->children = array_diff(scandir($this->path), array('.', '..'));
 
 		// Split listing into files/folders
 		$this->split_children();
@@ -149,6 +149,39 @@ class Dir {
 		$html = '<section class="summary faded smallcaps">';
 		$html .= $this->folder_count.' '.$this->folder_label.' | '.$this->file_count.' '.$this->file_label;
 		$html .= '</section>';
+
+		return $html;
+
+	}
+
+	/**
+	 * list_children
+	 * 
+	 * Generates HTML for file/folder listings table
+	 * 
+	 * @return string HTML for the file/folder listings table
+	 */
+
+	public function list_children() {
+
+		// Start HTML with headings
+		$html = '<table>';
+		$html .= '	<thead>';
+		$html .= '		<tr>';
+		$html .= '			<th class="faded smallcaps col-icon"></th>';
+		$html .= '			<th class="faded smallcaps col-file">File</th>';
+		$html .= '			<th class="faded smallcaps col-size">Size</th>';
+		$html .= '			<th class="faded smallcaps col-modified">Modified</th>';
+		$html .= '		</tr>';
+		$html .= '	</thead>';
+		$html .= '	<tbody>';
+
+		// Parent link
+		$file = new File($this->parent, true);
+
+		// End HTML
+		$html .= '	</tbody>';
+		$html .= '</table>';
 
 		return $html;
 

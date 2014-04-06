@@ -27,6 +27,9 @@ class Helper {
 	 * 
 	 * Escapes every character of a given string
 	 * Used to pass raw strings to the `date()` function in the `format` param
+	 * 
+	 * @param string $str The string to be escaped
+	 * @return string The scaped string
 	 */
 
 	public static function escape_chars($str) {
@@ -37,6 +40,33 @@ class Helper {
 			$escaped .= '\\'.$char;
 		}
 		return $escaped;
+
+	}
+
+	/**
+	 * icon
+	 * 
+	 * When passed file, will return the name of the appropriate icon
+	 * 
+	 * @param string $file The full path or basename of the file, including extension
+	 * @return string The basename of the appropriate icon, without extension
+	 */
+
+	public static function file($file) {
+
+		// Get the file's extension
+		$extension = end(explode('.', $file));
+
+		// Return the appropriate icon
+		switch ($extension) {
+			case 'value':
+				# code...
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 
 	}
 

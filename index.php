@@ -12,5 +12,6 @@ $dir = new Dir;
 
 require 'template/header.php';
 echo $dir->breadcrumbs();
+echo $dir->list_children();
 echo $dir->summary();
 require 'template/footer.html';
