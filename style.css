@@ -126,17 +126,15 @@ h1 .icon {
 	width: 1px;
 }
 
-.col-size,
-.col-modified,
-.head-size,
-.head-modified {
-	text-align: right;
+.col-file {
+	text-align: left;
 }
 
 .col-icon,
 .col-size,
 .col-modified {
 	width: 1px;
+	text-align: right;
 	white-space: nowrap;
 }
 
@@ -184,16 +182,14 @@ h1 .icon {
 
 /* Hide "Modified" column */
 @media all and (max-width: 30em) {
-	.col-modified,
-	.head-modified {
+	.col-modified {
 		display: none;
 	}
 }
 
 /* Hide "Size" column */
 @media all and (max-width: 20em) {
-	.col-size,
-	.head-size {
+	.col-size {
 		display: none;
 	}
 }
