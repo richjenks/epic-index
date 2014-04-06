@@ -1,7 +1,7 @@
 <?php
 
 // Path to Teepee from webroot
-$dir['teepee'] = '/resources/teepee/';
+define('TEEPEE', '/resources/teepee/');
 
 // Required files
 require 'helper.class.php';
