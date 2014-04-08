@@ -48,14 +48,14 @@ class Helper {
 	 * 
 	 * When passed file, will return the name of the appropriate icon
 	 * 
-	 * @param string $file The full path or basename of the file, including extension
-	 * @return string The basename of the appropriate icon, without extension
+	 * @param string $filename The full path or basename of the file, including extension
+	 * @return string The basename of the appropriate Faenza icon, without extension
 	 */
 
-	public static function file($file) {
+	public static function icon($filename) {
 
 		// Get the file's extension
-		$extension = end(explode('.', $file));
+		$extension = end(explode('.', $filename));
 
 		// Return the appropriate icon
 		switch ($extension) {
@@ -67,6 +67,77 @@ class Helper {
 				# code...
 				break;
 		}
+
+	}
+
+	/**
+	 * filesize
+	 * 
+	 * Formats a filesize into a human-readable format
+	 * 
+	 * @param int $bytes Filesize in bytes
+	 * @param int $precision Number of decimal places
+	 * @param string $format Output format with placeholders "{size}" and "{unit}"
+	 */
+
+	public static function filesize($bytes, $precision = 0, $format = '{size} {unit}') {
+
+		// Calculate size and select unit
+		switch ($bytes) {
+
+			// Exabytes
+			case $bytes >= 1152921504606846976:
+				$size = $bytes / 1024 / 1024 / 1024 / 1024 / 1024 / 1024;
+				$unit = 'EB';
+				break;
+
+			// Petabytes
+			case $bytes >= 1125899906842624:
+				$size = $bytes / 1024 / 1024 / 1024 / 1024 / 1024;
+				$unit = 'PB';
+				break;
+
+			// Terabytes
+			case $bytes >= 1099511627776:
+				$size = $bytes / 1024 / 1024 / 1024 / 1024;
+				$unit = 'TB';
+				break;
+
+			// Gigabytes
+			case $bytes >= 1073741824:
+				$size = $bytes / 1024 / 1024 / 1024;
+				$unit = 'GB';
+				break;
+
+			// Megabytes
+			case $bytes >= 1048576:
+				$size = $bytes / 1024 / 1024;
+				$unit = 'MB';
+				break;
+
+			// Kilobytes
+			case $bytes >= 1024:
+				$size = $bytes / 1024;
+				$unit = 'KB';
+				break;
+
+			// Bytes
+			default:
+				$size = $bytes;
+				$unit = 'B';
+				break;
+		
+		}
+
+		// Round size to correct precision
+		$size = round($size, $precision);
+
+		// Construct output as per format
+		$output = $format;
+		$output = str_replace('{size}', $size, $output);
+		$output = str_replace('{unit}', $unit, $output);
+
+		return $output;
 
 	}
 
