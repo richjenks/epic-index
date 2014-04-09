@@ -80,57 +80,19 @@ class Helper {
 	 * @param string $format Output format with placeholders "{size}" and "{unit}"
 	 */
 
-	public static function filesize($bytes, $precision = 0, $format = '{size} {unit}') {
+	public static function filesize($size, $precision = 0, $format = '{size} {unit}') {
 
-		// Calculate size and select unit
-		switch ($bytes) {
+		// Calculate base
+		$base = log($size) / log(1024);
 
-			// Exabytes
-			case $bytes >= 1152921504606846976:
-				$size = $bytes / 1024 / 1024 / 1024 / 1024 / 1024 / 1024;
-				$unit = 'EB';
-				break;
+		// Array of units
+		$units = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 
-			// Petabytes
-			case $bytes >= 1125899906842624:
-				$size = $bytes / 1024 / 1024 / 1024 / 1024 / 1024;
-				$unit = 'PB';
-				break;
+		// Calculate size
+		$size = round(pow(1024, $base - floor($base)), $precision);
 
-			// Terabytes
-			case $bytes >= 1099511627776:
-				$size = $bytes / 1024 / 1024 / 1024 / 1024;
-				$unit = 'TB';
-				break;
-
-			// Gigabytes
-			case $bytes >= 1073741824:
-				$size = $bytes / 1024 / 1024 / 1024;
-				$unit = 'GB';
-				break;
-
-			// Megabytes
-			case $bytes >= 1048576:
-				$size = $bytes / 1024 / 1024;
-				$unit = 'MB';
-				break;
-
-			// Kilobytes
-			case $bytes >= 1024:
-				$size = $bytes / 1024;
-				$unit = 'KB';
-				break;
-
-			// Bytes
-			default:
-				$size = $bytes;
-				$unit = 'B';
-				break;
-		
-		}
-
-		// Round size to correct precision
-		$size = round($size, $precision);
+		// Select unit
+		$unit = $units[floor($base)];
 
 		// Construct output as per format
 		$format = str_replace('{size}', $size, $format);
