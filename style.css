@@ -4,7 +4,7 @@
 	box-sizing:         border-box;
 }
 
-html, html a {a
+html, html a {
 	-webkit-font-smoothing: antialiased;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
 }
@@ -88,7 +88,9 @@ th {
 
 th,
 table a {
-	padding: .5em 10px;
+	/*padding: .5em 10px;*/
+	/*padding: 0;*/
+
 }
 
 table a {
@@ -120,14 +122,6 @@ table a {
 
 h1 .icon {
 	top: -2px;
-}
-
-.col-icon {
-	width: 1px;
-}
-
-.col-file {
-	text-align: left;
 }
 
 .col-icon,

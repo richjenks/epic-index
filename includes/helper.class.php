@@ -86,7 +86,7 @@ class Helper {
 		$base = log($size) / log(1024);
 
 		// Array of units
-		$units = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+		$units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 
 		// Calculate size
 		$size = round(pow(1024, $base - floor($base)), $precision);
@@ -100,6 +100,19 @@ class Helper {
 
 		return $format;
 
+	}
+
+	/**
+	 * shatter
+	 * 
+	 * Explode and Filter
+	 * Splits a string by a string into array and removes blanks
+	 */
+
+	public function shatter($split, $string) {
+		$string = explode($split, $string);
+		$string = array_filter($string);
+		return $string;
 	}
 
 }

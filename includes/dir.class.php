@@ -87,11 +87,8 @@ class Dir {
 
 	public function breadcrumbs() {
 
-		// Split breadcrumbs
-		$breadcrumbs = explode('/', $this->request);
-
-		// Remove empty strings
-		$breadcrumbs = array_filter($breadcrumbs);
+		// Split & filter breadcrumbs
+		$breadcrumbs = Helper::shatter('/', $this->request);
 
 		// Reverse breadcrumbs (so 0 index is current dir)
 		$breadcrumbs = array_reverse($breadcrumbs);
@@ -178,6 +175,11 @@ class Dir {
 
 		// Parent link
 		$file = new File($this->parent, true);
+		$html .= $file->output();
+
+		// Folders
+
+		// Files
 
 		// End HTML
 		$html .= '	</tbody>';
