@@ -133,11 +133,10 @@ class Helper {
 		$size = round($size, $precision);
 
 		// Construct output as per format
-		$output = $format;
-		$output = str_replace('{size}', $size, $output);
-		$output = str_replace('{unit}', $unit, $output);
+		$format = str_replace('{size}', $size, $format);
+		$format = str_replace('{unit}', $unit, $format);
 
-		return $output;
+		return $format;
 
 	}
 
