@@ -1,0 +1,55 @@
+/* More padding on large screens */
+@media all and (min-width: 1023px) {
+
+	body {
+		padding: 2.6em;
+	}
+
+	.wrapper {
+		padding: 2.6em;
+	}
+
+	h1 {
+		margin-bottom: 1em;
+	}
+
+	.summary {
+		margin-top: 3em;
+	}
+
+}
+
+/* Less padding on small screens */
+@media all and (max-width: 767px) {
+
+	body {
+		padding: .5em;
+	}
+
+	.wrapper {
+		padding: 1em;
+	}
+
+	h1 {
+		margin-bottom: .3em;
+	}
+
+	.summary {
+		margin-top: 1.2em;
+	}
+
+}
+
+/* Hide "Modified" column */
+@media all and (max-width: 30em) {
+	.col-modified {
+		display: none;
+	}
+}
+
+/* Hide "Size" column */
+@media all and (max-width: 20em) {
+	.col-size {
+		display: none;
+	}
+}

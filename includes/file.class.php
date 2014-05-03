@@ -93,7 +93,7 @@ class File {
 	/**
 	 * name
 	 * 
-	 * Returns a file's name from its full path
+	 * Generates a file's name from its full path
 	 */
 
 	private function name() { $this->name = end(Helper::shatter('/', $this->file)); }

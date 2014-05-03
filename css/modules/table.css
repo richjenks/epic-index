@@ -1,0 +1,50 @@
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	text-align: left;
+	font-weight: normal;
+}
+
+table a {
+	display: block;
+}
+
+th,
+table a {
+	padding: .5em 10px;
+}
+
+table .col-icon a {
+	padding: 0;
+}
+
+tbody tr {
+	border-bottom: 1px solid #eee;
+}
+
+tr:hover td {
+	background: #e5e5e5;
+}
+
+.col-icon,
+.col-size,
+.col-modified {
+	width: 1px;
+	white-space: nowrap;
+}
+
+.col-size,
+.col-modified {
+	text-align: right;
+}
+
+.icon {
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	position: relative;
+	top: 2px;
+}

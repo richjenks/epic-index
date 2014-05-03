@@ -1,0 +1,9 @@
+.faded {
+	color: #999;
+}
+
+.smallcaps {
+	font-size: .7em;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}
