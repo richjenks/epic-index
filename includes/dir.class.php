@@ -52,12 +52,12 @@ class Dir {
 	}
 
 	// Getters for private vars
-	public function get_path() { return $this->path; }
-	public function get_parent() { return $this->parent; }
-	public function get_request() { return $this->request; }
-	public function get_children() { return $this->children; }
-	public function get_files() { return $this->files; }
-	public function get_folders() { return $this->folders; }
+	public function get_path()		{ return $this->path; }
+	public function get_parent()	{ return $this->parent; }
+	public function get_request()	{ return $this->request; }
+	public function get_children()	{ return $this->children; }
+	public function get_files()		{ return $this->files; }
+	public function get_folders()	{ return $this->folders; }
 
 	/**
 	 * split_children
@@ -66,7 +66,6 @@ class Dir {
 	 */
 
 	private function split_children() {
-
 		foreach ($this->children as $child) {
 			if (is_file($this->path.$child)) {
 				$this->files[] = $child;
@@ -74,7 +73,6 @@ class Dir {
 				$this->folders[] = $child;
 			}
 		}
-
 	}
 
 	/**
