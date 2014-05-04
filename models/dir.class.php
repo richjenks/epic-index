@@ -6,7 +6,11 @@ class Dir {
 	private $path; // Local path to current dir
 	private $parent; // Local path to parent dir
 	private $request; // URL path from host — for breadcrumbs
+
+	// Child vars
 	private $children; // Files and folders in current dir
+	private $child_count; // Count of children in current dir
+	private $child_label; //Label for children, singular or plural
 
 	// Folder vars
 	private $folders; // Folders in current dir
@@ -31,9 +35,17 @@ class Dir {
 		// Split listing into files/folders
 		$this->split_children();
 
-		// Count files and folders
+		// Count children, files and folders
+		$this->child_count = count($this->children);
 		$this->file_count = count($this->files);
 		$this->folder_count = count($this->folders);
+
+		// Define singluar or plural labels for children
+		if ($this->child_count === 1) {
+			$this->child_label = 'Child';
+		} else {
+			$this->child_label = 'Children';
+		}
 
 		// Define singluar or plural labels for files
 		if ($this->file_count === 1) {
@@ -163,7 +175,6 @@ class Dir {
 		$html = '<table>';
 		$html .= '	<thead>';
 		$html .= '		<tr>';
-		// $html .= '			<th class="faded smallcaps col-icon"></th>';
 		$html .= '			<th class="faded smallcaps col-file">File</th>';
 		$html .= '			<th class="faded smallcaps col-size">Size</th>';
 		$html .= '			<th class="faded smallcaps col-modified">Modified</th>';
@@ -176,6 +187,10 @@ class Dir {
 		$html .= $file->output();
 
 		// Folders
+		foreach ($this->folders as $folder) {
+			$folder = new File($folder);
+			$html .= $folder->output();
+		}
 
 		// Files
 

@@ -38,9 +38,6 @@ class File {
 		$this->size = $this->find_size();
 		$this->modified = $this->find_modified();
 
-		// Output details
-		$this->output();
-
 	}
 
 	// Getters for private vars
@@ -120,7 +117,12 @@ class File {
 	 * @return void
 	 */
 
-	private function find_size() {}
+	private function find_size() {
+		if (is_file($this->file)) {
+			return $this->stats['size'];
+		}
+		// echo $this->stats['size'];
+	}
 
 	/**
 	 * find_modified
@@ -164,7 +166,7 @@ class File {
 							<img class="icon" src="http://'.$_SERVER['HTTP_HOST'].TEEPEE.'icons/'.$this->icon.'.png">'.$this->name.
 						'</a>
 					</td>';
-		$html .= '	<td class="col-size"><a class="faded" href="'.$this->url.'">SIZE '.$this->size.'</a></td>';
+		$html .= '	<td class="col-size"><a class="faded" href="'.$this->url.'">'.$this->size.'</a></td>';
 		$html .= '	<td class="col-modified"><a class="faded" href="'.$this->url.'">'.$this->modified.'</a></td>';
 		$html .= '</tr>';
 
