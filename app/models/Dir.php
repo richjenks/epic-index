@@ -4,8 +4,17 @@ class Dir {
 
 	// Path vars
 	private $request;		// Path to current directory from webroot — for breadcrumbs
-	private $path;		// Local path to current directory
+	private $path;			// Local path to current directory
 	private $teepee_uri;	// URI to Teepee
+
+	// Directory vars
+	private $name;			// Name of current directory
+	private $size;			// Number of items in current directory
+	private $modified;		// Modified date of current directory
+
+	// Parent vars
+	private $parent;		// Parent directory object
+	private $parent_path;	// Path to parent directory
 
 	// Child vars
 	private $children;		// Files and folders in current dir
@@ -13,31 +22,60 @@ class Dir {
 	private $child_label;	//Label for children, singular or plural
 
 	// Folder vars
-	private $folders; // Folders in current dir
-	private $folder_count; // Count of files in current dir
-	private $folder_label; // Label for folders, singular or plural
+	private $folders;		// Folders in current dir
+	private $folder_count;	// Count of files in current dir
+	private $folder_label;	// Label for folders, singular or plural
 
 	// File vars
-	private $files; // Files in current dir
-	private $file_count; // Count of files in current dir
-	private $file_label; // Label for files, singular or plural
+	private $files;			// Files in current dir
+	private $file_count;	// Count of files in current dir
+	private $file_label;	// Label for files, singular or plural
 
 	public function __construct($request, $path, $teepee_uri) {
 
-		// Set directory vars
+		// Set path vars
 		$this->request		= $request;
 		$this->path			= $path;
 		$this->teepee_uri	= $teepee_uri;
 
+		// Set parent path
+		$this->parent_path	= dirname($this->path);
+
 		// Get dir listings, without current and parent dir, plus files/folders
-		$this->children = array_diff(scandir($this->path), array('.', '..'));
-		$this->folders = $this->get_folders($this->children);
-		$this->files = $this->get_files($this->children);
+		$this->children		= array_diff(scandir($this->path), array('.', '..'));
+		$this->folders		= $this->get_folders($this->children);
+		$this->files		= $this->get_files($this->children);
+
+		// Count items
+		$this->count_items();
+
+		// Set current directory vars
+		$this->name = basename($this->path);
+		$this->size = $this->child_count.' '.$this->child_label;
+		$this->modified = stat($this->path)['mtime'];
+
+	}
+
+	// Getters for private vars
+	// public function get_directory()		{ return $this->directory; }
+	// public function get_parent()			{ return $this->parent; }
+	// public function get_request()		{ return $this->request; }
+	// public function get_children()		{ return $this->children; }
+	// public function get_files()			{ return $this->files; }
+	// public function get_folders()		{ return $this->folders; }
+
+	/**
+	 * count_items
+	 * 
+	 * Counts children, files and folders as well as chooses singular or plural label
+	 */
+
+	private function count_items() {
 
 		// Count children, files and folders
-		$this->child_count = count($this->children);
-		$this->file_count = count($this->files);
-		$this->folder_count = count($this->folders);
+		$this->child_count	= count($this->children);
+		$this->file_count	= count($this->files);
+		$this->folder_count	= count($this->folders);
 
 		// Define singluar or plural labels for children
 		if ($this->child_count === 1) {
@@ -62,14 +100,6 @@ class Dir {
 
 	}
 
-	// Getters for private vars
-	// public function get_directory()		{ return $this->directory; }
-	// public function get_parent()		{ return $this->parent; }
-	// public function get_request()		{ return $this->request; }
-	// public function get_children()		{ return $this->children; }
-	// public function get_files()			{ return $this->files; }
-	// public function get_folders()		{ return $this->folders; }
-
 	/**
 	 * breadcrumbs
 	 * 
@@ -86,11 +116,8 @@ class Dir {
 		// Reverse breadcrumbs (so 0 index is current dir)
 		$breadcrumbs = array_reverse($breadcrumbs);
 
-		// Start HTML
-		$html = '';
-
-		// Link to root
-		$html .= '<a href="/" class="icon home"></a> /';
+		// Start HTML with link to root
+		$html = '<a href="/" class="icon home"></a> /';
 
 		// Show each breadcrumb
 		$count = count($breadcrumbs) - 1;
@@ -169,6 +196,34 @@ class Dir {
 
 		// Return array of files
 		return $files;
+
+	}
+
+	/**
+	 * get_parent_data
+	 * 
+	 * Gets infomation about the parent directory
+	 * Returns false if current directory is webroot
+	 * 
+	 * @return mixed Array of info about parent directory or false
+	 */
+
+	public function get_parent_data() {
+
+		if ($this->request != '/') {
+
+			// If not root, get parent dir data
+			$this->parent = new Dir($this->request, $this->parent_path, $this->teepee_uri);
+
+			return array(
+				'name' => $this->parent->name,
+				'size' => $this->parent->size,
+				'modified' => $this->parent->modified,
+			);
+
+		} else {
+			return false;
+		}
 
 	}
 

@@ -49,13 +49,13 @@ class Helper {
 	 * @return string HTML of string wrapped in smallfade span
 	 */
 
-	public static function smallfade($string, $escaped = false) {
-		if (!$escaped) {
-			return '<span class="faded smallcapes">'.$string.'</span>';
-		} else {
-			return self::escape_chars('<span class="faded smallcapes">').$string.self::escape_chars('</span>');
-		}
-	}
+	// public static function smallfade($string, $escaped = false) {
+	// 	if (!$escaped) {
+	// 		return '<span class="faded smallcapes">'.$string.'</span>';
+	// 	} else {
+	// 		return self::escape_chars('<span class="faded smallcapes">').$string.self::escape_chars('</span>');
+	// 	}
+	// }
 
 	/**
 	 * icon

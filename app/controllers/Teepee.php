@@ -35,6 +35,9 @@ class Teepee {
 			'teepee' => $this->teepee_uri,
 			'breadcrumbs' => $directory->breadcrumbs(),
 			'summary' => $directory->summary(),
+			'parent' => $directory->get_parent_data(),
+			'folders' => true,
+			'files' => true,
 		);
 
 		// Load view
