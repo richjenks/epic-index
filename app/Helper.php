@@ -123,10 +123,35 @@ class Helper {
 	 * Splits a string by a string into array and removes blanks
 	 */
 
-	public function shatter($split, $string) {
+	public static function shatter($split, $string) {
 		$string = explode($split, $string);
 		$string = array_filter($string);
 		return $string;
+	}
+
+	/**
+	 * get_domain
+	 * 
+	 * Gets the fully-qualified domain name of current location
+	 * 
+	 * @return string Domain name, e.g. https://sub.domain.tld
+	 */
+
+	public static function get_domain() {
+
+		// Start with protocol
+		$uri = 'http';
+
+		// If https, add to protocol
+		if (isset($_SERVER['HTTPS'])) {
+			$uri .= 's';
+		}
+
+		// Append host
+		$uri .= '://'.$_SERVER['HTTP_HOST'];
+
+		return $uri;
+
 	}
 
 }
