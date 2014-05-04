@@ -1,15 +1,3 @@
-h1 .icon {
-	top: -2px;
-}
-
-.home {
-	background: url('../../icons/folder.png');
-}
-
-.home:hover {
-	background: url('../../icons/folder-home.png');
-}
-
 .breadcrumb:hover {
 	color: inherit;
 	text-decoration: none;
