@@ -1,8 +1,8 @@
 <?php
 
-require '../models/dir.php';
-require '../models/file.php';
-require '../models/helper.php';
+require TEEPEE.'models/Dir.php';
+require TEEPEE.'models/File.php';
+require TEEPEE.'models/Helper.php';
 
 class Teepee {
 
