@@ -13,13 +13,11 @@ class Helper {
 	 */
 
 	public static function strip_query($url) {
-
 		return str_replace(
 			'?'.$_SERVER['QUERY_STRING'],
 			'',
 			$url
 		);
-
 	}
 
 	/**
@@ -33,14 +31,30 @@ class Helper {
 	 */
 
 	public static function escape_chars($str) {
-
 		$escaped = '';
 		$chars = str_split($str);
 		foreach ($chars as $char) {
 			$escaped .= '\\'.$char;
 		}
 		return $escaped;
+	}
 
+	/**
+	 * smallfade
+	 * 
+	 * Wraps the given string in a smallfade span
+	 * 
+	 * @param string $string String to be wrapped
+	 * @param bool $escaped Whether every char of the span is escaped
+	 * @return string HTML of string wrapped in smallfade span
+	 */
+
+	public static function smallfade($string, $escaped = false) {
+		if (!$escaped) {
+			return '<span class="faded smallcapes">'.$string.'</span>';
+		} else {
+			return self::escape_chars('<span class="faded smallcapes">').$string.self::escape_chars('</span>');
+		}
 	}
 
 	/**
