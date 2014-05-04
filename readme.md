@@ -6,20 +6,24 @@ Responsive index pages for Apache.
 
 *Currently broken due to refactoring*
 
-## Setup
+Apache's autoindex is ugly as fudge and none of the few alternatives available looked or behaved like I wanted them too. Teepee is simple, minimal, beautiful on all screen sizes and, most importantly, highly-usable on mobile devices.
+
+Typical desktop screens get a large, spacious table and smaller screens like tablets and large phones get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
+
+## Installation
 
 1. Move the Teepee folder to your webserver
-2. If you're not putting Teepee on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
-3. Edit `.htaccess` so the following line points to the Teepee folder:
+2. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
+3. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
 
 ```htaccess
 RewriteRule .* /resources/teepee/ [L]
 ```
 
-4. Edit index.php so the following line points to the Teepee folder:
+4. Edit index.php so the following line is the local path to the Teepee folder:
 
 ```php
-$dir['teepee'] = '/resources/teepee/';
+define('TEEPEE', '/path/to/teepee/');
 ```
 
 ## Requirements
@@ -38,7 +42,7 @@ sudo service apache2 restart
 
 ### 2. AllowOverride
 
-For most cases, in `/etc/apache2/sites-available/default`, ensure the `AllowOverride` directive has atleast `FileInfo`:
+For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure the `AllowOverride` directive has atleast `FileInfo`:
 
 ```ApacheConf
 <Directory /var/www/>
