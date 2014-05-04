@@ -12,29 +12,13 @@
 
 		<!-- Show parent link if available -->
 		<?php if ($data['parent']):?>
-			<tr class="faded">
-				<td class="col-name">
-					<a href="../">
-						<img class="icon" src="<?=$data['teepee']?>app/assets/icons/folder-parent-old.png">
-						<?=$data['parent']['name']?>
-					</a>
-				</td>
-				<td class="col-size">
-					<a href="../">
-						<?=$data['parent']['size']?>
-					</a>
-				</td>
-				<td class="col-modified">
-					<a href="../">
-						<?=Helper::format_date($data['parent']['modified'])?>
-					</a>
-				</td>
-			</tr>
+			<?php include TEEPEE.'app/views/_row.php';?>
 		<?php endif;?>
 
 		<!-- Show folders -->
-		<?php foreach ($data['folders'] as $folder):?>
-			<tr>
+		<?php foreach ($data['folders'] as $data):?>
+			<?php include TEEPEE.'app/views/_row.php';?>
+			<!--<tr>
 				<td class="col-name">
 					<a href="<?=$folder['name']?>">
 						<img class="icon" src="<?=$data['teepee']?>app/assets/icons/folder.png">
@@ -43,7 +27,7 @@
 				</td>
 				<td class="col-size"><?=$folder['size']?></td>
 				<td class="col-modified"><?=$folder['modified']?></td>
-			</tr>
+			</tr>-->
 		<?php endforeach;?>
 
 	</tbody>

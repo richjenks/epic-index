@@ -40,22 +40,27 @@ class Helper {
 	}
 
 	/**
-	 * smallfade
+	 * format_date
 	 * 
-	 * Wraps the given string in a smallfade span
+	 * Formats a timestamp
 	 * 
-	 * @param string $string String to be wrapped
-	 * @param bool $escaped Whether every char of the span is escaped
-	 * @return string HTML of string wrapped in smallfade span
+	 * @param int $timestamp Timestamp to be formatted
+	 * @param string $format Format for date
+	 * 
+	 * @return string Formatted date
 	 */
 
-	// public static function smallfade($string, $escaped = false) {
-	// 	if (!$escaped) {
-	// 		return '<span class="faded smallcapes">'.$string.'</span>';
-	// 	} else {
-	// 		return self::escape_chars('<span class="faded smallcapes">').$string.self::escape_chars('</span>');
-	// 	}
-	// }
+	public static function format_date($timestamp) {
+		return date(
+			Helper::escape_chars('<span class="faded smallcaps">')
+				.'D'
+				.Helper::escape_chars('</span>')
+				.' Y-m-d'
+				.Helper::escape_chars('<span class="faded smallcaps">')
+				.' H:i'
+				.Helper::escape_chars('</span>'),
+			$timestamp);
+	}
 
 	/**
 	 * icon

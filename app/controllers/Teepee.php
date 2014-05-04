@@ -24,8 +24,8 @@ class Teepee {
 			'breadcrumbs' => $directory->breadcrumbs(),
 			'summary' => $directory->summary(),
 			'parent' => $directory->get_parent_data(),
-			'folders' => true,
-			'files' => true,
+			'folders' => $directory->get_folders_data(),
+			'files' => $directory->get_files_data(),
 		);
 
 		// Load view

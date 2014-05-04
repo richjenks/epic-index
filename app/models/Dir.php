@@ -209,6 +209,7 @@ class Dir {
 
 			// Populate array of parent's data
 			return array(
+				'icon' => 'folder-parent-old',
 				'name' => $this->parent->name,
 				'size' => $this->parent->size,
 				'modified' => $this->parent->modified,
@@ -222,6 +223,45 @@ class Dir {
 		}
 
 	}
+
+	/**
+	 * get_folders_data
+	 * 
+	 * Gets information about folders in the current directory
+	 * 
+	 * @return array Data for each folder
+	 */
+
+	public function get_folders_data() {
+
+		// Folders data array
+		$folders = array();
+
+		foreach ($this->folders as $folder) {
+
+			$folder = new Dir($this->request, $this->path.$folder, $this->teepee_uri);
+			array_push($folders, array(
+				'icon' => 'folder',
+				'name' => $folder->name,
+				'size' => $folder->size,
+				'modified' => $folder->modified,
+			));
+
+		}
+
+		return $folders;
+
+	}
+
+	/**
+	 * get_files_data
+	 * 
+	 * Gets information about files in the current directory
+	 * 
+	 * @return array Data for each file
+	 */
+
+	public function get_files_data() {}
 
 	/**
 	 * list_children
