@@ -163,7 +163,7 @@ class Dir {
 		$html = '<table>';
 		$html .= '	<thead>';
 		$html .= '		<tr>';
-		$html .= '			<th class="faded smallcaps col-icon"></th>';
+		// $html .= '			<th class="faded smallcaps col-icon"></th>';
 		$html .= '			<th class="faded smallcaps col-file">File</th>';
 		$html .= '			<th class="faded smallcaps col-size">Size</th>';
 		$html .= '			<th class="faded smallcaps col-modified">Modified</th>';

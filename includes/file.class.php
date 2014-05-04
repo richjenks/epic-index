@@ -136,11 +136,9 @@ class File {
 		// $close = Helper::escape_chars('</span>');
 		// return '<td class="col-modified"><a href="'.$folder.'">'.date($open.'D '.$close.' Y-m-d '.$open.'h:i'.$close, $stats['mtime']).'</a></td>';
 		
-		$html = '<td class="col-modified"><a href="">';
-		$html .= date(Helper::smallfade('D', true), $this->stats['mtime']);
+		$html = date(Helper::smallfade('D', true), $this->stats['mtime']);
 		$html .= ' Y-m-d ';
 		$html .= date(Helper::smallfade('h:i', true), $this->stats['mtime']);
-		$html .= '</a></td>';
 		return $html;
 
 		// return $this->modified;
@@ -161,9 +159,12 @@ class File {
 
 		$html = '';
 		$html .= '<tr>';
-		$html .= '	<td class="col-icon"><a href="'.$this->url.'"><img class="icon" src="http://'.$_SERVER['HTTP_HOST'].TEEPEE.'icons/'.$this->icon.'.png"></a></td>';
-		$html .= '	<td class="col-file"><a class="faded" href="'.$this->url.'">'.$this->name.'</a></td>';
-		$html .= '	<td class="col-size"><a class="faded" href="'.$this->url.'">'.$this->size.'</a></td>';
+		$html .= '	<td class="col-file">
+						<a class="faded" href="'.$this->url.'">
+							<img class="icon" src="http://'.$_SERVER['HTTP_HOST'].TEEPEE.'icons/'.$this->icon.'.png">'.$this->name.
+						'</a>
+					</td>';
+		$html .= '	<td class="col-size"><a class="faded" href="'.$this->url.'">SIZE '.$this->size.'</a></td>';
 		$html .= '	<td class="col-modified"><a class="faded" href="'.$this->url.'">'.$this->modified.'</a></td>';
 		$html .= '</tr>';
 

@@ -29,15 +29,17 @@ tr:hover td {
 	background: #e5e5e5;
 }
 
-.col-icon,
-.col-size,
-.col-modified {
-	width: 1px;
-	white-space: nowrap;
+td .icon {
+	margin-right: .5em;
+}
+
+.col-file {
+	width: 100%;
 }
 
 .col-size,
 .col-modified {
+	white-space: nowrap;
 	text-align: right;
 }
 
