@@ -1,4 +1,4 @@
-<?php require TEEPEE.'app/views/Header.php';?>
+<?php require TEEPEE.'app/views/_header.php';?>
 <h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
 <table>
 	<thead>
@@ -19,25 +19,35 @@
 						<?=$data['parent']['name']?>
 					</a>
 				</td>
-				<td class="col-size"><a href="../"><?=$data['parent']['size']?></a></td>
-				<td class="col-modified"><a href="../">
-					<?php
-						echo date(
-							Helper::escape_chars('<span class="smallcaps">')
-								.'D'
-								.Helper::escape_chars('</span>')
-								.' Y-m-d'
-								.Helper::escape_chars('<span class="smallcaps">')
-								.' H:i'
-								.Helper::escape_chars('</span>'),
-							$data['parent']['modified']);
-					?>
-				</a></td>
+				<td class="col-size">
+					<a href="../">
+						<?=$data['parent']['size']?>
+					</a>
+				</td>
+				<td class="col-modified">
+					<a href="../">
+						<?=Helper::format_date($data['parent']['modified'])?>
+					</a>
+				</td>
 			</tr>
 		<?php endif;?>
+
+		<!-- Show folders -->
+		<?php foreach ($data['folders'] as $folder):?>
+			<tr>
+				<td class="col-name">
+					<a href="<?=$folder['name']?>">
+						<img class="icon" src="<?=$data['teepee']?>app/assets/icons/folder.png">
+						<?=$folder['name']?>
+					</a>
+				</td>
+				<td class="col-size"><?=$folder['size']?></td>
+				<td class="col-modified"><?=$folder['modified']?></td>
+			</tr>
+		<?php endforeach;?>
 
 	</tbody>
 	<tbody>
 </table>
 <section class="summary faded smallcaps"><?=$data['summary']?></section>
-<?php require TEEPEE.'app/views/Footer.php';?>
+<?php require TEEPEE.'app/views/_footer.php';?>
