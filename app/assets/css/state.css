@@ -1,12 +1,8 @@
-/* More padding on large screens */
+/* Extra spacing on large screens */
 @media all and (min-width: 1023px) {
 
-	body {
-		padding: 2.6em;
-	}
-
 	.wrapper {
-		padding: 2.6em;
+		padding: 2em 2.6em;
 	}
 
 	h1 {
@@ -19,15 +15,20 @@
 
 }
 
-/* Less padding on small screens */
+/* Make fullscreen on non-desktop-sized screens */
 @media all and (max-width: 767px) {
 
 	body {
-		padding: .5em;
+		padding: 0;
+		margin: 0;
+		background: white;
 	}
 
 	.wrapper {
 		padding: 1em;
+		border: none;
+		border-radius: 0;
+		box-shadow: none;
 	}
 
 	h1 {
@@ -40,14 +41,14 @@
 
 }
 
-/* Hide "Modified" column */
+/* Hide modified column on small screens */
 @media all and (max-width: 30em) {
 	.col-modified {
 		display: none;
 	}
 }
 
-/* Hide "Size" column */
+/* Hide size column on tiny screens */
 @media all and (max-width: 20em) {
 	.col-size {
 		display: none;
