@@ -56,14 +56,6 @@ class Dir {
 
 	}
 
-	// Getters for private vars
-	// public function get_directory()		{ return $this->directory; }
-	// public function get_parent()			{ return $this->parent; }
-	// public function get_request()		{ return $this->request; }
-	// public function get_children()		{ return $this->children; }
-	// public function get_files()			{ return $this->files; }
-	// public function get_folders()		{ return $this->folders; }
-
 	/**
 	 * count_items
 	 * 

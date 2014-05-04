@@ -19,11 +19,6 @@ class Teepee {
 
 	}
 
-	// Getters for private vars
-	// public function get_request()		{ return $this->request; }
-	// public function get_path()		{ return $this->path; }
-	// public function get_teepee_uri()	{ return $this->teepee_uri; }
-
 	private function render() {
 
 		// Create current directory object

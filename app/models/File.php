@@ -40,15 +40,6 @@ class File {
 
 	}
 
-	// Getters for private vars
-	// public function get_file()		{ return $this->file; }
-	// public function get_parent()	{ return $this->parent; }
-	// public function get_url()		{ return $this->url; }
-	// public function get_icon()		{ return $this->icon; }
-	// public function get_name()		{ return $this->name; }
-	// public function get_size()		{ return $this->size; }
-	// public function get_modified()	{ return $this->modified; }
-
 	/**
 	 * find_icon
 	 * 
