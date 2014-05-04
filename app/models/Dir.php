@@ -204,9 +204,10 @@ class Dir {
 
 		if ($this->request != '/') {
 
-			// If not root, get parent dir data
+			// If not root, instantiate object for parent
 			$this->parent = new Dir($this->request, $this->parent_path, $this->teepee_uri);
 
+			// Populate array of parent's data
 			return array(
 				'name' => $this->parent->name,
 				'size' => $this->parent->size,
@@ -214,7 +215,10 @@ class Dir {
 			);
 
 		} else {
+
+			// If current dir is webroot, there is no parent
 			return false;
+		
 		}
 
 	}
