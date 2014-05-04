@@ -14,13 +14,6 @@ class Teepee {
 		$this->path = $_SERVER['DOCUMENT_ROOT'].$this->request;
 		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE);
 
-		// Render view
-		$this->render();
-
-	}
-
-	private function render() {
-
 		// Create current directory object
 		$directory = new Dir($this->request, $this->path, $this->teepee_uri);
 		
