@@ -18,8 +18,11 @@
 				// If faded, add faded class
 				$classes = ($item['faded'] ? 'faded' : '');
 
-				// If root, change name
-				if ($item['uri'] === '/') { $item['name'] = 'Root'; }
+				// If root, change name & icon
+				if ($item['uri'] === '/') {
+					$item['name'] = 'Root';
+					$item['icon'] = 'folder-home';
+				}
 
 				// Get file's icon name
 				$item['icon'] = Helper::get_icon($item['icon']);
