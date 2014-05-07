@@ -10,28 +10,28 @@
 	</thead>
 	<tbody>
 
-		<!-- Show parent link if available -->
-		<?php // if ($data['parent']):?>
-			<?php // include TEEPEE.'app/views/_row.php';?>
-		<?php // endif;?>
+		<?php
 
-		<!-- Show folders -->
-		<?php // foreach ($data['folders'] as $data):?>
-			<?php // include TEEPEE.'app/views/_row.php';?>
-			<!--<tr>
-				<td class="col-name">
-					<a href="<?=$folder['name']?>">
-						<img class="icon" src="<?=$data['teepee']?>app/assets/icons/folder.png">
-						<?=$folder['name']?>
-					</a>
-				</td>
-				<td class="col-size"><?=$folder['size']?></td>
-				<td class="col-modified"><?=$folder['modified']?></td>
-			</tr>-->
-		<?php // endforeach;?>
+			// Loop through each folder
+			foreach ($data['folders'] as $folder) {
+
+				// If faded, add faded class
+				$classes = ($folder['faded'] ? 'faded' : '');
+
+				// Check icon exists, or use default file icon
+				if (!file_exists(TEEPEE_PATH.'app/assets/icons/'.$folder['icon'].'.png')) {
+					$folder['icon'] = 'default';
+				}
+
+				// Render the row
+				include TEEPEE_PATH.'app/views/_row.php';
+			
+			}
+
+
+		?>
 
 	</tbody>
-	<tbody>
 </table>
 <section class="summary faded smallcaps"><?=$data['summary']?></section>
 <?php require TEEPEE_PATH.'app/views/_footer.php';?>

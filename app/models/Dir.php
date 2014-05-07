@@ -199,7 +199,7 @@ class Dir {
 	 * @return mixed Array of info about parent directory or false
 	 */
 
-	public function get_parent_data() {
+	private function get_parent_data() {
 
 		if ($this->request != '/') {
 
@@ -237,13 +237,13 @@ class Dir {
 		// Folders data array
 		$folders = array();
 
+		// Push parent folder
+		array_push($folders, $this->get_parent_data());
+
 		foreach ($this->folders as $folder) {
 
 			// Folder object
 			$folder = new Dir($this->request, $this->path.$folder, $this->teepee_uri);
-
-			// Push parent folder
-			array_push($folders, $this->get_parent_data());
 
 			// Push folders in this directory
 			array_push($folders, array(
