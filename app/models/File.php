@@ -2,14 +2,14 @@
 
 class File {
 
-	private $file;		// Full path the the current item
-	private $parent;	// Whether the item is the link to a parent item
-	private $url;		// URL to the file
-	private $icon;		// Icon for the file
-	private $name;		// Filename with extension
-	private $stats;		// Results of PHP `stat()`
-	private $size;		// Size either in bytes or number of children
-	private $modified;	// Modified date of the current item
+	private $file;     // Full path the the current item
+	private $parent;   // Whether the item is the link to a parent item
+	private $url;      // URL to the file
+	private $icon;     // Icon for the file
+	private $name;     // Filename with extension
+	private $stats;    // Results of PHP `stat()`
+	private $size;     // Size either in bytes or number of children
+	private $modified; // Modified date of the current item
 
 	/**
 	 * __construct
@@ -31,12 +31,12 @@ class File {
 		$this->stats = stat($this->file);
 
 		// Define vars for current file
-		$this->file			= $file;
-		$this->icon			= $this->find_icon();
-		$this->url			= $this->find_url();
-		$this->name			= $this->find_name();
-		$this->size			= $this->find_size();
-		$this->modified		= $this->find_modified();
+		$this->file     = $file;
+		$this->icon     = $this->find_icon();
+		$this->url      = $this->find_url();
+		$this->name     = $this->find_name();
+		$this->size     = $this->find_size();
+		$this->modified = $this->find_modified();
 
 	}
 

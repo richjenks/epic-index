@@ -3,54 +3,54 @@
 class Dir {
 
 	// Path vars
-	private $request;		// Path to current directory from webroot — for breadcrumbs
-	private $path;			// Local path to current directory
+	private $request;      // Path to current directory from webroot — for breadcrumbs
+	private $path;         // Local path to current directory
 
 	// Directory vars
-	private $name;			// Name of current directory
-	private $size;			// Number of items in current directory
-	private $modified;		// Modified date of current directory
+	private $name;         // Name of current directory
+	private $size;         // Number of items in current directory
+	private $modified;     // Modified date of current directory
 
 	// Parent vars
-	private $parent;		// Parent directory object
-	private $parent_path;	// Path to parent directory
+	private $parent;       // Parent directory object
+	private $parent_path;  // Path to parent directory
 
 	// Child vars
-	private $children;		// Files and folders in current dir
-	private $child_count;	// Count of children in current dir
-	private $child_label;	//Label for children, singular or plural
+	private $children;     // Files and folders in current dir
+	private $child_count;  // Count of children in current dir
+	private $child_label;  //Label for children, singular or plural
 
 	// Folder vars
-	private $folders;		// Folders in current dir
-	private $folder_count;	// Count of files in current dir
-	private $folder_label;	// Label for folders, singular or plural
+	private $folders;      // Folders in current dir
+	private $folder_count; // Count of files in current dir
+	private $folder_label; // Label for folders, singular or plural
 
 	// File vars
-	private $files;			// Files in current dir
-	private $file_count;	// Count of files in current dir
-	private $file_label;	// Label for files, singular or plural
+	private $files;        // Files in current dir
+	private $file_count;   // Count of files in current dir
+	private $file_label;   // Label for files, singular or plural
 
 	public function __construct($request, $path) {
 
 		// Set path vars
-		$this->request		= $request;
-		$this->path			= $path;
+		$this->request = $request;
+		$this->path    = $path;
 
 		// Set parent path
 		$this->parent_path	= dirname($this->path);
 
 		// Get dir listings, without current and parent dir, plus files/folders
-		$this->children		= array_diff(scandir($this->path), array('.', '..'));
-		$this->folders		= $this->get_folders($this->children);
-		$this->files		= $this->get_files($this->children);
+		$this->children = array_diff(scandir($this->path), array('.', '..'));
+		$this->folders  = $this->get_folders($this->children);
+		$this->files    = $this->get_files($this->children);
 
 		// Count items
 		$this->count_items();
 
 		// Set current directory vars
-		$this->name 	= basename($this->path);
-		$this->size		= $this->child_count.' '.$this->child_label;
-		$this->modified	= stat($this->path)['mtime'];
+		$this->name     = basename($this->path);
+		$this->size     = $this->child_count.' '.$this->child_label;
+		$this->modified = stat($this->path)['mtime'];
 
 	}
 
@@ -83,9 +83,9 @@ class Dir {
 	private function count_items() {
 
 		// Count children, files and folders
-		$this->child_count	= count($this->children);
-		$this->file_count	= count($this->files);
-		$this->folder_count	= count($this->folders);
+		$this->child_count  = count($this->children);
+		$this->file_count   = count($this->files);
+		$this->folder_count = count($this->folders);
 
 		// Define singluar or plural labels for children
 		if ($this->child_count === 1) {
@@ -227,12 +227,12 @@ class Dir {
 
 			// Populate array of parent's data
 			return array(
-				'icon'		=> 'folder-parent-old',
-				'name'		=> $this->parent->name,
-				'uri'		=> $this->parent->get_request(),
-				'size'		=> $this->parent->size,
-				'modified'	=> $this->parent->modified,
-				'faded'		=> true,
+				'icon'     => 'folder-parent-old',
+				'name'     => $this->parent->name,
+				'uri'      => $this->parent->get_request(),
+				'size'     => $this->parent->size,
+				'modified' => $this->parent->modified,
+				'faded'    => true,
 			);
 
 		} else {
@@ -267,12 +267,12 @@ class Dir {
 
 			// Push folders in this directory
 			array_push($folders, array(
-				'icon'		=> 'folder',
-				'name'		=> $folder->name,
-				'uri'		=> $folder->get_request().$folder->name,
-				'size'		=> $folder->size,
-				'modified'	=> $folder->modified,
-				'faded'		=> false,
+				'icon'     => 'folder',
+				'name'     => $folder->name,
+				'uri'      => $folder->get_request().$folder->name,
+				'size'     => $folder->size,
+				'modified' => $folder->modified,
+				'faded'    => false,
 			));
 
 		}
