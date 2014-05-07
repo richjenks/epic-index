@@ -14,8 +14,3 @@ require TEEPEE_PATH.'app/controllers/Teepee.php';
 
 // Start
 $teepee = new Teepee;
-
-// Testing
-// echo $teepee->get_request();
-// require TEEPEE.'app/views/Teepee.php';
-// echo $teepee->get_teepee_uri();

@@ -18,11 +18,11 @@ class Teepee {
 		
 		// Populate array of page data
 		$data = array(
-			'title' => $this->request,
-			'breadcrumbs' => $directory->breadcrumbs(),
-			'summary' => $directory->summary(),
-			'folders' => $directory->get_folders_data(),
-			'files' => $directory->get_files_data(),
+			'title'			=> $this->request,
+			'breadcrumbs'	=> $directory->breadcrumbs(),
+			'summary'		=> $directory->summary(),
+			'folders'		=> $directory->get_folders_data(),
+			'files'			=> $directory->get_files_data(),
 		);
 
 		// Load view

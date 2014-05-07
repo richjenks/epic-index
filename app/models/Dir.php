@@ -48,9 +48,9 @@ class Dir {
 		$this->count_items();
 
 		// Set current directory vars
-		$this->name = basename($this->path);
-		$this->size = $this->child_count.' '.$this->child_label;
-		$this->modified = stat($this->path)['mtime'];
+		$this->name 	= basename($this->path);
+		$this->size		= $this->child_count.' '.$this->child_label;
+		$this->modified	= stat($this->path)['mtime'];
 
 	}
 
@@ -227,12 +227,12 @@ class Dir {
 
 			// Populate array of parent's data
 			return array(
-				'icon' => 'folder-parent-old',
-				'name' => $this->parent->name,
-				'uri' => $this->parent->get_request(),
-				'size' => $this->parent->size,
-				'modified' => $this->parent->modified,
-				'faded' => true,
+				'icon'		=> 'folder-parent-old',
+				'name'		=> $this->parent->name,
+				'uri'		=> $this->parent->get_request(),
+				'size'		=> $this->parent->size,
+				'modified'	=> $this->parent->modified,
+				'faded'		=> true,
 			);
 
 		} else {
@@ -267,12 +267,12 @@ class Dir {
 
 			// Push folders in this directory
 			array_push($folders, array(
-				'icon' => 'folder',
-				'name' => $folder->name,
-				'uri' => $folder->get_request().$folder->name,
-				'size' => $folder->size,
-				'modified' => $folder->modified,
-				'faded' => false,
+				'icon'		=> 'folder',
+				'name'		=> $folder->name,
+				'uri'		=> $folder->get_request().$folder->name,
+				'size'		=> $folder->size,
+				'modified'	=> $folder->modified,
+				'faded'		=> false,
 			));
 
 		}

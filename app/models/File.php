@@ -2,14 +2,14 @@
 
 class File {
 
-	private $file; // Full path the the current item
-	private $parent; // Whether the item is the link to a parent item
-	private $url; // URL to the file
-	private $icon; // Icon for the file
-	private $name; // Filename with extension
-	private $stats; // Results of PHP `stat()`
-	private $size; // Size either in bytes or number of children
-	private $modified; // Modified date of the current item
+	private $file;		// Full path the the current item
+	private $parent;	// Whether the item is the link to a parent item
+	private $url;		// URL to the file
+	private $icon;		// Icon for the file
+	private $name;		// Filename with extension
+	private $stats;		// Results of PHP `stat()`
+	private $size;		// Size either in bytes or number of children
+	private $modified;	// Modified date of the current item
 
 	/**
 	 * __construct
@@ -31,12 +31,12 @@ class File {
 		$this->stats = stat($this->file);
 
 		// Define vars for current file
-		$this->file = $file;
-		$this->icon = $this->find_icon();
-		$this->url = $this->find_url();
-		$this->name = $this->find_name();
-		$this->size = $this->find_size();
-		$this->modified = $this->find_modified();
+		$this->file			= $file;
+		$this->icon			= $this->find_icon();
+		$this->url			= $this->find_url();
+		$this->name			= $this->find_name();
+		$this->size			= $this->find_size();
+		$this->modified		= $this->find_modified();
 
 	}
 
@@ -124,20 +124,10 @@ class File {
 	 */
 
 	private function find_modified() {
-		// $this->modified = $stats['mtime'];
-		// $open = Helper::escape_chars('<span class="faded smallcapes">');
-		// $close = Helper::escape_chars('</span>');
-		// return '<td class="col-modified"><a href="'.$folder.'">'.date($open.'D '.$close.' Y-m-d '.$open.'h:i'.$close, $stats['mtime']).'</a></td>';
-		
 		$html = date(Helper::smallfade('D', true), $this->stats['mtime']);
 		$html .= ' Y-m-d ';
 		$html .= date(Helper::smallfade('h:i', true), $this->stats['mtime']);
 		return $html;
-
-		// return $this->modified;
-
-		// $r = '\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
-		// $table .= '<td class="col-modified"><a href="'.$folder.'">'.date('\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d \<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>h:i\<\/\s\p\a\n\>', $stats['mtime']).'</a></td>';
 	}
 
 	/**
