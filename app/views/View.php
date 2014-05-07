@@ -18,6 +18,9 @@
 				// If faded, add faded class
 				$classes = ($item['faded'] ? 'faded' : '');
 
+				// If root, change name
+				if ($item['uri'] === '/') { $item['name'] = 'Root'; }
+
 				// Get file's icon name
 				$item['icon'] = Helper::get_icon($item['icon']);
 
@@ -39,7 +42,6 @@
 				include TEEPEE_PATH.'app/views/_row.php';
 
 			}
-
 
 		?>
 

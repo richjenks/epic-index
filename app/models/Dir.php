@@ -220,27 +220,18 @@ class Dir {
 
 	private function get_parent_data() {
 
-		if ($this->request != '/') {
+		// Parent dir object
+		$this->parent = new Dir(dirname($this->request), $this->parent_path);
 
-			// If not root, instantiate object for parent
-			$this->parent = new Dir(dirname($this->request), $this->parent_path);
-
-			// Populate array of parent's data
-			return array(
-				'icon'     => 'folder-parent-old',
-				'name'     => $this->parent->name,
-				'uri'      => $this->parent->get_request(),
-				'size'     => $this->parent->size,
-				'modified' => $this->parent->modified,
-				'faded'    => true,
-			);
-
-		} else {
-
-			// If current dir is webroot, there is no parent
-			return false;
-		
-		}
+		// Return array of parent's data
+		return array(
+			'icon'     => 'folder-parent-old',
+			'name'     => $this->parent->name,
+			'uri'      => $this->parent->get_request(),
+			'size'     => $this->parent->size,
+			'modified' => $this->parent->modified,
+			'faded'    => true,
+		);
 
 	}
 
@@ -258,7 +249,9 @@ class Dir {
 		$folders = array();
 
 		// Push parent folder
-		array_push($folders, $this->get_parent_data());
+		if ($this->request != '/') {
+			array_push($folders, $this->get_parent_data());
+		}
 
 		foreach ($this->folders as $folder) {
 
