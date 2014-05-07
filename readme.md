@@ -36,6 +36,7 @@ Typical desktop screens get a large, spacious table and smaller screens like tab
 
 1. `mod_rewrite` must be enabled
 2. Site must be able to override `mod_rewrite` directives
+3. PHP 5.5
 
 ### 1. mod_rewrite
 
