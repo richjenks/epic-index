@@ -5,7 +5,6 @@ class Dir {
 	// Path vars
 	private $request;		// Path to current directory from webroot — for breadcrumbs
 	private $path;			// Local path to current directory
-	private $teepee_uri;	// URI to Teepee
 
 	// Directory vars
 	private $name;			// Name of current directory
@@ -213,6 +212,7 @@ class Dir {
 				'name' => $this->parent->name,
 				'size' => $this->parent->size,
 				'modified' => $this->parent->modified,
+				'faded' => true,
 			);
 
 		} else {
@@ -239,12 +239,19 @@ class Dir {
 
 		foreach ($this->folders as $folder) {
 
+			// Folder object
 			$folder = new Dir($this->request, $this->path.$folder, $this->teepee_uri);
+
+			// Push parent folder
+			array_push($folders, $this->get_parent_data());
+
+			// Push folders in this directory
 			array_push($folders, array(
 				'icon' => 'folder',
 				'name' => $folder->name,
 				'size' => $folder->size,
 				'modified' => $folder->modified,
+				'faded' => false,
 			));
 
 		}

@@ -4,7 +4,6 @@ class Teepee {
 
 	private $request;		// Path to current directory from webroot
 	private $path;			// Local path to current directory
-	private $teepee_uri;	// URI to Teepee
 	private $directory; 	// Current directory object
 
 	public function __construct() {
@@ -12,7 +11,7 @@ class Teepee {
 		// Set directory vars
 		$this->request = Helper::strip_query($_SERVER['REQUEST_URI']);
 		$this->path = $_SERVER['DOCUMENT_ROOT'].$this->request;
-		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE);
+		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE_PATH);
 
 		// Create current directory object
 		$directory = new Dir($this->request, $this->path, $this->teepee_uri);
@@ -20,7 +19,6 @@ class Teepee {
 		// Populate array of page data
 		$data = array(
 			'title' => $this->request,
-			'teepee' => $this->teepee_uri,
 			'breadcrumbs' => $directory->breadcrumbs(),
 			'summary' => $directory->summary(),
 			'parent' => $directory->get_parent_data(),
@@ -29,7 +27,7 @@ class Teepee {
 		);
 
 		// Load view
-		require TEEPEE.'app/views/View.php';
+		require TEEPEE_PATH.'app/views/View.php';
 
 	}
 

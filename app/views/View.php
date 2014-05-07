@@ -1,4 +1,4 @@
-<?php require TEEPEE.'app/views/_header.php';?>
+<?php require TEEPEE_PATH.'app/views/_header.php';?>
 <h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
 <table>
 	<thead>
@@ -11,13 +11,13 @@
 	<tbody>
 
 		<!-- Show parent link if available -->
-		<?php if ($data['parent']):?>
-			<?php include TEEPEE.'app/views/_row.php';?>
-		<?php endif;?>
+		<?php // if ($data['parent']):?>
+			<?php // include TEEPEE.'app/views/_row.php';?>
+		<?php // endif;?>
 
 		<!-- Show folders -->
-		<?php foreach ($data['folders'] as $data):?>
-			<?php include TEEPEE.'app/views/_row.php';?>
+		<?php // foreach ($data['folders'] as $data):?>
+			<?php // include TEEPEE.'app/views/_row.php';?>
 			<!--<tr>
 				<td class="col-name">
 					<a href="<?=$folder['name']?>">
@@ -28,10 +28,10 @@
 				<td class="col-size"><?=$folder['size']?></td>
 				<td class="col-modified"><?=$folder['modified']?></td>
 			</tr>-->
-		<?php endforeach;?>
+		<?php // endforeach;?>
 
 	</tbody>
 	<tbody>
 </table>
 <section class="summary faded smallcaps"><?=$data['summary']?></section>
-<?php require TEEPEE.'app/views/_footer.php';?>
+<?php require TEEPEE_PATH.'app/views/_footer.php';?>

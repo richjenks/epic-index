@@ -26,6 +26,12 @@ RewriteRule .* /resources/teepee/ [L]
 define('TEEPEE', '/path/to/teepee/');
 ```
 
+And also so the following line is the URI to the Teepee folder:
+
+```php
+define('TEEPEE_URI', 'http://localhost/uri/to/teepee/');
+```
+
 ## Requirements
 
 1. `mod_rewrite` must be enabled
