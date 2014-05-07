@@ -49,7 +49,7 @@ class Dir {
 
 		// Set current directory vars
 		$this->name     = basename($this->path);
-		$this->size     = $this->child_count.' '.$this->child_label;
+		$this->size     = $this->child_count.' <span class="faded">'.$this->child_label.'</span>';
 		$this->modified = stat($this->path)['mtime'];
 
 	}
@@ -289,7 +289,30 @@ class Dir {
 	 * @return array Data for each file
 	 */
 
-	public function get_files_data() {}
+	public function get_files_data() {
+
+		// Files data array
+		$files = array();
+
+		foreach ($this->files as $file) {
+
+			// File object
+			$file = new File($this->path.$file);
+
+			// Push files in this directory
+			array_push($files, array(
+				'name' => $file->get_name(),
+				'ext' => $file->get_ext(),
+				'path' => $file->get_path(),
+				'size' => $file->get_size(),
+				'modified' => $file->get_modified(),
+			));
+
+		}
+
+		return $files;
+
+	}
 
 	/**
 	 * summary

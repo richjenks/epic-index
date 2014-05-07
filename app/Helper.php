@@ -63,33 +63,6 @@ class Helper {
 	}
 
 	/**
-	 * icon
-	 * 
-	 * When passed file, will return the name of the appropriate icon
-	 * 
-	 * @param string $filename The full path or basename of the file, including extension
-	 * @return string The basename of the appropriate Faenza icon, without extension
-	 */
-
-	public static function icon($filename) {
-
-		// Get the file's extension
-		$extension = end(explode('.', $filename));
-
-		// Return the appropriate icon
-		switch ($extension) {
-			case 'value':
-				# code...
-				break;
-			
-			default:
-				# code...
-				break;
-		}
-
-	}
-
-	/**
 	 * filesize
 	 * 
 	 * Formats a filesize into a human-readable format
@@ -157,6 +130,23 @@ class Helper {
 
 		return $uri;
 
+	}
+
+	/**
+	 * get_icon
+	 * 
+	 * Either returns an icon matching the extension or the default icon
+	 * 
+	 * @param string $extension File's extension
+	 * @return string The name of the correct icon
+	 */
+
+	public static function get_icon($extension) {
+		if (!file_exists(TEEPEE_PATH.'app/assets/icons/'.$extension.'.png')) {
+			return 'default';
+		} else {
+			return $extension;
+		}
 	}
 
 }

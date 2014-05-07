@@ -1,18 +1,18 @@
 <tr class="<?=$classes?>">
 	<td class="col-name">
-		<a href="<?=$folder['uri']?>">
-			<img class="icon" src="<?=TEEPEE_URI?>app/assets/icons/<?=$folder['icon']?>.png">
-			<?=$folder['name']?>
+		<a href="<?=$item['uri']?>">
+			<img class="icon" src="<?=TEEPEE_URI?>app/assets/icons/<?=$item['icon']?>.png">
+			<?=$item['name']?>
 		</a>
 	</td>
 	<td class="col-size">
-		<a href="<?=$folder['uri']?>">
-			<?=$folder['size']?>
+		<a href="<?=$item['uri']?>">
+			<?=$item['size']?>
 		</a>
 	</td>
 	<td class="col-modified">
-		<a href="<?=$folder['uri']?>">
-			<?=Helper::format_date($folder['modified'])?>
+		<a href="<?=$item['uri']?>">
+			<?=Helper::format_date($item['modified'])?>
 		</a>
 	</td>
 </tr>

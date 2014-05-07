@@ -28,6 +28,9 @@ class Teepee {
 		// Load view
 		require TEEPEE_PATH.'app/views/View.php';
 
+		// echo '<pre>';
+		// var_dump($data['files']);
+
 	}
 
 }

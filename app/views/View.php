@@ -12,20 +12,32 @@
 
 		<?php
 
-			// Loop through each folder
-			foreach ($data['folders'] as $folder) {
+			// Loop through each item
+			foreach ($data['folders'] as $item) {
 
 				// If faded, add faded class
-				$classes = ($folder['faded'] ? 'faded' : '');
+				$classes = ($item['faded'] ? 'faded' : '');
 
-				// Check icon exists, or use default file icon
-				if (!file_exists(TEEPEE_PATH.'app/assets/icons/'.$folder['icon'].'.png')) {
-					$folder['icon'] = 'default';
-				}
+				// Get file's icon name
+				$item['icon'] = Helper::get_icon($item['icon']);
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
 			
+			}
+
+			// Loop through each file
+			foreach ($data['files'] as $item) {
+
+				// Get file's icon name
+				$item['icon'] = Helper::get_icon($item['ext']);
+
+				// Construct file.extension
+				$item['name'] = $item['name'].'<span class="faded">.'.$item['ext'];
+
+				// Render the row
+				include TEEPEE_PATH.'app/views/_row.php';
+
 			}
 
 
