@@ -146,8 +146,8 @@ class Dir {
 			
 			} else {
 			
-				// Don't make the current folder a link
-				$html .= '<b>'.$breadcrumbs[$i].'</b>/';
+				// Make current breadcrum bold
+				$html .= '<b><a href="." class="breadcrumb">'.$breadcrumbs[$i].'</a></b>/';
 			
 			}
 
