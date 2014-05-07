@@ -30,12 +30,11 @@ class Dir {
 	private $file_count;	// Count of files in current dir
 	private $file_label;	// Label for files, singular or plural
 
-	public function __construct($request, $path, $teepee_uri) {
+	public function __construct($request, $path) {
 
 		// Set path vars
 		$this->request		= $request;
 		$this->path			= $path;
-		$this->teepee_uri	= $teepee_uri;
 
 		// Set parent path
 		$this->parent_path	= dirname($this->path);
@@ -54,6 +53,26 @@ class Dir {
 		$this->modified = stat($this->path)['mtime'];
 
 	}
+
+	/**
+	 * get_request
+	 * 
+	 * Returns this object's request
+	 * 
+	 * @return string Request for the current directory
+	 */
+
+	private function get_request() { return $this->request; }
+
+	/**
+	 * get_path
+	 * 
+	 * Return this object's path
+	 * 
+	 * @return string Path to the current directory
+	 */
+
+	private function get_path() { return $this->path; }
 
 	/**
 	 * count_items
@@ -204,12 +223,13 @@ class Dir {
 		if ($this->request != '/') {
 
 			// If not root, instantiate object for parent
-			$this->parent = new Dir($this->request, $this->parent_path, $this->teepee_uri);
+			$this->parent = new Dir(dirname($this->request), $this->parent_path);
 
 			// Populate array of parent's data
 			return array(
 				'icon' => 'folder-parent-old',
 				'name' => $this->parent->name,
+				'uri' => $this->parent->get_request(),
 				'size' => $this->parent->size,
 				'modified' => $this->parent->modified,
 				'faded' => true,
@@ -243,12 +263,13 @@ class Dir {
 		foreach ($this->folders as $folder) {
 
 			// Folder object
-			$folder = new Dir($this->request, $this->path.$folder, $this->teepee_uri);
+			$folder = new Dir($this->request, $this->path.$folder);
 
 			// Push folders in this directory
 			array_push($folders, array(
 				'icon' => 'folder',
 				'name' => $folder->name,
+				'uri' => $folder->get_request().$folder->name,
 				'size' => $folder->size,
 				'modified' => $folder->modified,
 				'faded' => false,
@@ -269,59 +290,6 @@ class Dir {
 	 */
 
 	public function get_files_data() {}
-
-	/**
-	 * list_children
-	 * 
-	 * Generates HTML for file/folder listings table
-	 * 
-	 * @return string HTML for the file/folder listings table
-	 */
-
-	// public function list_children() {
-
-	// 	// Start HTML with headings
-	// 	$html = '<table>';
-	// 	$html .= '	<thead>';
-	// 	$html .= '		<tr>';
-	// 	$html .= '			<th class="faded smallcaps col-file">File</th>';
-	// 	$html .= '			<th class="faded smallcaps col-size">Size</th>';
-	// 	$html .= '			<th class="faded smallcaps col-modified">Modified</th>';
-	// 	$html .= '		</tr>';
-	// 	$html .= '	</thead>';
-	// 	$html .= '	<tbody>';
-
-	// 	// Parent link
-	// 	$file = new File($this->parent, true);
-	// 	$html .= $file->output();
-
-	// 	// Folders
-	// 	foreach ($this->folders as $folder) {
-	// 		$folder = new File($folder);
-	// 		$html .= $folder->output();
-	// 	}
-
-	// 	// Files
-
-	// 	// End HTML
-	// 	$html .= '	</tbody>';
-	// 	$html .= '</table>';
-
-	// 	return $html;
-
-	// }
-
-	// public function list_files() {
-	// 	foreach ($this->files as $file) {
-	// 		echo $file.'<br>';
-	// 	}
-	// }
-
-	// public function list_folders() {
-	// 	foreach ($this->folders as $folder) {
-	// 		echo $folder.'<br>';
-	// 	}
-	// }
 
 	/**
 	 * summary
