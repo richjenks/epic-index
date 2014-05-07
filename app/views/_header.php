@@ -1,7 +1,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title></title>
+		<title><?=$data['title']?></title>
 		<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
