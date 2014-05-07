@@ -16,21 +16,21 @@ Typical desktop screens get a large, spacious table and smaller screens like tab
 2. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
 3. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
 
-```htaccess
-RewriteRule .* /resources/teepee/ [L]
-```
+    ```htaccess
+    RewriteRule .* /resources/teepee/ [L]
+    ```
 
 4. Edit index.php so the following line is the local path to the Teepee folder:
 
-```php
-define('TEEPEE', '/path/to/teepee/');
-```
+    ```php
+    define('TEEPEE', '/path/to/teepee/');
+    ```
 
-And also so the following line is the URI to the Teepee folder:
+    And also so the following line is the URI to the Teepee folder:
 
-```php
-define('TEEPEE_URI', 'http://localhost/uri/to/teepee/');
-```
+    ```php
+    define('TEEPEE_URI', 'http://localhost/uri/to/teepee/');
+    ```
 
 ## Requirements
 
