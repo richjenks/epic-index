@@ -9,7 +9,7 @@ class Teepee {
 	public function __construct() {
 
 		// Set directory vars
-		$this->request    = Helper::strip_query($_SERVER['REQUEST_URI']);
+		$this->request    = str_replace('%20', ' ', Helper::strip_query($_SERVER['REQUEST_URI']));
 		$this->path       = $_SERVER['DOCUMENT_ROOT'].$this->request;
 		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE_PATH);
 

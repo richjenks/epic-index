@@ -35,8 +35,8 @@ class Dir {
 	public function __construct($request, $path) {
 
 		// Set path vars
-		$this->request = $request;
-		$this->path    = $path;
+		$this->request = str_replace('%20', ' ', $request);
+		$this->path    = str_replace('%20', ' ', $path);
 
 		// Set parent path
 		$this->parent_path	= dirname($this->path);
