@@ -44,7 +44,7 @@
 				$item['icon'] = Helper::get_icon($item['ext']);
 
 				// Construct file.extension
-				$item['name'] = $item['name'].'<span class="faded">.'.$item['ext'];
+				$item['name'] = $item['name'].'<span class="faded">.'.$item['ext'].'</span>';
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
