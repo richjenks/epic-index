@@ -21,14 +21,16 @@ class Dir {
 	private $child_label;  //Label for children, singular or plural
 
 	// Folder vars
-	private $folders;      // Folders in current dir
+	private $folders;      // List of folders in current dir
 	private $folder_count; // Count of files in current dir
 	private $folder_label; // Label for folders, singular or plural
+	private $folders_data; // Folders data
 
 	// File vars
-	private $files;        // Files in current dir
+	private $files;        // List of files in current dir
 	private $file_count;   // Count of files in current dir
 	private $file_label;   // Label for files, singular or plural
+	private $files_data;   // Files data
 
 	public function __construct($request, $path) {
 
@@ -246,11 +248,11 @@ class Dir {
 	public function get_folders_data() {
 
 		// Folders data array
-		$folders = array();
+		$this->folders_data = array();
 
 		// Push parent folder
 		if ($this->request != '/') {
-			array_push($folders, $this->get_parent_data());
+			array_push($this->folders_data, $this->get_parent_data());
 		}
 
 		foreach ($this->folders as $folder) {
@@ -259,7 +261,7 @@ class Dir {
 			$folder = new Dir($this->request, $this->path.$folder);
 
 			// Push folders in this directory
-			array_push($folders, array(
+			array_push($this->folders_data, array(
 				'icon'     => 'folder',
 				'name'     => $folder->name,
 				'uri'      => $folder->get_request().$folder->name,
@@ -270,7 +272,7 @@ class Dir {
 
 		}
 
-		return $folders;
+		return $this->folders_data;
 
 	}
 
@@ -285,7 +287,7 @@ class Dir {
 	public function get_files_data() {
 
 		// Files data array
-		$files = array();
+		$this->files_data = array();
 
 		foreach ($this->files as $file) {
 
@@ -293,7 +295,7 @@ class Dir {
 			$file = new File($this->path.$file);
 
 			// Push files in this directory
-			array_push($files, array(
+			array_push($this->files_data, array(
 				'name' => $file->get_name(),
 				'ext' => $file->get_ext(),
 				'path' => $file->get_path(),
@@ -304,7 +306,7 @@ class Dir {
 
 		}
 
-		return $files;
+		return $this->files_data;
 
 	}
 

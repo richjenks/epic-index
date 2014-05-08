@@ -14,15 +14,15 @@ class Teepee {
 		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE_PATH);
 
 		// Create current directory object
-		$directory = new Dir($this->request, $this->path, $this->teepee_uri);
+		$this->directory = new Dir($this->request, $this->path, $this->teepee_uri);
 		
 		// Populate array of page data
 		$data = array(
 			'title'       => $this->request,
-			'breadcrumbs' => $directory->breadcrumbs(),
-			'summary'     => $directory->summary(),
-			'folders'     => $directory->get_folders_data(),
-			'files'       => $directory->get_files_data(),
+			'breadcrumbs' => $this->directory->breadcrumbs(),
+			'summary'     => $this->directory->summary(),
+			'folders'     => $this->directory->get_folders_data(),
+			'files'       => $this->directory->get_files_data(),
 		);
 
 		// Load view
