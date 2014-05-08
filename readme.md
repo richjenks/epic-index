@@ -1,5 +1,7 @@
 # Teepee
 
+v1.0.0
+
 by [richjenks.com](http://richjenks.com)
 
 Responsive index pages for Apache.
