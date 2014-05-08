@@ -18,6 +18,11 @@
 				// If faded, add faded class
 				$classes = ($item['faded'] ? 'faded' : '');
 
+				// If folder starts with dot, fade the filename
+				if (substr($item['name'], 0, 1) === '.') {
+					$item['name'] = '<span class="faded">'.$item['name'].'</span>';
+				}
+
 				// If root, change name & icon
 				if ($item['uri'] === '/') {
 					$item['name'] = 'Root';
