@@ -297,6 +297,7 @@ class Dir {
 				'name' => $file->get_name(),
 				'ext' => $file->get_ext(),
 				'path' => $file->get_path(),
+				'uri' => $this->get_request().$file->get_name().'.'.$file->get_ext(),
 				'size' => $file->get_size(),
 				'modified' => $file->get_modified(),
 			));
