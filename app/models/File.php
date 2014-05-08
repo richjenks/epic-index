@@ -22,8 +22,8 @@ class File {
 	public function __construct($file) {
 
 		// Set file vars
-		$this->name     = explode('.', basename($file))[0];
-		$this->ext      = explode('.', basename($file))[1];
+		$this->name     = pathinfo($file, PATHINFO_FILENAME);
+		$this->ext      = pathinfo($file, PATHINFO_EXTENSION);
 		$this->path     = dirname($file);
 		$this->size     = Helper::filesize(stat($file)['size'], 2, '{size} <span class="faded">{unit}</span>');
 		$this->modified = stat($file)['mtime'];
