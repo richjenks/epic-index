@@ -74,17 +74,28 @@ class Helper {
 
 	public static function filesize($size, $precision = 0, $format = '{size} {unit}') {
 
-		// Calculate base
-		$base = log($size) / log(1024);
+		// If size is zero, skip the calculations
+		if ($size !== 0) {
 
-		// Array of units
-		$units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+			// Calculate base
+			$base = log($size) / log(1024);
 
-		// Calculate size
-		$size = round(pow(1024, $base - floor($base)), $precision);
+			// Array of units
+			$units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
 
-		// Select unit
-		$unit = $units[floor($base)];
+			// Calculate size
+			$size = round(pow(1024, $base - floor($base)), $precision);
+
+			// Select unit
+			$unit = $units[floor($base)];
+
+		} else {
+
+			// Size is zero so hardcode unit
+			$unit = 'B';
+
+		}
+
 
 		// Construct output as per format
 		$format = str_replace('{size}', $size, $format);
