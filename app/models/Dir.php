@@ -272,6 +272,14 @@ class Dir {
 
 		}
 
+		// Sort folders by name, case insensitive
+		$name = array();
+		foreach ($this->folders_data as $key => $value) {
+			$name[$key] = $value['name'];
+		}
+		array_multisort($name, SORT_FLAG_CASE | SORT_STRING, $this->folders_data);
+
+		// Return array of folders data
 		return $this->folders_data;
 
 	}
@@ -306,6 +314,14 @@ class Dir {
 
 		}
 
+		// Sort folders by name, case insensitive
+		$name = array();
+		foreach ($this->files_data as $key => $value) {
+			$name[$key] = $value['name'];
+		}
+		array_multisort($name, SORT_FLAG_CASE | SORT_STRING, $this->files_data);
+
+		// Return array of files data
 		return $this->files_data;
 
 	}
