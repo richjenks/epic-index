@@ -160,4 +160,37 @@ class Helper {
 		}
 	}
 
+	/**
+	 * file_uri
+	 * 
+	 * Gets the public URI of the PHP file being executed
+	 * Must be passed __FILE__ to ensure is uses the calling script's location
+	 * 
+	 * <code>
+	 *     echo file_uri(__FILE__);
+	 * </code>
+	 * 
+	 * @param string $file __FILE__
+	 * @return string URL of the script being executed
+	 */
+
+	function file_uri($file) {
+		
+		// Get protocol and domain for root
+		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
+		$domain = $_SERVER['HTTP_HOST'];
+
+		// If Windows, replace back slashes with forward slashes
+		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+			$file = str_replace('\\', '/', $file);
+		}
+
+		// Remove document root from file to get request
+		$request = str_replace($_SERVER['DOCUMENT_ROOT'], '', $file);
+
+		// Concatenate protocol, domain & request to get full URI
+		return $protocol.$domain.$request;
+
+	}
+
 }

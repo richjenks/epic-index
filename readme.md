@@ -4,8 +4,6 @@ by [richjenks.com](http://richjenks.com)
 
 Responsive index pages for Apache.
 
-*Currently broken due to refactoring*
-
 Apache's autoindex is ugly as fudge and none of the few alternatives available looked or behaved like I wanted them too. Teepee is simple, minimal, beautiful on all screen sizes and, most importantly, highly-usable on mobile devices.
 
 Typical desktop screens get a large, spacious table and smaller screens like tablets and large phones get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
@@ -18,18 +16,6 @@ Typical desktop screens get a large, spacious table and smaller screens like tab
 
     ```htaccess
     RewriteRule .* /resources/teepee/ [L]
-    ```
-
-4. Edit index.php so the following line is the local path to the Teepee folder:
-
-    ```php
-    define('TEEPEE', '/path/to/teepee/');
-    ```
-
-    And also so the following line is the URI to the Teepee folder:
-
-    ```php
-    define('TEEPEE_URI', 'http://localhost/uri/to/teepee/');
     ```
 
 ## Requirements
@@ -53,10 +39,10 @@ For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure 
 
 ```ApacheConf
 <Directory /var/www/>
-	Options Indexes FollowSymLinks MultiViews
-	AllowOverride FileInfo 
-	Order allow,deny
-	allow from all
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride FileInfo 
+    Order allow,deny
+    allow from all
 </Directory>
 ```
 
