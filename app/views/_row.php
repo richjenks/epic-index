@@ -12,7 +12,7 @@
 	</td>
 	<td class="col-modified">
 		<a href="<?=$item['uri']?>">
-			<?=Helper::format_date($item['modified'])?>
+			<?=RichJenks\Teepee\Helper::format_date($item['modified'])?>
 		</a>
 	</td>
 </tr>

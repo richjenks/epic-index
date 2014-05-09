@@ -11,7 +11,7 @@ require TEEPEE_PATH.'app/controllers/Teepee.php';
 require TEEPEE_PATH.'config.php';
 
 // URI to Teepee
-define('TEEPEE_URI', dirname(Helper::file_uri(__FILE__)).'/');
+define('TEEPEE_URI', dirname(RichJenks\Teepee\Helper::file_uri(__FILE__)).'/');
 
 // Start
-$teepee = new Teepee;
+$teepee = new RichJenks\Teepee\Teepee;

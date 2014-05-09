@@ -30,7 +30,7 @@
 				}
 
 				// Get file's icon name
-				$item['icon'] = Helper::get_icon($item['icon']);
+				$item['icon'] = RichJenks\Teepee\Helper::get_icon($item['icon']);
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -41,7 +41,7 @@
 			foreach ($data['files'] as $item) {
 
 				// Get file's icon name
-				$item['icon'] = Helper::get_icon($item['ext']);
+				$item['icon'] = RichJenks\Teepee\Helper::get_icon($item['ext']);
 
 				// Construct file.extension
 				$item['name'] = $item['name'].'<span class="faded">.'.$item['ext'].'</span>';

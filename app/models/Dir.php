@@ -1,5 +1,7 @@
 <?php
 
+namespace RichJenks\Teepee;
+
 class Dir {
 
 	// Path vars

@@ -1,5 +1,7 @@
 <?php
 
+namespace RichJenks\Teepee;
+
 class File {
 
 	private $name;     // Name of the file

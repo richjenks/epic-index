@@ -1,5 +1,7 @@
 <?php
 
+namespace RichJenks\Teepee;
+
 class Teepee {
 
 	private $request;   // Path to current directory from webroot
