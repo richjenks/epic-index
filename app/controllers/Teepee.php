@@ -2,7 +2,7 @@
 
 namespace RichJenks\Teepee;
 
-class Teepee {
+class Teepee extends Controller {
 
 	private $request;   // Path to current directory from webroot
 	private $path;      // Local path to current directory
@@ -27,8 +27,8 @@ class Teepee {
 			'files'       => $this->directory->get_files_data(),
 		);
 
-		// Load view
-		require TEEPEE_PATH.'app/views/View.php';
+		// Render view
+		$this->render('View', $data);
 
 	}
 

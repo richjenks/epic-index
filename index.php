@@ -7,6 +7,7 @@ define('TEEPEE_PATH', __DIR__.'/');
 require TEEPEE_PATH.'app/Helper.php';
 require TEEPEE_PATH.'app/models/File.php';
 require TEEPEE_PATH.'app/models/Dir.php';
+require TEEPEE_PATH.'app/controllers/Controller.php';
 require TEEPEE_PATH.'app/controllers/Teepee.php';
 require TEEPEE_PATH.'config.php';
 
