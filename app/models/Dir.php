@@ -59,26 +59,6 @@ class Dir {
 	}
 
 	/**
-	 * get_request
-	 * 
-	 * Returns this object's request
-	 * 
-	 * @return string Request for the current directory
-	 */
-
-	private function get_request() { return $this->request; }
-
-	/**
-	 * get_path
-	 * 
-	 * Return this object's path
-	 * 
-	 * @return string Path to the current directory
-	 */
-
-	private function get_path() { return $this->path; }
-
-	/**
 	 * count_items
 	 * 
 	 * Counts children, files and folders as well as chooses singular or plural label
@@ -231,7 +211,7 @@ class Dir {
 		return array(
 			'icon'     => 'folder-parent-old',
 			'name'     => $this->parent->name,
-			'uri'      => $this->parent->get_request(),
+			'uri'      => $this->parent->request,
 			'size'     => $this->parent->size,
 			'modified' => $this->parent->modified,
 			'faded'    => true,
@@ -261,7 +241,7 @@ class Dir {
 			array_push($this->folders_data, array(
 				'icon'     => 'folder',
 				'name'     => $folder->name,
-				'uri'      => $folder->get_request().$folder->name,
+				'uri'      => $folder->request.$folder->name,
 				'size'     => $folder->size,
 				'modified' => $folder->modified,
 				'faded'    => false,
@@ -270,11 +250,7 @@ class Dir {
 		}
 
 		// Sort folders by name, case insensitive
-		$name = array();
-		foreach ($this->folders_data as $key => $value) {
-			$name[$key] = $value['name'];
-		}
-		array_multisort($name, SORT_FLAG_CASE | SORT_STRING, $this->folders_data);
+		$this->folders_data = Helper::sort_arr_by_key($this->folders_data, 'name');
 
 		// Add parent link to top of dir list
 		if ($this->request != '/') {
@@ -309,19 +285,15 @@ class Dir {
 				'name' => $file->get_name(),
 				'ext' => $file->get_ext(),
 				'path' => $file->get_path(),
-				'uri' => $this->get_request().$file->get_name().'.'.$file->get_ext(),
+				'uri' => $this->request.$file->get_name().'.'.$file->get_ext(),
 				'size' => $file->get_size(),
 				'modified' => $file->get_modified(),
 			));
 
 		}
 
-		// Sort folders by name, case insensitive
-		$name = array();
-		foreach ($this->files_data as $key => $value) {
-			$name[$key] = $value['name'];
-		}
-		array_multisort($name, SORT_FLAG_CASE | SORT_STRING, $this->files_data);
+		// Sort files by name
+		$this->files_data = Helper::sort_arr_by_key($this->files_data, 'name');
 
 		// Return array of files data
 		return $this->files_data;

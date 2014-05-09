@@ -176,7 +176,7 @@ class Helper {
 	 * @return string URL of the script being executed
 	 */
 
-	function file_uri($file) {
+	public static function file_uri($file) {
 		
 		// Get protocol and domain for root
 		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
@@ -192,6 +192,50 @@ class Helper {
 
 		// Concatenate protocol, domain & request to get full URI
 		return $protocol.$domain.$request;
+
+	}
+
+	/**
+	 * sort_arr_by_key
+	 * 
+	 * Sorts a given array by the values of its child arrays
+	 * 
+	 * The code below would order the array items by age:
+	 * 
+	 * <code>
+	 * $array = array(
+	 *     array(
+	 *         'name' => 'jim',
+	 *         'age' => 30,
+	 *     ),
+	 *     array(
+	 *         'name' => 'rob',
+	 *         'age' => 25,
+	 *     ),
+	 * );
+	 * var_dump($array, 'age');
+	 * </code>
+	 * 
+	 * @param array $sort_array The array being sorted
+	 * @param string $sort_key The key to sort by
+	 * 
+	 * @return array The sorted array
+	 */
+
+	public static function sort_arr_by_key($sort_array, $sort_key) {
+
+		// Declare array to prevent aray_multisort throwing error if $sort_array is empty
+		$values = array();
+
+		// Populate array for the "column" being sorted
+		foreach ($sort_array as $key => $row) {
+			$values[$key] = $row[$sort_key];
+		}
+
+		// Sort the array naturally and case-insensitively
+		array_multisort($values, SORT_FLAG_CASE | SORT_NATURAL, $sort_array);
+
+		return $sort_array;
 
 	}
 
