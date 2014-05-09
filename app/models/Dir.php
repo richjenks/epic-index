@@ -250,11 +250,6 @@ class Dir {
 		// Folders data array
 		$this->folders_data = array();
 
-		// Push parent folder
-		if ($this->request != '/') {
-			array_push($this->folders_data, $this->get_parent_data());
-		}
-
 		foreach ($this->folders as $folder) {
 
 			// Folder object
@@ -278,6 +273,11 @@ class Dir {
 			$name[$key] = $value['name'];
 		}
 		array_multisort($name, SORT_FLAG_CASE | SORT_STRING, $this->folders_data);
+
+		// Add parent link to top of dir list
+		if ($this->request != '/') {
+			array_unshift($this->folders_data, $this->get_parent_data());
+		}
 
 		// Return array of folders data
 		return $this->folders_data;
