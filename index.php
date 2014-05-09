@@ -8,6 +8,7 @@ require TEEPEE_PATH.'app/Helper.php';
 require TEEPEE_PATH.'app/models/File.php';
 require TEEPEE_PATH.'app/models/Dir.php';
 require TEEPEE_PATH.'app/controllers/Teepee.php';
+require TEEPEE_PATH.'config.php';
 
 // URI to Teepee
 define('TEEPEE_URI', dirname(Helper::file_uri(__FILE__)).'/');
