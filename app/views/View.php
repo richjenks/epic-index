@@ -1,3 +1,4 @@
+<?php global $config;?>
 <?php require TEEPEE_PATH.'app/views/_header.php';?>
 <h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
 <table>
@@ -25,7 +26,7 @@
 
 				// If root, change name & icon
 				if ($item['uri'] === '/') {
-					$item['name'] = 'Root';
+					$item['name'] = $config['root_label'];
 					$item['icon'] = 'folder-home';
 				}
 
