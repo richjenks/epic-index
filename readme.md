@@ -33,7 +33,7 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 2. Backup your existing `config.php` file
 3. Delete all files in your existing Teepee folder
 4. Move the new version of Teepee into the folder
-5. Open the new `config.php` beside your backed-up version and integrate your settings into the new config file
+5. Integrate settings from your backed-up `config.php` into the new version
 
 ## Requirements
 
