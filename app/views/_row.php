@@ -1,3 +1,4 @@
+<?php global $config?>
 <tr class="<?=$classes?>">
 	<td class="col-name">
 		<a href="<?=$item['uri']?>">
@@ -12,7 +13,8 @@
 	</td>
 	<td class="col-modified">
 		<a href="<?=$item['uri']?>">
-			<?=RichJenks\Teepee\Helper::format_date($item['modified'])?>
+			<?php//RichJenks\Teepee\Helper::format_date($item['modified'])?>
+			<?=date($config['date_format'], $item['modified'])?>
 		</a>
 	</td>
 </tr>

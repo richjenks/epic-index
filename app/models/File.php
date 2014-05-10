@@ -23,11 +23,13 @@ class File {
 
 	public function __construct($file) {
 
+		global $config;
+
 		// Set file vars
 		$this->name     = pathinfo($file, PATHINFO_FILENAME);
 		$this->ext      = pathinfo($file, PATHINFO_EXTENSION);
 		$this->path     = dirname($file);
-		$this->size     = Helper::filesize(stat($file)['size'], 2, '{size} <span class="faded">{unit}</span>');
+		$this->size     = Helper::filesize(stat($file)['size'], $config['filesize_precision'], '{size} <span class="faded">{unit}</span>');
 		$this->modified = stat($file)['mtime'];
 
 	}
