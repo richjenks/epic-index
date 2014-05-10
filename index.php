@@ -17,7 +17,7 @@ define('TEEPEE_URI', dirname(Helper::file_uri(__FILE__)).'/');
 
 // Die if indexing self
 if (TEEPEE_URI.'index.php' === Helper::get_uri()) {
-	die ('Yo dawg I herd you like to list files so I listed the files in the file that lists files so you can list files in the file list.');
+	die ('<script>console.log("Yo dawg I herd you like to list files so I listed the files in the file that lists files so you can list files in the file list.");</script>');
 }
 
 // Configuration options
