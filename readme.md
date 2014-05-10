@@ -1,6 +1,6 @@
 # Teepee
 
-v1.0.0
+v1.1
 
 Responsive index pages for Apache.
 
@@ -17,6 +17,23 @@ Typical desktop screens get a large, spacious table and smaller screens like tab
     ```htaccess
     RewriteRule .* /resources/teepee/ [L]
     ```
+
+## Configuration
+
+Teepee has several option in `config.php` that you may wish to change. They are:
+
+- *Filesize Precision*: The number of decimal places shown for a filesize
+- *Root Label*: The name given to the parent link which points to webroot
+- *Date Format*: The format for modified dates
+- *Custom Links*: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
+
+## Updating
+
+1. Download the new version of Teepee
+2. Backup your existing `config.php` file
+3. Delete all files in your existing Teepee folder
+4. Move the new version of Teepee into the folder
+5. Open the new `config.php` beside your backed-up version and integrate your settings into the new config file
 
 ## Requirements
 
@@ -51,3 +68,14 @@ Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
 ## Props
 
 Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who gives props to [Lars Jung for h5ai](http://larsjung.de/h5ai/).
+
+## Changelog
+
+### v1.1
+
+- "File" column header is now called "Name"
+- Added config.php with various options for customising Teepee
+- Added option for filesize precision
+- Added option for root label
+- Added option for date format
+- Added options for custom links
