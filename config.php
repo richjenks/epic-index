@@ -13,21 +13,22 @@ return array(
 	'filesize_precision' => 2,
 
 	/**
+	 * Root Label
+	 * 
+	 * The name given to the parent link which points to webroot
+	 */
+
+	'root_label' => 'Home',
+
+	/**
 	 * Date Format
 	 * 
 	 * The format for modified dates
 	 * Accepts a valid value for the $format param of `date()`
-	 * The Helper function `escape_chars` escapes every char of its param
-	 * This makes it easier to add raw strings to this option
+	 * The Helper function `fade` makes the given string faded and in smallcaps
 	 */
 
-	'date_format' => Helper::escape_chars('<span class="faded smallcaps">')
-		.'D'
-		.Helper::escape_chars('</span>')
-		.' Y-m-d'
-		.Helper::escape_chars('<span class="faded smallcaps">')
-		.' H:i'
-		.Helper::escape_chars('</span>'),
+	'date_format' => Helper::fade('D').' Y-m-d'.Helper::fade(' H:i'),
 
 	/**
 	 * Custom Links

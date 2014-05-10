@@ -42,26 +42,16 @@ class Helper {
 	}
 
 	/**
-	 * format_date
+	 * fade
 	 * 
-	 * Formats a timestamp
+	 * Wraps the given string in faded smallcaps
 	 * 
-	 * @param int $timestamp Timestamp to be formatted
-	 * @param string $format Format for date
-	 * 
-	 * @return string Formatted date
+	 * @param string $string The string to be faded
+	 * @return string The faded string
 	 */
 
-	public static function format_date($timestamp) {
-		return date(
-			Helper::escape_chars('<span class="faded smallcaps">')
-				.'D'
-				.Helper::escape_chars('</span>')
-				.' Y-m-d'
-				.Helper::escape_chars('<span class="faded smallcaps">')
-				.' H:i'
-				.Helper::escape_chars('</span>'),
-			$timestamp);
+	public static function fade($str) {
+		return self::escape_chars('<span class="faded smallcaps">').$str.self::escape_chars('</span>');
 	}
 
 	/**
