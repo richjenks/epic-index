@@ -3,7 +3,7 @@
 <table>
 	<thead>
 		<tr>
-			<th class="faded smallcaps col-file">File</th>
+			<th class="faded smallcaps col-name">Name</th>
 			<th class="faded smallcaps col-size">Size</th>
 			<th class="faded smallcaps col-modified">Modified</th>
 		</tr>
