@@ -22,10 +22,10 @@ Typical desktop screens get a large, spacious table and smaller screens like tab
 
 Teepee has several option in `config.php` that you may wish to change. They are:
 
-- *Filesize Precision*: The number of decimal places shown for a filesize
-- *Root Label*: The name given to the parent link which points to webroot
-- *Date Format*: The format for modified dates
-- *Custom Links*: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
+- **Filesize Precision**: The number of decimal places shown for a filesize
+- **Root Label**: The name given to the parent link which points to webroot
+- **Date Format**: The format for modified dates
+- **Custom Links**: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
 
 ## Updating
 
