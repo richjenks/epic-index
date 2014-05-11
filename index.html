@@ -14,22 +14,6 @@
 		</div>
 		<script src="jquery-1.11.1.min.js"></script>
 		<script src="Markdown.Converter.js"></script>
-		<script>
-
-			// Load readme content
-			$.ajax({
-				url: "https://rawgit.com/richjenks/teepee/master/readme.md",
-				dataType: 'text',
-				success: function(data) {
-					
-					// Convert readme from markdown to html
-					var converter = new Markdown.Converter();
-					$(".wrapper").html(converter.makeHtml(data));
-				
-				}
-			});
-
-
-		</script>
+		<script src="script.js"></script>
 	</body>
 </html>

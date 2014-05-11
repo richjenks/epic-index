@@ -69,3 +69,8 @@ p {
 li {
 	margin-bottom: .3em;
 }
+
+code {
+	font-family: monospace;
+	letter-spacing: 2px;
+}
