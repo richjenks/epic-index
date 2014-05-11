@@ -17,10 +17,11 @@ if (TEEPEE_URI.'index.php' === Helper::get_uri()) {
 }
 
 // Requires
-require TEEPEE_PATH.'app/models/File.php';
-require TEEPEE_PATH.'app/models/Dir.php';
 require TEEPEE_PATH.'app/controllers/Controller.php';
 require TEEPEE_PATH.'app/controllers/Teepee.php';
+require TEEPEE_PATH.'app/models/Links.php';
+require TEEPEE_PATH.'app/models/Dir.php';
+require TEEPEE_PATH.'app/models/File.php';
 
 // Configuration options
 global $config;

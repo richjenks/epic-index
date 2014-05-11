@@ -13,39 +13,98 @@
 
 		<?php
 
-			// Loop through each item
-			foreach ($data['folders'] as $item) {
+			/*
+			|--------------------------------------------------------------------------
+			| Parent
+			|--------------------------------------------------------------------------
+			| 
+			| Render a row for the parent link, if set
+			| 
+			*/
+
+			if ($data['parent']) {
+
+				// Set row array
+				$row = $data['parent'];
 
 				// If faded, add faded class
-				$classes = ($item['faded'] ? 'faded' : '');
-
-				// If folder starts with dot, fade the filename
-				if (substr($item['name'], 0, 1) === '.') {
-					$item['name'] = '<span class="faded">'.$item['name'].'</span>';
-				}
-
-				// If root, change name & icon
-				if ($item['uri'] === '/') {
-					$item['name'] = $config['root_label'];
-					$item['icon'] = 'folder-home';
-				}
-
-				// Get file's icon name
-				$item['icon'] = RichJenks\Teepee\Helper::get_icon($item['icon']);
+				$classes = ($row['faded'] ? 'faded' : '');
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
 			
 			}
 
-			// Loop through each file
-			foreach ($data['files'] as $item) {
+			/*
+			|--------------------------------------------------------------------------
+			| Links
+			|--------------------------------------------------------------------------
+			| 
+			| Render a row for each custom link
+			| 
+			*/
+
+			foreach ($data['links'] as $row) {
+
+				// If faded, add faded class
+				$classes = ($row['faded'] ? 'faded' : '');
+
+				// Render the row
+				include TEEPEE_PATH.'app/views/_row.php';
+			
+			}
+
+			/*
+			|--------------------------------------------------------------------------
+			| Folders
+			|--------------------------------------------------------------------------
+			| 
+			| Render a row for each folder
+			| 
+			*/
+
+			// Loop through each folder
+			foreach ($data['folders'] as $row) {
+
+				// If faded, add faded class
+				$classes = ($row['faded'] ? 'faded' : '');
+
+				// If folder starts with dot, fade the filename
+				if (substr($row['name'], 0, 1) === '.') {
+					$row['name'] = '<span class="faded">'.$row['name'].'</span>';
+				}
+
+				// If root, change name & icon
+				if ($row['uri'] === '/') {
+					$row['name'] = $config['root_label'];
+					$row['icon'] = 'folder-home';
+				}
 
 				// Get file's icon name
-				$item['icon'] = RichJenks\Teepee\Helper::get_icon($item['ext']);
+				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['icon']);
+
+				// Render the row
+				include TEEPEE_PATH.'app/views/_row.php';
+			
+			}
+
+			/*
+			|--------------------------------------------------------------------------
+			| Files
+			|--------------------------------------------------------------------------
+			| 
+			| Render a row for each file
+			| 
+			*/
+
+			// Loop through each file
+			foreach ($data['files'] as $row) {
+
+				// Get file's icon name
+				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);
 
 				// Construct file.extension
-				$item['name'] = $item['name'].'<span class="faded">.'.$item['ext'].'</span>';
+				$row['name'] = $row['name'].'<span class="faded">.'.$row['ext'].'</span>';
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';

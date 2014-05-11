@@ -66,11 +66,9 @@ return array(
 	|     [0]
 	|         ['name'] string The text that will appear as the link
 	|         ['uri'] string The URI the link will point to
-	|         ['show'] mixed Paths for which the link will show
+	|         ['show'] array Requests for which the link will show
 	| 
-	| The `show` parameter accepts a request path from the webroot, multiple
-	| request paths in an indexed array or an asterisk, which makes the link
-	| show everywhere
+	| The `show` param also accepts an asterisk, meaning "everywhere"
 	| 
 	| Example:
 	| 
@@ -79,12 +77,14 @@ return array(
 	|     array(
 	|         'name' => 'PHPMyAdmin',
 	|         'uri' => 'http://localhost/phpmyadmin',
-	|         'show' => '/',
+	|         'show' => array('/'),
 	|     ),
 	| );
 	| </code>
 	| 
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
+	| 
+	| Use `'custom_links' => array(),` for no links
 	| 
 	*/
 
@@ -92,23 +92,8 @@ return array(
 		
 		array(
 			'name' => 'PHPMyAdmin',
-			'uri' => 'http://localhost/phpmyadmin',
-			'show' => '/',
-		),
-		
-		array(
-			'name' => 'GitHub',
-			'uri' => 'http://github.com',
-			'show' => array(
-				'/',
-				'/git/',
-			),
-		),
-		
-		array(
-			'name' => 'Google',
-			'uri' => 'http://google.com',
-			'show' => '*',
+			'uri'  => 'http://localhost/phpmyadmin',
+			'show' => array('/'),
 		),
 	
 	),

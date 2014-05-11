@@ -59,6 +59,16 @@ class Dir {
 	}
 
 	/**
+	 * get_request
+	 * 
+	 * Return this object's `request`
+	 */
+
+	public function get_request() {
+		return $this->request;
+	}
+
+	/**
 	 * count_items
 	 * 
 	 * Counts children, files and folders as well as chooses singular or plural label
@@ -202,20 +212,26 @@ class Dir {
 	 * @return mixed Array of info about parent directory or false
 	 */
 
-	private function get_parent_data() {
+	public function get_parent_data() {
 
-		// Parent dir object
-		$this->parent = new Dir(dirname($this->request), $this->parent_path);
+		if ($this->request != '/') {
 
-		// Return array of parent's data
-		return array(
-			'icon'     => 'folder-parent-old',
-			'name'     => $this->parent->name,
-			'uri'      => $this->parent->request,
-			'size'     => $this->parent->size,
-			'modified' => $this->parent->modified,
-			'faded'    => true,
-		);
+			// Parent dir object
+			$this->parent = new Dir(dirname($this->request), $this->parent_path);
+
+			// Return array of parent's data
+			return array(
+				'icon'     => 'folder-parent-old',
+				'name'     => $this->parent->name,
+				'uri'      => $this->parent->request,
+				'size'     => $this->parent->size,
+				'modified' => $this->parent->modified,
+				'faded'    => true,
+			);
+
+		} else {
+			return false;
+		}
 
 	}
 
@@ -251,11 +267,6 @@ class Dir {
 
 		// Sort folders by name, case insensitive
 		$this->folders_data = Helper::sort_arr_by_key($this->folders_data, 'name');
-
-		// Add parent link to top of dir list
-		if ($this->request != '/') {
-			array_unshift($this->folders_data, $this->get_parent_data());
-		}
 
 		// Return array of folders data
 		return $this->folders_data;

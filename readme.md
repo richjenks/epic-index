@@ -77,4 +77,5 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 - Added option for root label
 - Added option for date format
 - Added options for custom links
+- Added option for custom links (see `config.php` for usage)
 - Teepee cannot index itself
