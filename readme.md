@@ -4,9 +4,19 @@
 
 ![](https://richjenks.github.io/teepee/teepee.png)
 
-**Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)**
+- [About](#about)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Updating](#Updating)
+- [Requirements](#requirements)
+- [Props](#props)
+- [Changelog](#changelog)
+
+## About
 
 Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
+
+**Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)**
 
 Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
 
