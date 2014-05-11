@@ -1,8 +1,9 @@
-// Check if should load readme from dev branch
-if (window.location.search === '?dev') {
-	var branch = 'dev';
+// Choose branch based on query string
+var query = window.location.search;
+if (query) {
+	var branch = query.replace("?", "");
 } else {
-	var branch = 'master';
+	var branch = "master";
 }
 
 // Load readme content
