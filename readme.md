@@ -27,6 +27,8 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 - **Filesize Precision**: The number of decimal places shown for a filesize
 - **Root Label**: The name given to the parent link which points to webroot
 - **Date Format**: The format for modified dates
+- **Hover Info**: Whether file/folder/link info shows on hover in title attribute
+- **Show Footer**: Whether the footer (attribution & app version) will be shown
 - **Custom Links**: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
 
 ## Updating
