@@ -21,7 +21,7 @@
 		<a href="<?=$row['uri']?>" title="<?=$row['title']?>"<?=$row['target']?>>
 			<?php
 				if (isset($row['modified'])) {
-					echo date($config['date_format'], $row['modified']);
+					echo $row['modified'];
 				} else {
 					echo '&mdash;';
 				}

@@ -33,8 +33,11 @@
 				// If new, add target attr
 				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
+				// Format modified date
+				$row['modified'] = date($config['date_format'], $row['modified']);
+
 				// Construct title attr
-				$row['title'] = '';
+				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -84,8 +87,11 @@
 				// If new, add target attr
 				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
+				// Format modified date
+				$row['modified'] = date($config['date_format'], $row['modified']);
+
 				// Construct title attr
-				$row['title'] = '';
+				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
 
 				// If folder starts with dot, fade the filename
 				if (substr($row['name'], 0, 1) === '.') {
@@ -121,8 +127,11 @@
 				// If new, add target attr
 				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
+				// Format modified date
+				$row['modified'] = date($config['date_format'], $row['modified']);
+
 				// Construct title attr
-				$row['title'] = '';
+				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
 
 				// Get file's icon name
 				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);
