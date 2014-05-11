@@ -41,6 +41,19 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Show Footer
+	|--------------------------------------------------------------------------
+	| 
+	| Defines whether the footer will be shown.
+	| Set to false to hide the footer
+	| Set to true to show the footer and check Teepee's version
+	| 
+	*/
+
+	'show_footer' => true,
+
+	/*
+	|--------------------------------------------------------------------------
 	| Custom Links
 	|--------------------------------------------------------------------------
 	| 
