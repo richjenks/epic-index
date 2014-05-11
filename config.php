@@ -66,10 +66,12 @@ return array(
 	|     [0]
 	|         ['name'] string The text that will appear as the link
 	|         ['uri']  string The URI the link will point to
-	|         ['show'] array  Requests for which the link will show
-	|         ['new']  bool   Whether the link will open in a new tab
+	|         ['show'] array  (Optional) Requests for which the link will show
+	|         ['new']  bool   (Optional) Whether link will open in a new tab
 	| 
 	| The `show` param also accepts an asterisk, meaning "everywhere"
+	| If `show` is not specified, it will assume "everywhere"
+	| If `new` is not specified, it will assume `false`
 	| 
 	| Example:
 	| 
@@ -85,6 +87,7 @@ return array(
 	| </code>
 	| 
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
+	| which will open in a new tab
 	| 
 	| Use `'custom_links' => array(),` for no links
 	| 

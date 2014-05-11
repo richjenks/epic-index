@@ -30,6 +30,9 @@
 				// If faded, add faded class
 				$classes = ($row['faded'] ? 'faded' : '');
 
+				// If new, add target attr
+				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
 			
@@ -50,7 +53,7 @@
 				$classes = ($row['faded'] ? 'faded' : '');
 
 				// If new, add target attr
-				$target = ($row['new'] ? ' target="_blank"' : '');
+				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -71,6 +74,9 @@
 
 				// If faded, add faded class
 				$classes = ($row['faded'] ? 'faded' : '');
+
+				// If new, add target attr
+				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
 				// If folder starts with dot, fade the filename
 				if (substr($row['name'], 0, 1) === '.') {
@@ -102,6 +108,9 @@
 
 			// Loop through each file
 			foreach ($data['files'] as $row) {
+
+				// If new, add target attr
+				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
 				// Get file's icon name
 				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);

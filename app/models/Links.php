@@ -37,15 +37,26 @@ class Links {
 			// Reset show to false
 			$this->show = false;
 
-			// Iterate through each valid request
-			foreach ($link['show'] as $request) {
+			// Check if `show` is specified in config for this link
+			if (isset($link['show'])) {
 
-				// Check if current link should show
-				if ($request === $this->request || $request === '*') {
-					$this->show = true;
+				// Iterate through each valid request
+				foreach ($link['show'] as $request) {
+
+					// Check if current link should show
+					if ($request === $this->request || $request === '*') {
+						$this->show = true;
+					}
+
 				}
-
+			
+			} else {
+				
+				// If `show` not set, assume true
+				$this->show = true;
+			
 			}
+
 
 			// If this link should be shown
 			if ($this->show) {
