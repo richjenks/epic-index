@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Helper
+ * 
+ * Class of static Helper functions used throughout the package
+ * 
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0
+ */
+
 namespace RichJenks\Teepee;
 
 class Helper {

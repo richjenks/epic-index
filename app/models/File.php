@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * File
+ * 
+ * Model for files
+ * Returns info about the given file
+ * Used by Dir models
+ * 
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0
+ */
+
 namespace RichJenks\Teepee;
 
 class File {

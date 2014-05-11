@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Teepee
+ * 
+ * Controller for entire package
+ * Gets data from models and passes to the view
+ * 
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0
+ */
+
 namespace RichJenks\Teepee;
 
 class Teepee extends Controller {

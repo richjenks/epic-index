@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Links
+ * 
+ * Model for Custom Links
+ * Gets link data from config global and generates data for each link
+ * 
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.1
+ */
+
 namespace RichJenks\Teepee;
 
 class Links {

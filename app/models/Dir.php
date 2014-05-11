@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Dir
+ * 
+ * Model for directories
+ * Gets info for current directory as well as info for subdirectories
+ * Also gets data from File model
+ * Used by Teepee controller
+ * 
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0
+ */
+
 namespace RichJenks\Teepee;
 
 class Dir {
