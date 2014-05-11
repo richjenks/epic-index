@@ -1,6 +1,13 @@
+// Check if should load readme from dev branch
+if (window.location.search === '?dev') {
+	var branch = 'dev';
+} else {
+	var branch = 'master';
+}
+
 // Load readme content
 $.ajax({
-	url: "https://rawgit.com/richjenks/teepee/master/readme.md",
+	url: "https://rawgit.com/richjenks/teepee/"+branch+"/readme.md",
 	dataType: 'text',
 	success: function(data) {
 		
