@@ -1,6 +1,6 @@
 // Load readme content
 $.ajax({
-	url: "https://rawgit.com/richjenks/teepee/dev/readme.md",
+	url: "https://rawgit.com/richjenks/teepee/master/readme.md",
 	dataType: 'text',
 	success: function(data) {
 		

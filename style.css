@@ -53,10 +53,6 @@ h1 + p {
 	text-align: center;
 }
 
-h1 + p + p + p {
-	color: #aaa;
-}
-
 img {
 	width: 100%;
 	height: auto;
