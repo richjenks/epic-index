@@ -3,13 +3,31 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Teepee - A new home for Apache</title>
-		<link href='http://fonts.googleapis.com/css?family=Raleway:400,800,100,200,300,500,600,700,900' rel='stylesheet' type='text/css'>
+		<!-- <link href='http://fonts.googleapis.com/css?family=Raleway:400,800,100,200,300,500,600,700,900' rel='stylesheet' type='text/css'> -->
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="wrapper">
-			<h1>Teepee</h1>
-			<p><em>A new home for Apache</em></p>
-		</div>
+		<div class="wrapper"></div>
+		<script src="jquery-1.11.1.min.js"></script>
+		<script src="Markdown.Converter.js"></script>
+		<script>
+
+			// Load readme content
+			$.ajax({
+				url: "https://rawgit.com/richjenks/teepee/dev/readme.md",
+				dataType: 'text',
+				success: function(data) {
+					
+					// Convert readme from markdown to html
+					var converter = new Markdown.Converter();
+					// document.write(converter.makeHtml(data));
+					$(".wrapper").html(converter.makeHtml(data));
+				
+				}
+			});
+
+
+		</script>
 	</body>
 </html>
