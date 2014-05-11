@@ -4,7 +4,7 @@
 
 ![](https://richjenks.github.io/teepee/teepee.png)
 
-Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)
+**Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)**
 
 Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
 
