@@ -31,6 +31,9 @@ class Links {
 		
 		global $config;
 
+		// If links not configured, set to empty array
+		if (!isset($config['custom_links'])) { $config['custom_links'] = array(); }
+
 		// Iterate through each link
 		foreach ($config['custom_links'] as $link) {
 

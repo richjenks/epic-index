@@ -28,10 +28,13 @@
 				$row = $data['parent'];
 
 				// If faded, add faded class
-				$classes = ($row['faded'] ? 'faded' : '');
+				$row['classes'] = ($row['faded'] ? 'faded' : '');
 
 				// If new, add target attr
-				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+
+				// Construct title attr
+				$row['title'] = '';
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -50,10 +53,13 @@
 			foreach ($data['links'] as $row) {
 
 				// If faded, add faded class
-				$classes = ($row['faded'] ? 'faded' : '');
+				$row['classes'] = ($row['faded'] ? 'faded' : '');
 
 				// If new, add target attr
-				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+
+				// Construct title attr
+				$row['title'] = $row['uri'];
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -73,10 +79,13 @@
 			foreach ($data['folders'] as $row) {
 
 				// If faded, add faded class
-				$classes = ($row['faded'] ? 'faded' : '');
+				$row['classes'] = ($row['faded'] ? 'faded' : '');
 
 				// If new, add target attr
-				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+
+				// Construct title attr
+				$row['title'] = '';
 
 				// If folder starts with dot, fade the filename
 				if (substr($row['name'], 0, 1) === '.') {
@@ -110,7 +119,10 @@
 			foreach ($data['files'] as $row) {
 
 				// If new, add target attr
-				$target = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
+
+				// Construct title attr
+				$row['title'] = '';
 
 				// Get file's icon name
 				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);

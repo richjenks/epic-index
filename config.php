@@ -89,8 +89,6 @@ return array(
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
 	| which will open in a new tab
 	| 
-	| Use `'custom_links' => array(),` for no links
-	| 
 	*/
 
 	'custom_links' => array(
@@ -99,6 +97,13 @@ return array(
 			'name' => 'PHPMyAdmin',
 			'uri'  => 'http://localhost/phpmyadmin',
 			'show' => array('/'),
+			'new'  => true,
+		),
+		
+		array(
+			'name' => 'GitHub',
+			'uri'  => 'http://github.com',
+			'show' => array('/git/'),
 			'new'  => true,
 		),
 	
