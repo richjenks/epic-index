@@ -36,8 +36,16 @@
 				// Format modified date
 				$row['modified'] = date($config['date_format'], $row['modified']);
 
-				// Construct title attr
-				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+				// Check if title should show
+				if ($config['hover_info']) {
+
+					// Construct title attr
+					$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+				
+				} else {
+					$row['title'] = '';
+				}
+
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -61,8 +69,15 @@
 				// If new, add target attr
 				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
 
-				// Construct title attr
-				$row['title'] = $row['uri'];
+				// Check if title should show
+				if ($config['hover_info']) {
+
+					// Construct title attr
+					$row['title'] = $row['uri'];
+
+				} else {
+					$row['title'] = '';
+				}
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -90,8 +105,15 @@
 				// Format modified date
 				$row['modified'] = date($config['date_format'], $row['modified']);
 
-				// Construct title attr
-				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+				// Check if title should show
+				if ($config['hover_info']) {
+
+					// Construct title attr
+					$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+
+				} else {
+					$row['title'] = '';
+				}
 
 				// If folder starts with dot, fade the filename
 				if (substr($row['name'], 0, 1) === '.') {
@@ -130,8 +152,15 @@
 				// Format modified date
 				$row['modified'] = date($config['date_format'], $row['modified']);
 
-				// Construct title attr
-				$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+				// Check if title should show
+				if ($config['hover_info']) {
+
+					// Construct title attr
+					$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
+
+				} else {
+					$row['title'] = '';
+				}
 
 				// Get file's icon name
 				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);

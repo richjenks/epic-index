@@ -41,12 +41,23 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Hover Info
+	|--------------------------------------------------------------------------
+	| 
+	| Defines whether file/folder/link info shows on hover in title attribute
+	| 
+	*/
+
+	'hover_info' => true,
+
+	/*
+	|--------------------------------------------------------------------------
 	| Show Footer
 	|--------------------------------------------------------------------------
 	| 
 	| Defines whether the footer will be shown.
 	| Set to false to hide the footer
-	| Set to true to show the footer and check Teepee's version
+	| Set to true to show the footer and see Teepee's version
 	| 
 	*/
 
