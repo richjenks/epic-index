@@ -43,9 +43,18 @@ a:hover {
 
 h1 {
 	margin: 0;
-	font-size: 3em;
+	margin-top: -.3em;
+	font-size: 4em;
 	font-weight: 800;
-	margin-bottom: .5em;
+}
+
+h1,
+h1 + p {
+	text-align: center;
+}
+
+h1 + p + p {
+	color: #aaa;
 }
 
 img {
@@ -70,7 +79,23 @@ li {
 	margin-bottom: .3em;
 }
 
+/*pre,
 code {
 	font-family: monospace;
-	letter-spacing: 2px;
+}*/
+
+pre {
+	border-radius: 3px;
+	background: #555;
+	padding: .2em .4em;
+	display: block;
+}
+
+code {
+	color: #080;
+}
+
+pre,
+pre code {
+	color: white;
 }
