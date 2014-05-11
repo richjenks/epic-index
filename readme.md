@@ -2,6 +2,8 @@
 
 *A new home for Apache*
 
+![](https://richjenks.github.io/teepee/teepee.png)
+
 v1.1
 
 Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
