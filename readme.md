@@ -16,7 +16,7 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 2. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
 3. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
 
-    ```htaccess
+    ```
     RewriteRule .* /resources/teepee/ [L]
     ```
 
@@ -47,8 +47,8 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 
 Enable mod_rewrite with:
 
-```shell
-sudo a2enmod rewrite
+```
+sudo a2enmod rewrite  
 sudo service apache2 restart
 ```
 
@@ -56,11 +56,11 @@ sudo service apache2 restart
 
 For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure the `AllowOverride` directive has atleast `FileInfo`:
 
-```ApacheConf
-<Directory /var/www/>
-    Options Indexes FollowSymLinks MultiViews
-    AllowOverride FileInfo 
-    Order allow,deny
+```
+<Directory /var/www/>  
+    Options Indexes FollowSymLinks MultiViews  
+    AllowOverride FileInfo   
+    Order allow,deny  
     allow from all
 </Directory>
 ```
