@@ -49,6 +49,9 @@
 				// If faded, add faded class
 				$classes = ($row['faded'] ? 'faded' : '');
 
+				// If new, add target attr
+				$target = ($row['new'] ? ' target="_blank"' : '');
+
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
 			

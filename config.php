@@ -65,8 +65,9 @@ return array(
 	| array['custom_links']
 	|     [0]
 	|         ['name'] string The text that will appear as the link
-	|         ['uri'] string The URI the link will point to
-	|         ['show'] array Requests for which the link will show
+	|         ['uri']  string The URI the link will point to
+	|         ['show'] array  Requests for which the link will show
+	|         ['new']  bool   Whether the link will open in a new tab
 	| 
 	| The `show` param also accepts an asterisk, meaning "everywhere"
 	| 
@@ -76,8 +77,9 @@ return array(
 	| 'custom_links' => array(
 	|     array(
 	|         'name' => 'PHPMyAdmin',
-	|         'uri' => 'http://localhost/phpmyadmin',
+	|         'uri'  => 'http://localhost/phpmyadmin',
 	|         'show' => array('/'),
+	|         'new'  => true,
 	|     ),
 	| );
 	| </code>
@@ -94,6 +96,7 @@ return array(
 			'name' => 'PHPMyAdmin',
 			'uri'  => 'http://localhost/phpmyadmin',
 			'show' => array('/'),
+			'new'  => true,
 		),
 	
 	),
