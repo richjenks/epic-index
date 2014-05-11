@@ -4,14 +4,6 @@
 
 ![](https://richjenks.github.io/teepee/teepee.png)
 
-- [About](#about)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Updating](#updating)
-- [Requirements](#requirements)
-- [Props](#props)
-- [Changelog](#changelog)
-
 ## About
 
 Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
