@@ -80,9 +80,9 @@ return array(
 	|         ['show'] array  (Optional) Requests for which the link will show
 	|         ['new']  bool   (Optional) Whether link will open in a new tab
 	| 
-	| The `show` param also accepts an asterisk, meaning "everywhere"
-	| If `show` is not specified, it will assume "everywhere"
-	| If `new` is not specified, it will assume `false`
+	| The `show` param also accepts an asterisk meaning "everywhere"
+	| `show` defaults to "*"
+	| `new` defaults to `false`
 	| 
 	| Example:
 	| 
@@ -102,22 +102,6 @@ return array(
 	| 
 	*/
 
-	'custom_links' => array(
-		
-		array(
-			'name' => 'PHPMyAdmin',
-			'uri'  => 'http://localhost/phpmyadmin',
-			'show' => array('/'),
-			'new'  => true,
-		),
-		
-		array(
-			'name' => 'GitHub',
-			'uri'  => 'http://github.com',
-			'show' => array('/git/'),
-			'new'  => true,
-		),
-	
-	),
+	'custom_links' => array(),
 
 );
