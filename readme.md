@@ -1,12 +1,12 @@
 # Teepee
 
+*A new home for Apache*
+
 v1.1
 
-Responsive index pages for Apache.
+Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
 
-Apache's autoindex is ugly as fudge and none of the few alternatives available looked or behaved like I wanted them too. Teepee is simple, minimal, beautiful on all screen sizes and, most importantly, highly-usable on mobile devices.
-
-Typical desktop screens get a large, spacious table and smaller screens like tablets and large phones get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
+Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
 
 ## Installation
 
