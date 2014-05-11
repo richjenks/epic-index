@@ -61,7 +61,7 @@ For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure 
     Options Indexes FollowSymLinks MultiViews  
     AllowOverride FileInfo   
     Order allow,deny  
-    allow from all
+    allow from all  
 </Directory>
 ```
 
