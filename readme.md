@@ -71,7 +71,7 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 
 ## Changelog
 
-### v1.1
+### v1.1.0
 
 - "File" column header is now called "Name"
 - Added config.php with various options for customising Teepee
