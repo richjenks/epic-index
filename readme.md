@@ -7,7 +7,7 @@
 - [About](#about)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Updating](#Updating)
+- [Updating](#updating)
 - [Requirements](#requirements)
 - [Props](#props)
 - [Changelog](#changelog)
