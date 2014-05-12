@@ -22,7 +22,7 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
     RewriteRule .* /resources/teepee/ [L]
     ```
 
-## Configuration
+## Options
 
 Teepee has several option in `config.php` that you may wish to change. They are:
 
