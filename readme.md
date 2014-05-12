@@ -12,6 +12,29 @@ Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
 
 Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
 
+## Features
+
+### Usable file listing
+Browse files in a clean interface.
+
+### Responsive
+Need to show something on your phone? Navigating localhost is easy!
+
+### Custom Links
+Want a link to your PHPMyAdmin from webroot? How about some reference material from within a project folder? Custom Links can do just that.
+
+### Breadcrumbs
+They worked for Hansel and Grettel, now they'll work for you!
+
+### Faenza Icons
+Modern and unambiguous icons.
+
+### Friendly Filesizes
+Can handle up to yottabyte-sized files—that's 1 trillion terabytes!
+
+### Options
+Customise all aspects of your file listings.
+
 ## Installation
 
 1. Move the Teepee folder to your webserver
@@ -76,6 +99,7 @@ Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
 - More icons
 - Password protexted indexing
 - PHP 5.4 compatibility, potentially 5.3 too
+- Themes
 
 ## Props
 
