@@ -14,26 +14,13 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 
 ## Features
 
-### Usable file listing
-Browse files in a clean interface.
-
-### Responsive
-Need to show something on your phone? Navigating localhost is easy!
-
-### Custom Links
-Want a link to your PHPMyAdmin from webroot? How about some reference material from within a project folder? Custom Links can do just that.
-
-### Breadcrumbs
-They worked for Hansel and Grettel, now they'll work for you!
-
-### Faenza Icons
-Modern and unambiguous icons.
-
-### Friendly Filesizes
-Can handle up to yottabyte-sized files—that's 1 trillion terabytes!
-
-### Options
-Customise all aspects of your file listings.
+- **Usable file listing**: Browse files in a clean interface.
+- **Responsive**: Need to show something on your phone? Navigating localhost is easy!
+- **Custom Links**: Want a link to your PHPMyAdmin from webroot? How about some reference material from within a project folder? Custom Links can do just that.
+- **Breadcrumbs**: They worked for Hansel and Grettel, now they'll work for you!
+- **Faenza Icons**: Modern and unambiguous icons.
+- **Friendly Filesizes**: Can handle up to yottabyte-sized files—that's 1 trillion terabytes!
+- **Options**: Customise all aspects of your file listings.
 
 ## Installation
 
