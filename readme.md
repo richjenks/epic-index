@@ -67,6 +67,16 @@ For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure 
 
 Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
 
+## Roadmap
+
+- Multilingual
+- Different views
+- Basic text editor
+- Create, Delete & Rename files/folders
+- More icons
+- Password protexted indexing
+- PHP 5.4 compatibility, potentially 5.3 too
+
 ## Props
 
 Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who gives props to [Lars Jung for h5ai](http://larsjung.de/h5ai/).
