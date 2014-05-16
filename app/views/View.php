@@ -17,9 +17,9 @@
 			|--------------------------------------------------------------------------
 			| Parent
 			|--------------------------------------------------------------------------
-			| 
+			|
 			| Render a row for the parent link, if set
-			| 
+			|
 			*/
 
 			if ($data['parent']) {
@@ -41,7 +41,7 @@
 
 					// Construct title attr
 					$row['title'] = strip_tags($row['size']).' | '.strip_tags($row['modified']);
-				
+
 				} else {
 					$row['title'] = '';
 				}
@@ -49,16 +49,16 @@
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
-			
+
 			}
 
 			/*
 			|--------------------------------------------------------------------------
 			| Links
 			|--------------------------------------------------------------------------
-			| 
+			|
 			| Render a row for each custom link
-			| 
+			|
 			*/
 
 			foreach ($data['links'] as $row) {
@@ -81,16 +81,16 @@
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
-			
+
 			}
 
 			/*
 			|--------------------------------------------------------------------------
 			| Folders
 			|--------------------------------------------------------------------------
-			| 
+			|
 			| Render a row for each folder
-			| 
+			|
 			*/
 
 			// Loop through each folder
@@ -131,20 +131,23 @@
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
-			
+
 			}
 
 			/*
 			|--------------------------------------------------------------------------
 			| Files
 			|--------------------------------------------------------------------------
-			| 
+			|
 			| Render a row for each file
-			| 
+			|
 			*/
 
 			// Loop through each file
 			foreach ($data['files'] as $row) {
+
+				// Prevent _row partial throwing error—refactor this!!!
+				$row['classes'] = '';
 
 				// If new, add target attr
 				$row['target'] = (isset($row['new']) && $row['new'] ? ' target="_blank"' : '');
