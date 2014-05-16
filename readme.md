@@ -61,18 +61,18 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 
 Enable mod_rewrite with:
 
-    sudo a2enmod rewrite  
+    sudo a2enmod rewrite
     sudo service apache2 restart
 
 ### 2. AllowOverride
 
 For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure the `AllowOverride` directive has atleast `FileInfo`:
 
-    <Directory /var/www/>  
-        Options Indexes FollowSymLinks MultiViews  
-        AllowOverride FileInfo   
-        Order allow,deny  
-        allow from all  
+    <Directory /var/www/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride FileInfo
+        Order allow,deny
+        allow from all
     </Directory>
 
 Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
@@ -85,7 +85,7 @@ Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
 - Create, Delete & Rename files/folders
 - More icons
 - Password protexted indexing
-- PHP 5.4 compatibility, potentially 5.3 too
+- PHP 5.4 compatibility
 - Themes
 
 ## Props
