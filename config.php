@@ -6,11 +6,28 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Language
+	|--------------------------------------------------------------------------
+	|
+	| The language for the application
+	|
+	| Available languages:
+	|
+	| - English
+	| - Polish
+	| - Portuguese
+	|
+	*/
+
+	'language' => 'Japanese',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Filesize Precision
 	|--------------------------------------------------------------------------
-	| 
+	|
 	| The number of decimal places shown for a filesize
-	| 
+	|
 	*/
 
 	'filesize_precision' => 2,
@@ -19,9 +36,9 @@ return array(
 	|--------------------------------------------------------------------------
 	| Root Label
 	|--------------------------------------------------------------------------
-	| 
+	|
 	| The name given to the parent link which points to webroot
-	| 
+	|
 	*/
 
 	'root_label' => 'Home',
@@ -43,9 +60,9 @@ return array(
 	|--------------------------------------------------------------------------
 	| Hover Info
 	|--------------------------------------------------------------------------
-	| 
+	|
 	| Defines whether file/folder/link info shows on hover in title attribute
-	| 
+	|
 	*/
 
 	'hover_info' => true,
@@ -54,11 +71,11 @@ return array(
 	|--------------------------------------------------------------------------
 	| Show Footer
 	|--------------------------------------------------------------------------
-	| 
+	|
 	| Defines whether the footer will be shown.
 	| Set to false to hide the footer
 	| Set to true to show the footer and see Teepee's version
-	| 
+	|
 	*/
 
 	'show_footer' => true,
@@ -67,7 +84,7 @@ return array(
 	|--------------------------------------------------------------------------
 	| Custom Links
 	|--------------------------------------------------------------------------
-	| 
+	|
 	| Custom Links are shown below the parent link and above folders
 	| You can specify a name, a URI and where they should be shown
 	|
@@ -79,13 +96,13 @@ return array(
 	|         ['uri']  string The URI the link will point to
 	|         ['show'] array  (Optional) Requests for which the link will show
 	|         ['new']  bool   (Optional) Whether link will open in a new tab
-	| 
+	|
 	| The `show` param also accepts an asterisk meaning "everywhere"
 	| `show` defaults to "*"
 	| `new` defaults to `false`
-	| 
+	|
 	| Example:
-	| 
+	|
 	| <code>
 	| 'custom_links' => array(
 	|     array(
@@ -96,10 +113,10 @@ return array(
 	|     ),
 	| );
 	| </code>
-	| 
+	|
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
 	| which will open in a new tab
-	| 
+	|
 	*/
 
 	'custom_links' => array(),

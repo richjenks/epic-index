@@ -2,12 +2,12 @@
 
 /**
  * Dir
- * 
+ *
  * Model for directories
  * Gets info for current directory as well as info for subdirectories
  * Also gets data from File model
  * Used by Teepee controller
- * 
+ *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
  * @since v1.0
@@ -73,7 +73,7 @@ class Dir {
 
 	/**
 	 * get_request
-	 * 
+	 *
 	 * Return this object's `request`
 	 */
 
@@ -83,7 +83,7 @@ class Dir {
 
 	/**
 	 * count_items
-	 * 
+	 *
 	 * Counts children, files and folders as well as chooses singular or plural label
 	 */
 
@@ -96,32 +96,32 @@ class Dir {
 
 		// Define singluar or plural labels for children
 		if ($this->child_count === 1) {
-			$this->child_label = 'Item';
+			$this->child_label = __('item');
 		} else {
-			$this->child_label = 'Items';
+			$this->child_label = __('items');
 		}
 
 		// Define singluar or plural labels for files
 		if ($this->file_count === 1) {
-			$this->file_label = 'File';
+			$this->file_label = __('file');
 		} else {
-			$this->file_label = 'Files';
+			$this->file_label = __('files');
 		}
 
 		// Define singluar or plural labels for folders
 		if ($this->folder_count === 1) {
-			$this->folder_label = 'Folder';
+			$this->folder_label = __('folder');
 		} else {
-			$this->folder_label = 'Folders';
+			$this->folder_label = __('folders');
 		}
 
 	}
 
 	/**
 	 * breadcrumbs
-	 * 
+	 *
 	 * Generates HTML for breadcrumbs from the host to the current request
-	 * 
+	 *
 	 * @return string HTML for the breadcrumbs of the current directory
 	 */
 
@@ -147,28 +147,28 @@ class Dir {
 				for ($i2 = 0; $i2 < $i; $i2++) {
 					$href .= '../';
 				}
-				
+
 				// Make link for breadcrumb
 				$html .= '<a href="'.$href.'" class="breadcrumb">'.$breadcrumbs[$i].'</a>/';
-			
+
 			} else {
-			
+
 				// Make current breadcrum bold
 				$html .= '<b><a href="." class="breadcrumb">'.$breadcrumbs[$i].'</a></b>/';
-			
+
 			}
 
 		}
-		
+
 		return $html;
 
 	}
 
 	/**
 	 * get_folders
-	 * 
+	 *
 	 * Returns array of folders from a given array of files and folders
-	 * 
+	 *
 	 * @param array $items Array of files and folders
 	 * @return array Array of folders
 	 */
@@ -192,9 +192,9 @@ class Dir {
 
 	/**
 	 * get_files
-	 * 
+	 *
 	 * Returns array of files from a given array of files and folders
-	 * 
+	 *
 	 * @param array $items Array of files and folders
 	 * @return array Array of files
 	 */
@@ -218,10 +218,10 @@ class Dir {
 
 	/**
 	 * get_parent_data
-	 * 
+	 *
 	 * Gets infomation about the parent directory
 	 * Returns false if current directory is webroot
-	 * 
+	 *
 	 * @return mixed Array of info about parent directory or false
 	 */
 
@@ -250,9 +250,9 @@ class Dir {
 
 	/**
 	 * get_folders_data
-	 * 
+	 *
 	 * Gets information about folders in the current directory
-	 * 
+	 *
 	 * @return array Data for each folder
 	 */
 
@@ -288,9 +288,9 @@ class Dir {
 
 	/**
 	 * get_files_data
-	 * 
+	 *
 	 * Gets information about files in the current directory
-	 * 
+	 *
 	 * @return array Data for each file
 	 */
 
@@ -326,9 +326,9 @@ class Dir {
 
 	/**
 	 * summary
-	 * 
+	 *
 	 * Generates a summary of the current directory
-	 * 
+	 *
 	 * @return string Content for the summary
 	 */
 

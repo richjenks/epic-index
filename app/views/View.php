@@ -1,12 +1,13 @@
+<?php namespace RichJenks\Teepee;?>
 <?php global $config;?>
 <?php require TEEPEE_PATH.'app/views/_header.php';?>
 <h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
 <table>
 	<thead>
 		<tr>
-			<th class="faded smallcaps col-name">Name</th>
-			<th class="faded smallcaps col-size">Size</th>
-			<th class="faded smallcaps col-modified">Modified</th>
+			<th class="faded smallcaps col-name"><?=__('name')?></th>
+			<th class="faded smallcaps col-size"><?=__('size')?></th>
+			<th class="faded smallcaps col-modified"><?=__('modified')?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -127,7 +128,7 @@
 				}
 
 				// Get file's icon name
-				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['icon']);
+				$row['icon'] = Helper::get_icon($row['icon']);
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -166,7 +167,7 @@
 				}
 
 				// Get file's icon name
-				$row['icon'] = RichJenks\Teepee\Helper::get_icon($row['ext']);
+				$row['icon'] = Helper::get_icon($row['ext']);
 
 				// Construct file.extension
 				$row['name'] = $row['name'].'<span class="faded">.'.$row['ext'].'</span>';
