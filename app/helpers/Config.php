@@ -4,8 +4,6 @@ namespace RichJenks\Teepee;
 
 class Config {
 
-	private $languages; // Available languages
-
 	/**
 	 * check_config
 	 *
@@ -18,19 +16,33 @@ class Config {
 
 	public static function check_config($config) {
 
-		$config = self::check_language();
+		$config['language'] = self::check_language($config['language']);
 
 	}
 
-	private static check_language($language) {
+	/**
+	 * check_language
+	 *
+	 * Ensures the language config is valid
+	 *
+	 * @param string $language Language set in config
+	 * @return string A valid language name
+	 */
 
-		$this-> languages = array(
+	private static function check_language($language) {
+
+		// Force title case
+		$language = ucfirst(strtolower($language));
+
+		// Valid languages
+		$languages = array(
 			'English',
 			'Polish',
 			'Portuguese',
 		);
 
-		if (!in_array($config['language'], $this->languages)) {
+		// If language is invalid, default to English
+		if (!in_array($config['language'], $languages)) {
 			return 'English';
 		} else {
 			return $language;
