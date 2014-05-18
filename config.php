@@ -11,8 +11,6 @@ return array(
 	|
 	| The language for the application
 	|
-	| Default: 'English'
-	|
 	| Available languages:
 	|
 	| - English
@@ -30,6 +28,8 @@ return array(
 	|
 	| Languages chosen based on:
 	| https://en.wikipedia.org/wiki/Languages_used_on_the_Internet
+	|
+	| Default: 'English'
 	|
 	*/
 
@@ -70,6 +70,10 @@ return array(
 	| Accepts a valid value for the $format param of `date()`
 	| The Helper function `fade` makes the given string faded and in smallcaps
 	|
+	| Default: '\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<
+	| \/\s\p\a\n\> Y-m-d\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\
+	| s\"\> H:i\<\/\s\p\a\n\>'
+	|
 	*/
 
 	'date_format' => Helper::fade('D').' Y-m-d'.Helper::fade(' H:i'),
@@ -80,6 +84,8 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	| Defines whether file/folder/link info shows on hover in title attribute
+	|
+	| Default: true
 	|
 	*/
 
@@ -93,6 +99,8 @@ return array(
 	| Defines whether the footer will be shown.
 	| Set to false to hide the footer
 	| Set to true to show the footer and see Teepee's version
+	|
+	| Default: true
 	|
 	*/
 
@@ -134,6 +142,8 @@ return array(
 	|
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
 	| which will open in a new tab
+	|
+	| Default: array()
 	|
 	*/
 

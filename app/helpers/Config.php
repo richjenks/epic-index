@@ -23,17 +23,8 @@ class Config {
 		// Set this class' vars
 		self::set_vars($config);
 
-		// Check language
-		if (!isset(self::$config['language'])) {
-			self::$config['language'] = self::$defaults['language'];
-		} else {
-			self::$config['language'] = self::check_language(self::$config['language'], self::$defaults['language']);
-		}
-
-		// Check filesize precision
-		if (!isset(self::$config['filesize_precision']) || !is_int(self::$config['filesize_precision'])) {
-			self::$config['filesize_precision'] = 2;
-		}
+		// Check all config vars
+		self::check_vars($config);
 
 		return self::$config;
 
@@ -81,24 +72,49 @@ class Config {
 	}
 
 	/**
-	 * check_language
+	 * check_vars
 	 *
-	 * Ensures the language config is valid
+	 * Checks config has a usable value
 	 *
-	 * @param string $language Language set in config
-	 * @return string A valid language name
+	 * @param array $config Array of settings
+	 * @return void
 	 */
 
-	private static function check_language($language, $default) {
+	private static function check_vars($config) {
 
-		// Force title case
-		$language = ucfirst(strtolower($language));
+		// Check language
+		if (!isset(self::$config['language']) || !in_array(self::$config['language'], self::$languages)) {
+			self::$config['language'] = self::$defaults['language'];
+		}
 
-		// If language is invalid, default to English
-		if (!in_array($language, self::$languages)) {
-			return 'English';
-		} else {
-			return $language;
+		// Check filesize precision
+		if (!isset(self::$config['filesize_precision']) || !is_int(self::$config['filesize_precision'])) {
+			self::$config['filesize_precision'] = self::$defaults['filesize_precision'];
+		}
+
+		// Check root_label
+		if (!isset(self::$config['root_label'])) {
+			self::$config['root_label'] = self::$defaults['root_label'];
+		}
+
+		// Check date_format
+		if (!isset(self::$config['date_format'])) {
+			self::$config['date_format'] = self::$defaults['date_format'];
+		}
+
+		// Check hover_info
+		if (!isset(self::$config['hover_info']) || !is_bool($config['hover_info'])) {
+			self::$config['hover_info'] = true;
+		}
+
+		// Check show_footer
+		if (!isset(self::$config['show_footer']) || !is_bool($config['show_footer'])) {
+			self::$config['show_footer'] = true;
+		}
+
+		// Check custom_links
+		if (!isset(self::$config['custom_links']) || !is_array($config['custom_links'])) {
+			self::$config['custom_links'] = array();
 		}
 
 	}
