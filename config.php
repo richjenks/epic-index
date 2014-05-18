@@ -15,13 +15,13 @@ return array(
 	|
 	| - English
 	| - Russian *
-	| - German *
+	| - German
 	| - Japanese *
 	| - Spanish *
-	| - French *
+	| - French
 	| - Chinese *
 	| - Portuguese
-	| - Italian *
+	| - Italian
 	| - Polish
 	|
 	| * Not verified by native speaker
