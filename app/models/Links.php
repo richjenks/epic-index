@@ -2,10 +2,10 @@
 
 /**
  * Links
- * 
+ *
  * Model for Custom Links
  * Gets link data from config global and generates data for each link
- * 
+ *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
  * @since v1.1
@@ -31,19 +31,16 @@ class Links {
 
 	/**
 	 * get_links_data
-	 * 
+	 *
 	 * Populates the `links` var with custom links that should show for
 	 * the current request
-	 * 
+	 *
 	 * @return array Array of data for Custom Links
 	 */
 
 	public function get_links_data() {
-		
-		global $config;
 
-		// If links not configured, set to empty array
-		if (!isset($config['custom_links'])) { $config['custom_links'] = array(); }
+		global $config;
 
 		// Iterate through each link
 		foreach ($config['custom_links'] as $link) {
@@ -63,12 +60,12 @@ class Links {
 					}
 
 				}
-			
+
 			} else {
-				
+
 				// If `show` not set, assume true
 				$this->show = true;
-			
+
 			}
 
 
@@ -86,7 +83,7 @@ class Links {
 					'new'      => $link['new'],
 					'faded'    => true,
 				));
-			
+
 			}
 
 		}
