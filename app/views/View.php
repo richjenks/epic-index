@@ -28,6 +28,12 @@
 				// Set row array
 				$row = $data['parent'];
 
+				// If root, change name & icon
+				if ($row['uri'] === '/') {
+					$row['name'] = $config['root_label'];
+					$row['icon'] = 'folder-home';
+				}
+
 				// If faded, add faded class
 				$row['classes'] = ($row['faded'] ? 'faded' : '');
 
@@ -119,12 +125,6 @@
 				// If folder starts with dot, fade the filename
 				if (substr($row['name'], 0, 1) === '.') {
 					$row['name'] = '<span class="faded">'.$row['name'].'</span>';
-				}
-
-				// If root, change name & icon
-				if ($row['uri'] === '/') {
-					$row['name'] = $config['root_label'];
-					$row['icon'] = 'folder-home';
 				}
 
 				// Get file's icon name
