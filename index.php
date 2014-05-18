@@ -16,7 +16,7 @@ if (TEEPEE_URI.'index.php' === Helper::get_uri()) {
 	die ('Yo dawg I herd you like to list files so I listed the files in the file that lists files so you can list files in the file list.');
 }
 
-// Requires
+// Requires - no point autoloading as all are needed for every execution
 require TEEPEE_PATH.'app/controllers/Controller.php';
 require TEEPEE_PATH.'app/controllers/Teepee.php';
 require TEEPEE_PATH.'app/models/Links.php';
