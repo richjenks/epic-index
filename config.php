@@ -11,15 +11,29 @@ return array(
 	|
 	| The language for the application
 	|
+	| Default: 'English'
+	|
 	| Available languages:
 	|
 	| - English
-	| - Polish
+	| - Russian *
+	| - German *
+	| - Japanese *
+	| - Spanish *
+	| - French *
+	| - Chinese *
 	| - Portuguese
+	| - Italian *
+	| - Polish
+	|
+	| * Not verified by native speaker
+	|
+	| Languages chosen based on:
+	| https://en.wikipedia.org/wiki/Languages_used_on_the_Internet
 	|
 	*/
 
-	'language' => 'Polish',
+	'language' => 'English',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -27,6 +41,8 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	| The number of decimal places shown for a filesize
+	|
+	| Default: 2
 	|
 	*/
 
@@ -38,6 +54,8 @@ return array(
 	|--------------------------------------------------------------------------
 	|
 	| The name given to the parent link which points to webroot
+	|
+	| Default: 'Home'
 	|
 	*/
 
