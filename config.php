@@ -137,7 +137,7 @@ return array(
 	|         'show' => array('/'),
 	|         'new'  => true,
 	|     ),
-	| );
+	| ),
 	| </code>
 	|
 	| The code above will show a link to PHPMyAdmin when browsing the webroot
