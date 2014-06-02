@@ -93,10 +93,9 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 
 # v1.2.0
 
-- Multilingual (10 languages supported, 3 verified)
-- Verified PHP 5.4 compatibility
+- Fixed bug when running on PHP 5.4
+- Config options refactored with safe defults
 - Fixed root_label and icon not showing in sub dir of webroot
-- Config values have defaults
 
 ### v1.1.0
 
