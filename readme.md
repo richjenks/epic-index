@@ -91,7 +91,7 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 
 ## Changelog
 
-# v1.2.0
+### v1.2.0
 
 - Fixed bug when running on PHP 5.4
 - Config options refactored with safe defults
