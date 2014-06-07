@@ -2,10 +2,10 @@
 
 /**
  * Teepee
- * 
+ *
  * Controller for entire package
  * Gets data from models and passes to the view
- * 
+ *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
  * @since v1.0
@@ -25,14 +25,13 @@ class Teepee extends Controller {
 		// Set directory vars
 		$this->request    = str_replace('%20', ' ', Helper::strip_query($_SERVER['REQUEST_URI']));
 		$this->path       = $_SERVER['DOCUMENT_ROOT'].$this->request;
-		$this->teepee_uri = Helper::get_domain().str_replace($_SERVER['DOCUMENT_ROOT'], '', TEEPEE_PATH);
 
 		// Create current directory object
-		$this->directory = new Dir($this->request, $this->path, $this->teepee_uri);
+		$this->directory = new Dir($this->request, $this->path, TEEPEE_URI);
 
 		// Create custom links object
 		$this->links = new Links($this->directory->get_request());
-		
+
 		// Populate array of page data
 		$data = array(
 			'title'       => $this->request,

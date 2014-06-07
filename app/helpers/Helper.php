@@ -2,9 +2,9 @@
 
 /**
  * Helper
- * 
+ *
  * Class of static Helper functions used throughout the package
- * 
+ *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
  * @since v1.0
@@ -16,10 +16,10 @@ class Helper {
 
 	/**
 	 * strip_query
-	 * 
+	 *
 	 * Removes the current query string from a given URL
 	 * Used to prevent errors when getting directory listings
-	 * 
+	 *
 	 * @param string $url The URL to remove the query string from
 	 * @return string The $url provided without the query string
 	 */
@@ -34,10 +34,10 @@ class Helper {
 
 	/**
 	 * escape_chars
-	 * 
+	 *
 	 * Escapes every character of a given string
 	 * Used to pass raw strings to the `date()` function in the `format` param
-	 * 
+	 *
 	 * @param string $str The string to be escaped
 	 * @return string The scaped string
 	 */
@@ -53,9 +53,9 @@ class Helper {
 
 	/**
 	 * fade
-	 * 
+	 *
 	 * Wraps the given string in faded smallcaps
-	 * 
+	 *
 	 * @param string $string The string to be faded
 	 * @return string The faded string
 	 */
@@ -66,9 +66,9 @@ class Helper {
 
 	/**
 	 * filesize
-	 * 
+	 *
 	 * Formats a filesize into a human-readable format
-	 * 
+	 *
 	 * @param int $bytes Filesize in bytes
 	 * @param int $precision Number of decimal places
 	 * @param string $format Output format with placeholders "{size}" and "{unit}"
@@ -109,7 +109,7 @@ class Helper {
 
 	/**
 	 * shatter
-	 * 
+	 *
 	 * Explode and Filter
 	 * Splits a string by a string into array and removes blanks
 	 */
@@ -122,9 +122,9 @@ class Helper {
 
 	/**
 	 * get_domain
-	 * 
+	 *
 	 * Gets the fully-qualified domain name of current location
-	 * 
+	 *
 	 * @return string Domain name, e.g. https://sub.domain.tld
 	 */
 
@@ -147,9 +147,9 @@ class Helper {
 
 	/**
 	 * get_icon
-	 * 
+	 *
 	 * Either returns an icon matching the extension or the default icon
-	 * 
+	 *
 	 * @param string $extension File's extension
 	 * @return string The name of the correct icon
 	 */
@@ -169,20 +169,20 @@ class Helper {
 
 	/**
 	 * file_uri
-	 * 
+	 *
 	 * Gets the public URI of the PHP file being executed
 	 * Must be passed __FILE__ to ensure is uses the calling script's location
-	 * 
+	 *
 	 * <code>
 	 *     echo file_uri(__FILE__);
 	 * </code>
-	 * 
+	 *
 	 * @param string $file __FILE__
 	 * @return string URL of the script being executed
 	 */
 
 	public static function file_uri($file) {
-		
+
 		// Get protocol and domain for root
 		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
 		$domain = $_SERVER['HTTP_HOST'];
@@ -192,8 +192,15 @@ class Helper {
 			$file = str_replace('\\', '/', $file);
 		}
 
+		// If document root ends with slash, remove it
+		if (substr($_SERVER['DOCUMENT_ROOT'], 0, 1) === '/') {
+			$document_root = substr($_SERVER['DOCUMENT_ROOT'], 1);
+		} else {
+			$document_root = $_SERVER['DOCUMENT_ROOT'];
+		}
+
 		// Remove document root from file to get request
-		$request = str_replace($_SERVER['DOCUMENT_ROOT'], '', $file);
+		$request = str_replace($document_root, '', $file);
 
 		// Concatenate protocol, domain & request to get full URI
 		return $protocol.$domain.$request;
@@ -202,11 +209,11 @@ class Helper {
 
 	/**
 	 * sort_arr_by_key
-	 * 
+	 *
 	 * Sorts a given array by the values of its child arrays
-	 * 
+	 *
 	 * The code below would order the array items by age:
-	 * 
+	 *
 	 * <code>
 	 * $array = array(
 	 *     array(
@@ -220,10 +227,10 @@ class Helper {
 	 * );
 	 * var_dump($array, 'age');
 	 * </code>
-	 * 
+	 *
 	 * @param array $sort_array The array being sorted
 	 * @param string $sort_key The key to sort by
-	 * 
+	 *
 	 * @return array The sorted array
 	 */
 
