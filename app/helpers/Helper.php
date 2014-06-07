@@ -202,8 +202,11 @@ class Helper {
 		// Remove document root from file to get request
 		$request = str_replace($document_root, '', $file);
 
+		// Construct full URI, removing duplicate slashes
+		$uri = str_replace('//', '/', $domain.$request);
+
 		// Concatenate protocol, domain & request to get full URI
-		return $protocol.$domain.$request;
+		return $protocol.$uri;
 
 	}
 
