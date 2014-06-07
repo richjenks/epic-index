@@ -44,7 +44,7 @@ class Teepee extends Controller {
 		);
 
 		// Render view
-		$this->render('View', $data);
+		$this->render('Dir', $data);
 
 	}
 
