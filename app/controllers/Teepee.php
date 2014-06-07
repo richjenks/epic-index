@@ -8,7 +8,7 @@
  *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
- * @since v1.0
+ * @since v1.0.0
  */
 
 namespace RichJenks\Teepee;

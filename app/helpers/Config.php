@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Config
+ *
+ * Static function for validating the config file
+ * Also sets default values if given value is invalid
+ *
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.2.0
+ */
+
 namespace RichJenks\Teepee;
 
 class Config {

@@ -2,14 +2,14 @@
 
 /**
  * File
- * 
+ *
  * Model for files
  * Returns info about the given file
  * Used by Dir models
- * 
+ *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
- * @since v1.0
+ * @since v1.0.0
  */
 
 namespace RichJenks\Teepee;
@@ -24,11 +24,11 @@ class File {
 
 	/**
 	 * __construct
-	 * 
+	 *
 	 * Defines vars for the current file
-	 * 
+	 *
 	 * @param string $file Full path to the current file
-	 * 
+	 *
 	 * @return void
 	 */
 
