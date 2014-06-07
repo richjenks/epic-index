@@ -17,11 +17,12 @@ table a {
 	padding: .5em 10px;
 }
 
+td,
 table .col-icon a {
 	padding: 0;
 }
 
-tbody tr {
+tbody tr a {
 	border-bottom: 1px solid #eee;
 }
 
