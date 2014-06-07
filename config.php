@@ -149,4 +149,32 @@ return array(
 
 	'custom_links' => array(),
 
+	/*
+	|--------------------------------------------------------------------------
+	| Password
+	|--------------------------------------------------------------------------
+	|
+	| Protect directory browsing with a password
+	| Leave blank (or comment out) for no password
+	|
+	| Default: ''
+	|
+	*/
+
+	'password' => '',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Password Timeout
+	|--------------------------------------------------------------------------
+	|
+	| Seconds of inactivity before password needs to be re-entered
+	| Is ignored if `password` is blank or commented out
+	|
+	| Default: 3600
+	|
+	*/
+
+	'password_timeout' => 3600,
+
 );
