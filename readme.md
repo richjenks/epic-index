@@ -17,6 +17,7 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 - **Usable file listing**: Browse files in a clean interface.
 - **Responsive**: Need to show something on your phone? Navigating localhost is easy!
 - **Custom Links**: Want a link to your PHPMyAdmin from webroot? How about some reference material from within a project folder? Custom Links can do just that.
+- **Password Protection**: Want to put Teepee on a network- or public-accessible URL? No problem; just add a password.
 - **Breadcrumbs**: They worked for Hansel and Grettel, now they'll work for you!
 - **Faenza Icons**: Modern and unambiguous icons.
 - **Friendly Filesizes**: Can handle up to yottabyte-sized files—that's 1 trillion terabytes!
@@ -36,12 +37,15 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 
 Teepee has several option in `config.php` that you may wish to change. They are:
 
+- **Language**: The language for your directory listings
 - **Filesize Precision**: The number of decimal places shown for a filesize
 - **Root Label**: The name given to the parent link which points to webroot
 - **Date Format**: The format for modified dates
 - **Hover Info**: Whether file/folder/link info shows on hover in title attribute
 - **Show Footer**: Whether the footer (attribution & app version) will be shown
 - **Custom Links**: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
+- **Password**: The password required to show your directory listings
+- **Timeout**: Seconds of inactivity before the password requires re-entry
 
 ## Updating
 
@@ -79,11 +83,11 @@ Reference: https://httpd.apache.org/docs/2.2/mod/core.html#allowoverride
 
 ## Roadmap
 
+- Better multilingual support
 - More icons
 - Different views
 - Themes
 - Basic text editor
-- Password protected indexing
 
 ## Props
 
@@ -91,19 +95,26 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 
 ## Changelog
 
+### v1.3.0
+
+- Feature: Added password protection feature
+- Fix: Each row had 2 vertical px on unclickable space
+- Fix: Broken stylesheet link when Apache document root ends with a slash
+- Core: Migrated styles to SASS and started minifying
+
 ### v1.2.0
 
-- Fixed bug when running on PHP 5.4
-- Config options refactored with safe defults
-- Fixed root_label and icon not showing in sub dir of webroot
+- Fix: View bug when running on PHP 5.4
+- Fix: root_label and icon not showing in sub dir of webroot
+- Core: Config options refactored with safe defaults
 
 ### v1.1.0
 
-- "File" column header is now called "Name"
-- Added config.php with various options for customising Teepee
-- Added option for filesize precision
-- Added option for root label
-- Added option for date format
-- Added options for custom links
-- Added option for custom links (see `config.php` for usage)
-- Teepee cannot index itself
+- Feature: Added config.php with various options for customising Teepee
+- Feature: Added option for filesize precision
+- Feature: Added option for root label
+- Feature: Added option for date format
+- Feature: Added options for custom links
+- Feature: Added option for custom links (see `config.php` for usage)
+- Fix: Teepee cannot index itself
+- Core: "File" column header is now called "Name"
