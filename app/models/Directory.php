@@ -115,6 +115,11 @@ class Directory {
 			$this->folder_label = __('folders');
 		}
 
+		// With singular/plural chosen, format number
+		$this->child_count  = number_format($this->child_count);
+		$this->file_count   = number_format($this->file_count);
+		$this->folder_count = number_format($this->folder_count);
+
 	}
 
 	/**
@@ -333,7 +338,13 @@ class Directory {
 	 */
 
 	public function summary() {
-		return $this->folder_count.' '.$this->folder_label.' | '.$this->file_count.' '.$this->file_label;
+		return number_format($this->folder_count)
+			.' '
+			.$this->folder_label
+			.' | '
+			.number_format($this->file_count)
+			.' '
+			.$this->file_label;
 	}
 
 }

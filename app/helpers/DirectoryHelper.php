@@ -38,6 +38,9 @@ class DirectoryHelper {
 			// Calculate size
 			$size = round(pow(1024, $base - floor($base)), $precision);
 
+			// Format size
+			$size = number_format($size);
+
 			// Select unit
 			$unit = $units[floor($base)];
 
