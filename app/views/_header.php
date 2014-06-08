@@ -1,3 +1,19 @@
+<?php
+
+/**
+ * Header
+ *
+ * View partial used throughout application
+ *
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0.0
+ */
+
+namespace RichJenks\Teepee;
+
+?>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">

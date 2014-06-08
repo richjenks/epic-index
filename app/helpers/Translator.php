@@ -1,7 +1,5 @@
 <?php
 
-namespace RichJenks\Teepee;
-
 /**
  * Translator
  *
@@ -11,6 +9,8 @@ namespace RichJenks\Teepee;
  * @author Rich Jenks <rich@richjenks.com>
  * @since v1.2.0
  */
+
+namespace RichJenks\Teepee;
 
 class Translator {
 

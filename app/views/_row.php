@@ -1,4 +1,21 @@
-<?php global $config;?>
+<?php
+
+/**
+ * Rot
+ *
+ * Partial for displaying a row in directory listings
+ *
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0.0
+ */
+
+namespace RichJenks\Teepee;
+
+global $config;
+
+?>
+
 <tr class="<?=$row['classes']?>">
 	<td class="col-name">
 		<a href="<?=$row['uri']?>" title="<?=$row['title']?>"<?=$row['target']?>>

@@ -1,6 +1,23 @@
-<?php namespace RichJenks\Teepee;?>
-<?php global $config;?>
-<?php require TEEPEE_PATH.'app/views/_header.php';?>
+<?php
+
+/**
+ * Dir
+ *
+ * View for directory listings
+ *
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0.0
+ */
+
+namespace RichJenks\Teepee;
+
+global $config;
+
+require TEEPEE_PATH.'app/views/_header.php';
+
+?>
+
 <h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
 <table>
 	<thead>

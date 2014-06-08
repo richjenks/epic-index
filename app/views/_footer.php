@@ -1,4 +1,19 @@
-<?php namespace RichJenks\Teepee;?>
+<?php
+
+/**
+ * Footer
+ *
+ * View partial used throughout application
+ *
+ * @package Teepee
+ * @author Rich Jenks <rich@richjenks.com>
+ * @since v1.0.0
+ */
+
+namespace RichJenks\Teepee;
+
+?>
+
 		</div>
 		<?php if($config['show_footer']):?>
 			<footer>
