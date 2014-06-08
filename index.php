@@ -30,7 +30,7 @@ if ($config['debug_mode']) {
 	ini_set('display_errors', '0');
 }
 
-// Notices global
+// Notices global - defined here simply to document
 global $notices;
 
 // Authenticate

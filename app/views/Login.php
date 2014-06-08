@@ -13,12 +13,21 @@
 namespace RichJenks\Teepee;
 
 global $config;
+global $notices;
 
 require TEEPEE_PATH.'app/views/_header.php';
 
+echo '<h1>'.$data['title'].'</h1>';
+
+// Show notices
+if (isset($notices)) {
+	foreach($notices as $notice) {
+		require TEEPEE_PATH.'app/views/_notice.php';
+	}
+}
+
 ?>
 
-<h1><?=$data['title']?></h1>
 <form method="post">
 	<input type="password" placeholder="Password" name="password" required autofocus>
 	<button type="submit">Login</button>

@@ -47,39 +47,71 @@ class AuthController extends Controller {
 
 	public function pass() {
 
-		// If password not configured, pass automatically
+		global $notices;
+
 		if ($this->password === '') {
+
+			// Password is disabled
+			// Pass automatically
 			return true;
-		}
 
-		// Check credentials - show listings?
-		if (isset($_POST['password'])) {
-			if ($_POST['password'] === $this->password) {
-				$this->reset();
-				return true;
-			}
-		}
+		} elseif (!isset($_SESSION['timeout'])) {
 
-		// Check timeout - if exceeded, show login
-		if (!isset($_SESSION['timeout']) || time() - $_SESSION['timeout'] > $this->timeout) {
-
-			// Set view datas
-			$this->data = array(
-				'title' => 'Enter Password',
-				'hide_logout' => true,
-			);
-
-			// Render view and return false to prevent listings
-			$this->render('Login', $this->data);
+			// Timeout isn't set
+			// Reset timeout & show login
+			$this->reset();
+			$this->show_login();
 			return false;
 
-		} else {
+		} elseif (isset($_POST['password']) && $_POST['password'] !== $this->password) {
 
-			// If timeout not exceeded, reset timeout and show listings
+			// Password is submitted but is incorrect
+			// Show notice & login
+			$notices[] = 'Password incorrect; please try again.';
+			$this->show_login();
+			return false;
+
+		} elseif (isset($_POST['password']) && $_POST['password'] == $this->password) {
+
+			// Password is submitted and is correct
+			// Reset timeout & show directory listing
 			$this->reset();
 			return true;
 
+		} elseif (time() - $_SESSION['timeout'] > $this->timeout) {
+
+			// Timeout has expired
+			// Show login & notice
+			$notices[] = 'Timeout has expired; please re-enter password.';
+			$this->show_login();
+
+		} else {
+
+			// Timeout is set but hasn't expired
+			// Show directory listing
+			return true;
+
 		}
+
+	}
+
+	/**
+	 * show_login
+	 *
+	 * Show the login view
+	 */
+
+	private function show_login() {
+
+		// Set view datas
+		$this->data = array(
+			'title' => 'Enter Password',
+			'hide_logout' => true,
+		);
+
+		// Render view and return false to prevent listings
+		$this->render('Login', $this->data);
+		return false;
 
 	}
 
@@ -101,7 +133,8 @@ class AuthController extends Controller {
 
 	private function logout() {
 		unset($_SESSION['timeout']);
-		header('Location: '.Helper::strip_query(Helper::get_uri()));
+		session_destroy();
+		header('Location: '.URIHelper::strip_query(URIHelper::get_uri()));
 	}
 
 }
