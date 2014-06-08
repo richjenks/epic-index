@@ -16,12 +16,12 @@ require TEEPEE_PATH.'app/libraries/Translator.php';
 
 // Controllers
 require TEEPEE_PATH.'app/controllers/Controller.php';
-require TEEPEE_PATH.'app/controllers/Auth.php';
-require TEEPEE_PATH.'app/controllers/Teepee.php';
+require TEEPEE_PATH.'app/controllers/AuthController.php';
+require TEEPEE_PATH.'app/controllers/DirectoryController.php';
 
 // Models
 require TEEPEE_PATH.'app/models/Links.php';
-require TEEPEE_PATH.'app/models/Dir.php';
+require TEEPEE_PATH.'app/models/Directory.php';
 require TEEPEE_PATH.'app/models/File.php';
 
 // URI to Teepee
@@ -39,12 +39,12 @@ $config = require TEEPEE_PATH.'config.php';
 $config = ConfigHelper::check($config);
 
 // Authenticate
-$auth = new Auth;
+$auth = new AuthController;
 
 // Authenticate?
 if ($auth->pass()) {
 
 	// Start
-	$teepee = new Teepee;
+	$teepee = new DirectoryController;
 
 }

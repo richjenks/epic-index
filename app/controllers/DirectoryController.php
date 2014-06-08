@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Teepee
+ * DirectoryController
  *
  * Controller for entire package
  * Gets data from models and passes to the view
@@ -13,7 +13,7 @@
 
 namespace RichJenks\Teepee;
 
-class Teepee extends Controller {
+class DirectoryController extends Controller {
 
 	private $request;   // Path to current directory from webroot
 	private $path;      // Local path to current directory
@@ -27,7 +27,7 @@ class Teepee extends Controller {
 		$this->path       = $_SERVER['DOCUMENT_ROOT'].$this->request;
 
 		// Create current directory object
-		$this->directory = new Dir($this->request, $this->path, TEEPEE_URI);
+		$this->directory = new Directory($this->request, $this->path, TEEPEE_URI);
 
 		// Create custom links object
 		$this->links = new Links($this->directory->get_request());

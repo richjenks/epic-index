@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Dir
+ * Directory
  *
  * Model for directories
  * Gets info for current directory as well as info for subdirectories
@@ -15,7 +15,7 @@
 
 namespace RichJenks\Teepee;
 
-class Dir {
+class Directory {
 
 	// Path vars
 	private $request;      // Path to current directory from webroot — for breadcrumbs
@@ -230,7 +230,7 @@ class Dir {
 		if ($this->request != '/') {
 
 			// Parent dir object
-			$this->parent = new Dir(dirname($this->request), $this->parent_path);
+			$this->parent = new Directory(dirname($this->request), $this->parent_path);
 
 			// Return array of parent's data
 			return array(
@@ -264,7 +264,7 @@ class Dir {
 		foreach ($this->folders as $folder) {
 
 			// Folder object
-			$folder = new Dir($this->request, $this->path.$folder);
+			$folder = new Directory($this->request, $this->path.$folder);
 
 			// Push folders in this directory
 			array_push($this->folders_data, array(

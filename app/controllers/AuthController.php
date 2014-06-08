@@ -12,7 +12,7 @@
 
 namespace RichJenks\Teepee;
 
-class Auth extends Controller {
+class AuthController extends Controller {
 
 	private $data;     // View data array
 	private $password; // Excpected password
