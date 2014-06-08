@@ -188,13 +188,13 @@ class Helper {
 		$domain = $_SERVER['HTTP_HOST'];
 
 		// If Windows, replace back slashes with forward slashes
-		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-			$file = str_replace('\\', '/', $file);
-		}
+		// if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+		// 	$file = str_replace('\\', '/', $file);
+		// }
 
-		// If document root ends with slash, remove it
-		if (substr($_SERVER['DOCUMENT_ROOT'], 0, 1) === '/') {
-			$document_root = substr($_SERVER['DOCUMENT_ROOT'], 1);
+		// If document root doesn't end with a slash, add it
+		if (substr($_SERVER['DOCUMENT_ROOT'], -1) !== '/') {
+			$document_root = $_SERVER['DOCUMENT_ROOT'].'/';
 		} else {
 			$document_root = $_SERVER['DOCUMENT_ROOT'];
 		}
@@ -202,11 +202,15 @@ class Helper {
 		// Remove document root from file to get request
 		$request = str_replace($document_root, '', $file);
 
-		// Construct full URI, removing duplicate slashes
-		$uri = str_replace('//', '/', $domain.$request);
+		// if request doesn't start with a slash, add it
+		if (substr($request, 0, 1) !== '/') {
+			$request = '/'.$request;
+		} else {
+			$request = $request;
+		}
 
 		// Concatenate protocol, domain & request to get full URI
-		return $protocol.$uri;
+		return $protocol.$domain.$request;
 
 	}
 
