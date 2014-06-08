@@ -18,6 +18,7 @@ if (TEEPEE_URI.'index.php' === Helper::get_uri()) {
 
 // Requires - no point autoloading as all are needed for every execution
 require TEEPEE_PATH.'app/controllers/Controller.php';
+require TEEPEE_PATH.'app/controllers/Auth.php';
 require TEEPEE_PATH.'app/controllers/Teepee.php';
 require TEEPEE_PATH.'app/models/Links.php';
 require TEEPEE_PATH.'app/models/Dir.php';
@@ -30,5 +31,13 @@ global $config;
 $config = require TEEPEE_PATH.'config.php';
 $config = Config::check($config);
 
-// Start
-$teepee = new Teepee;
+// Authenticate
+$auth = new Auth;
+
+// Authenticate?
+if ($auth->pass()) {
+
+	// Start
+	$teepee = new Teepee;
+
+}

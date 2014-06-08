@@ -98,7 +98,9 @@ return array(
 	|
 	| Defines whether the footer will be shown.
 	| Set to false to hide the footer
-	| Set to true to show the footer and see Teepee's version
+	|
+	| Note that if this is false there will be no "Logout" button
+	| Nor will Teepee's version be shown
 	|
 	| Default: true
 	|
@@ -161,20 +163,22 @@ return array(
 	|
 	*/
 
-	'password' => '',
+	'password' => 'biarritz',
 
 	/*
 	|--------------------------------------------------------------------------
-	| Password Timeout
+	| Timeout
 	|--------------------------------------------------------------------------
 	|
 	| Seconds of inactivity before password needs to be re-entered
 	| Is ignored if `password` is blank or commented out
 	|
-	| Default: 3600
+	| Set to 0 to require password every time
+	|
+	| Default: 1800
 	|
 	*/
 
-	'password_timeout' => 3600,
+	'timeout' => 1800,
 
 );

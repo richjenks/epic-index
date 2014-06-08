@@ -4,8 +4,12 @@
 	box-sizing:         border-box;
 }
 
+*  {
+	font-family: Raleway, Ubuntu, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
+}
+
 * {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);	
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html, html a {
@@ -18,10 +22,9 @@ html {
 }
 
 body {
-	font-family: Raleway, Ubuntu, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
-	font-size: 1.1em;
-	background: #e5e5e5;
-	color: #555;
+	font-size: $font-size;
+	background: $white;
+	color: $black;
 	padding: .5em;
 	word-wrap: break-word;
 }
@@ -30,20 +33,20 @@ body {
 	max-width: 50em;
 	margin: 0 auto;
 	background: white;
-	padding: 1em 1.6em;
-	border-radius: 3px;
-	border: 1px solid #ccc;
+	padding: 1em #{$phi}em;
+	border-radius: $border-radius;
+	border: 1px solid $gray;
 	box-shadow: 0 2px 2px rgba(0,0,0,.1);
 }
 
 a {
-	color: #555;
+	color: $black;
 	text-decoration: none;
 }
 
 h1 {
 	margin: 0;
-	font-size: 1.6em;
+	font-size: #{$phi}em;
 	font-weight: normal;
 	margin-bottom: .5em;
 }

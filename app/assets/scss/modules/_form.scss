@@ -1,0 +1,20 @@
+form {
+	margin-bottom: 0;
+}
+
+input {
+	padding: .3em .5em;
+}
+
+input {
+	display: block;
+	font-size: $font-size;
+	margin-bottom: #{$phi}em;
+	border-radius: $border-radius;
+	border: 1px solid $gray;
+}
+
+input:focus {
+	outline: none;
+	border: 1px solid $blue;
+}

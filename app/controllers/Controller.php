@@ -24,7 +24,7 @@ class Controller {
 	 * @param array $data Multidimentional array of data to pass to view
 	 */
 
-	public function render($view, $data) {
+	protected function render($view, $data) {
 		require TEEPEE_PATH.'app/views/'.$view.'.php';
 	}
 

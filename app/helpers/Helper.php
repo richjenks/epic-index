@@ -121,31 +121,6 @@ class Helper {
 	}
 
 	/**
-	 * get_domain
-	 *
-	 * Gets the fully-qualified domain name of current location
-	 *
-	 * @return string Domain name, e.g. https://sub.domain.tld
-	 */
-
-	public static function get_domain() {
-
-		// Start with protocol
-		$uri = 'http';
-
-		// If https, add to protocol
-		if (isset($_SERVER['HTTPS'])) {
-			$uri .= 's';
-		}
-
-		// Append host
-		$uri .= '://'.$_SERVER['HTTP_HOST'];
-
-		return $uri;
-
-	}
-
-	/**
 	 * get_icon
 	 *
 	 * Either returns an icon matching the extension or the default icon
@@ -162,9 +137,30 @@ class Helper {
 		}
 	}
 
+	/**
+	 * get_uri
+	 *
+	 * Returns the current URI
+	 *
+	 * @return string Current URI
+	 */
+
 	public static function get_uri() {
 		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
-		return "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		return $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+	}
+
+	/**
+	 * get_domain
+	 *
+	 * Gets the fully-qualified domain name of current location
+	 *
+	 * @return string Domain name, e.g. https://sub.domain.tld
+	 */
+
+	public static function get_domain() {
+		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
+		return $protocol.$_SERVER['HTTP_HOST'];
 	}
 
 	/**
@@ -182,15 +178,6 @@ class Helper {
 	 */
 
 	public static function file_uri($file) {
-
-		// Get protocol and domain for root
-		$protocol = (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on')) ? 'https://' : 'http://';
-		$domain = $_SERVER['HTTP_HOST'];
-
-		// If Windows, replace back slashes with forward slashes
-		// if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-		// 	$file = str_replace('\\', '/', $file);
-		// }
 
 		// If document root doesn't end with a slash, add it
 		if (substr($_SERVER['DOCUMENT_ROOT'], -1) !== '/') {
@@ -210,7 +197,7 @@ class Helper {
 		}
 
 		// Concatenate protocol, domain & request to get full URI
-		return $protocol.$domain.$request;
+		return self::get_domain().$request;
 
 	}
 

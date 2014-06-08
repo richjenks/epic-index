@@ -64,6 +64,8 @@ class Config {
 			'hover_info' => true,
 			'show_footer' => true,
 			'custom_links' => array(),
+			'password' => '',
+			'timeout' => 1800,
 		);
 
 		// Set enabled languages
@@ -115,17 +117,27 @@ class Config {
 
 		// Check hover_info
 		if (!isset(self::$config['hover_info']) || !is_bool($config['hover_info'])) {
-			self::$config['hover_info'] = true;
+			self::$config['hover_info'] = self::$defaults['hover_info'];
 		}
 
 		// Check show_footer
 		if (!isset(self::$config['show_footer']) || !is_bool($config['show_footer'])) {
-			self::$config['show_footer'] = true;
+			self::$config['show_footer'] = self::$defaults['show_footer'];
 		}
 
 		// Check custom_links
 		if (!isset(self::$config['custom_links']) || !is_array($config['custom_links'])) {
-			self::$config['custom_links'] = array();
+			self::$config['custom_links'] = self::$defaults['custom_links'];
+		}
+
+		// Check password
+		if (!isset(self::$config['password']) || !is_string($config['password'])) {
+			self::$config['password'] = self::$defaults['password'];
+		}
+
+		// Check timeout
+		if (!isset(self::$config['timeout']) || !is_int($config['timeout'])) {
+			self::$config['timeout'] = self::$defaults['timeout'];
 		}
 
 	}
