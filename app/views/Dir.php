@@ -14,7 +14,7 @@ namespace RichJenks\Teepee;
 
 global $config;
 
-require TEEPEE_PATH.'app/views/_header.php';
+require TEEPEE_PATH.'app/views/partials/_header.php';
 
 ?>
 
@@ -72,7 +72,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 
 
 				// Render the row
-				include TEEPEE_PATH.'app/views/_row.php';
+				include TEEPEE_PATH.'app/views/partials/_row.php';
 
 			}
 
@@ -104,7 +104,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 				}
 
 				// Render the row
-				include TEEPEE_PATH.'app/views/_row.php';
+				include TEEPEE_PATH.'app/views/partials/_row.php';
 
 			}
 
@@ -148,7 +148,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 				$row['icon'] = DirectoryHelper::get_icon($row['icon']);
 
 				// Render the row
-				include TEEPEE_PATH.'app/views/_row.php';
+				include TEEPEE_PATH.'app/views/partials/_row.php';
 
 			}
 
@@ -190,7 +190,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 				$row['name'] = $row['name'].'<span class="faded">.'.$row['ext'].'</span>';
 
 				// Render the row
-				include TEEPEE_PATH.'app/views/_row.php';
+				include TEEPEE_PATH.'app/views/partials/_row.php';
 
 			}
 
@@ -199,4 +199,4 @@ require TEEPEE_PATH.'app/views/_header.php';
 	</tbody>
 </table>
 <section class="summary faded smallcaps"><?=$data['summary']?></section>
-<?php require TEEPEE_PATH.'app/views/_footer.php';?>
+<?php require TEEPEE_PATH.'app/views/partials/_footer.php';?>

@@ -15,7 +15,7 @@ namespace RichJenks\Teepee;
 global $config;
 global $notices;
 
-require TEEPEE_PATH.'app/views/_header.php';
+require TEEPEE_PATH.'app/views/partials/_header.php';
 
 echo '<h1>'.$data['title'].'</h1>';
 
@@ -32,4 +32,4 @@ if (isset($notices)) {
 	<input type="password" placeholder="Password" name="password" required autofocus>
 	<button type="submit">Login</button>
 </form>
-<?php require TEEPEE_PATH.'app/views/_footer.php';?>
+<?php require TEEPEE_PATH.'app/views/partials/_footer.php';?>
