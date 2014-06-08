@@ -66,6 +66,7 @@ class ConfigHelper {
 			'custom_links' => array(),
 			'password' => '',
 			'timeout' => 1800,
+			'debug_mode' => false,
 		);
 
 		// Set enabled languages
@@ -138,6 +139,11 @@ class ConfigHelper {
 		// Check timeout
 		if (!isset(self::$config['timeout']) || !is_int($config['timeout'])) {
 			self::$config['timeout'] = self::$defaults['timeout'];
+		}
+
+		// Check debug mode
+		if (!isset(self::$config['debug_mode']) || !is_bool($config['debug_mode'])) {
+			self::$config['debug_mode'] = self::$defaults['debug_mode'];
 		}
 
 	}

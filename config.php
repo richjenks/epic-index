@@ -181,4 +181,18 @@ return array(
 
 	'timeout' => 1800,
 
+	/*
+	|--------------------------------------------------------------------------
+	| Debug Mode
+	|--------------------------------------------------------------------------
+	|
+	| When enabled, errors will be shown
+	| When disabled, errors will be hidden
+	|
+	| Default: false
+	|
+	*/
+
+	'debug_mode' => true,
+
 );

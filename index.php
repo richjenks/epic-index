@@ -32,11 +32,18 @@ if (TEEPEE_URI.'index.php' === URIHelper::get_uri()) {
 	die ('Yo dawg I herd you like to list files so I listed the files in the file that lists files so you can list files in the file list.');
 }
 
-
 // Configuration options
 global $config;
 $config = require TEEPEE_PATH.'config.php';
 $config = ConfigHelper::check($config);
+
+// Debug mode?
+if ($config['debug_mode']) {
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
+} else {
+	ini_set('display_errors', '0');
+}
 
 // Authenticate
 $auth = new AuthController;
