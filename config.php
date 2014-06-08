@@ -76,7 +76,7 @@ return array(
 	|
 	*/
 
-	'date_format' => Helper::fade('D').' Y-m-d'.Helper::fade(' H:i'),
+	'date_format' => VariableHelper::fade('D').' Y-m-d'.VariableHelper::fade(' H:i'),
 
 	/*
 	|--------------------------------------------------------------------------

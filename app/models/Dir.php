@@ -128,7 +128,7 @@ class Dir {
 	public function breadcrumbs() {
 
 		// Split & filter breadcrumbs
-		$breadcrumbs = Helper::shatter('/', $this->request);
+		$breadcrumbs = VariableHelper::shatter('/', $this->request);
 
 		// Reverse breadcrumbs (so 0 index is current dir)
 		$breadcrumbs = array_reverse($breadcrumbs);
@@ -279,7 +279,7 @@ class Dir {
 		}
 
 		// Sort folders by name, case insensitive
-		$this->folders_data = Helper::sort_arr_by_key($this->folders_data, 'name');
+		$this->folders_data = VariableHelper::sort_arr_by_key($this->folders_data, 'name');
 
 		// Return array of folders data
 		return $this->folders_data;
@@ -317,7 +317,7 @@ class Dir {
 		}
 
 		// Sort files by name
-		$this->files_data = Helper::sort_arr_by_key($this->files_data, 'name');
+		$this->files_data = VariableHelper::sort_arr_by_key($this->files_data, 'name');
 
 		// Return array of files data
 		return $this->files_data;

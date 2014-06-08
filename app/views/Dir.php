@@ -145,7 +145,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 				}
 
 				// Get file's icon name
-				$row['icon'] = Helper::get_icon($row['icon']);
+				$row['icon'] = DirectoryHelper::get_icon($row['icon']);
 
 				// Render the row
 				include TEEPEE_PATH.'app/views/_row.php';
@@ -184,7 +184,7 @@ require TEEPEE_PATH.'app/views/_header.php';
 				}
 
 				// Get file's icon name
-				$row['icon'] = Helper::get_icon($row['ext']);
+				$row['icon'] = DirectoryHelper::get_icon($row['ext']);
 
 				// Construct file.extension
 				$row['name'] = $row['name'].'<span class="faded">.'.$row['ext'].'</span>';

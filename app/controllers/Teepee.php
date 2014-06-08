@@ -23,7 +23,7 @@ class Teepee extends Controller {
 	public function __construct() {
 
 		// Set directory vars
-		$this->request    = str_replace('%20', ' ', Helper::strip_query($_SERVER['REQUEST_URI']));
+		$this->request    = str_replace('%20', ' ', URIHelper::strip_query($_SERVER['REQUEST_URI']));
 		$this->path       = $_SERVER['DOCUMENT_ROOT'].$this->request;
 
 		// Create current directory object

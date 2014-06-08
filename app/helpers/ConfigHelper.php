@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Config
+ * ConfigHelper
  *
  * Static function for validating the config file
  * Also sets default values if given value is invalid
@@ -13,7 +13,7 @@
 
 namespace RichJenks\Teepee;
 
-class Config {
+class ConfigHelper {
 
 	private static $config; // Config values
 	private static $defaults; // Config default values

@@ -89,7 +89,7 @@ class Links {
 		}
 
 		// Sort links by name, case insensitive
-		$this->links = Helper::sort_arr_by_key($this->links, 'name');
+		$this->links = VariableHelper::sort_arr_by_key($this->links, 'name');
 
 		return $this->links;
 
