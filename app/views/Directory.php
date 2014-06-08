@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Dir
+ * Directory
  *
  * View for directory listings
  *
@@ -14,11 +14,16 @@ namespace RichJenks\Teepee;
 
 global $config;
 
+// Header partial
 require TEEPEE_PATH.'app/views/partials/_header.php';
 
-?>
+// Breadcrumbs
+echo '<h1 class="breadcrumbs">'.$data['breadcrumbs'].'</h1>';
 
-<h1 class="breadcrumbs"><?=$data['breadcrumbs']?></h1>
+// Show notices
+require TEEPEE_PATH.'app/views/partials/_notices.php';
+
+?>
 <table>
 	<thead>
 		<tr>

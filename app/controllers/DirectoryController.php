@@ -44,7 +44,7 @@ class DirectoryController extends Controller {
 		);
 
 		// Render view
-		$this->render('Dir', $data);
+		$this->render('Directory', $data);
 
 	}
 

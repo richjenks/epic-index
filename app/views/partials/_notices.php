@@ -1,10 +1,9 @@
 <?php
 
 /**
- * Notice
+ * Notices
  *
  * Partial for displaying notices
- * RE `$notices` global
  *
  * @package Teepee
  * @author Rich Jenks <rich@richjenks.com>
@@ -13,6 +12,12 @@
 
 namespace RichJenks\Teepee;
 
-?>
+global $notices;
 
-<div class="notice"><?=$notice?></div>
+if (isset($notices)) {
+	foreach($notices as $notice) {
+		echo '<div class="notice">'.$notice.'</div>';
+	}
+}
+
+?>

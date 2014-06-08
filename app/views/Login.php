@@ -13,18 +13,14 @@
 namespace RichJenks\Teepee;
 
 global $config;
-global $notices;
 
+// Header partial
 require TEEPEE_PATH.'app/views/partials/_header.php';
 
 echo '<h1>'.$data['title'].'</h1>';
 
 // Show notices
-if (isset($notices)) {
-	foreach($notices as $notice) {
-		require TEEPEE_PATH.'app/views/_notice.php';
-	}
-}
+require TEEPEE_PATH.'app/views/partials/_notices.php';
 
 ?>
 
