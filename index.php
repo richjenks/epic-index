@@ -5,24 +5,9 @@ namespace RichJenks\Teepee;
 // Path to Teepee
 define('TEEPEE_PATH', __DIR__.'/');
 
-// Helpers
-require TEEPEE_PATH.'app/helpers/ConfigHelper.php';
-require TEEPEE_PATH.'app/helpers/DirectoryHelper.php';
-require TEEPEE_PATH.'app/helpers/URIHelper.php';
-require TEEPEE_PATH.'app/helpers/VariableHelper.php';
-
-// Libraries
-require TEEPEE_PATH.'app/libraries/Translator.php';
-
-// Controllers
-require TEEPEE_PATH.'app/controllers/Controller.php';
-require TEEPEE_PATH.'app/controllers/AuthController.php';
-require TEEPEE_PATH.'app/controllers/DirectoryController.php';
-
-// Models
-require TEEPEE_PATH.'app/models/Links.php';
-require TEEPEE_PATH.'app/models/Directory.php';
-require TEEPEE_PATH.'app/models/File.php';
+// Requires
+require TEEPEE_PATH.'app/helpers/RequiresHelper.php';
+RequiresHelper::get();
 
 // URI to Teepee
 define('TEEPEE_URI', dirname(URIHelper::file_uri(__FILE__)).'/');
@@ -44,6 +29,9 @@ if ($config['debug_mode']) {
 } else {
 	ini_set('display_errors', '0');
 }
+
+// Notices global
+global $notices;
 
 // Authenticate
 $auth = new AuthController;
