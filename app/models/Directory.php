@@ -53,6 +53,10 @@ class Directory {
 		$this->request = str_replace('%20', ' ', $request);
 		$this->path    = str_replace('%20', ' ', $path);
 
+		// Fix slashes on path vars on Windows
+		$this->request = str_replace('\\', '/', $request);
+		$this->path    = str_replace('\\', '/', $path);
+
 		// Set parent path
 		$this->parent_path	= dirname($this->path);
 
