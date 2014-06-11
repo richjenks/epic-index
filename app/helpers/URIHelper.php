@@ -59,39 +59,34 @@ class URIHelper {
 	}
 
 	/**
-	 * file_uri
+	 * dir_uri
 	 *
-	 * Gets the public URI of the PHP file being executed
-	 * Must be passed __FILE__ to ensure is uses the calling script's location
+	 * Gets the public URI of the directory of the PHP file being executed
+	 * Must be passed __DIR__ to ensure is uses the calling script's location
 	 *
 	 * <code>
-	 *     echo file_uri(__FILE__);
+	 *     echo file_uri(__DIR__);
 	 * </code>
 	 *
-	 * @param string $file __FILE__
+	 * @param string $dir __DIR__
 	 * @return string URL of the script being executed
 	 */
 
-	public static function file_uri($file) {
+	public static function dir_uri($dir) {
 
-		// If document root doesn't end with a slash, add it
-		if (substr($_SERVER['DOCUMENT_ROOT'], -1) !== '/') {
-			$document_root = $_SERVER['DOCUMENT_ROOT'].'/';
-		} else {
-			$document_root = $_SERVER['DOCUMENT_ROOT'];
-		}
+		// Get document root & ensure trailing slash
+		$root = $_SERVER['DOCUMENT_ROOT'];
+		$root = (substr($root, -1) === '/' ? $root : $root.'/');
 
-		// Remove document root from file to get request
-		$request = str_replace($document_root, '', $file);
+		// Correct slashes on Windows
+		$root = str_replace('\\', '/', $root);
+		$dir = str_replace('\\', '/', $dir);
 
-		// if request doesn't start with a slash, add it
-		if (substr($request, 0, 1) !== '/') {
-			$request = '/'.$request;
-		} else {
-			$request = $request;
-		}
+		// Get request & ensure starting & trailing slash
+		$request = str_replace($root, '', $dir);
+		$request = (substr($request, 0, 1) === '/' ? $request : '/'.$request);
+		$request = (substr($request, -1) === '/' ? $request : $request.'/');
 
-		// Concatenate protocol, domain & request to get full URI
 		return self::get_domain().$request;
 
 	}

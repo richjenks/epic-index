@@ -10,7 +10,7 @@ require TEEPEE_PATH.'app/helpers/RequiresHelper.php';
 RequiresHelper::get();
 
 // URI to Teepee
-define('TEEPEE_URI', dirname(URIHelper::file_uri(__FILE__)).'/');
+define('TEEPEE_URI', URIHelper::dir_uri(__DIR__));
 
 // Die if indexing self
 if (TEEPEE_URI.'index.php' === URIHelper::get_uri()) {
