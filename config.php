@@ -93,23 +93,6 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Show Footer
-	|--------------------------------------------------------------------------
-	|
-	| Defines whether the footer will be shown.
-	| Set to false to hide the footer
-	|
-	| Note that if this is false there will be no "Logout" button
-	| Nor will Teepee's version be shown
-	|
-	| Default: true
-	|
-	*/
-
-	'show_footer' => true,
-
-	/*
-	|--------------------------------------------------------------------------
 	| Custom Links
 	|--------------------------------------------------------------------------
 	|
