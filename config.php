@@ -149,7 +149,14 @@ return array(
 	|
 	*/
 
-	'custom_links' => array(),
+	'custom_links' => array(
+		array(
+			'name' => 'PHPMyAdmin',
+			'uri'  => 'http://localhost/phpmyadmin',
+			'show' => array('/'),
+			'new'  => false,
+		),
+	),
 
 	/*
 	|--------------------------------------------------------------------------
