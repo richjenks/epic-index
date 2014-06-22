@@ -84,7 +84,6 @@ class AuthController extends Controller {
 		} elseif (time() - $_SESSION['timeout'] > $this->timeout) {
 
 			// Timeout set but expired
-			$notices[] = __('password_expired_notice');
 			$this->logout();
 			return false;
 
