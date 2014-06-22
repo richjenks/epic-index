@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Rot
+ * Row
  *
  * Partial for displaying a row in directory listings
  *
@@ -18,9 +18,11 @@ global $config;
 
 <tr class="<?=$row['classes']?>">
 	<td class="col-name">
-		<a href="<?=$row['uri']?>" title="<?=$row['title']?>"<?=$row['target']?>>
-			<img class="icon" src="<?=TEEPEE_URI?>app/assets/icons/<?=$row['icon']?>.png">
-			<?=$row['name']?>
+		<a class="media" href="<?=$row['uri']?>" title="<?=$row['title']?>"<?=$row['target']?>>
+			<div class="media-img">
+				<img class="icon" src="<?=TEEPEE_URI?>app/assets/icons/<?=$row['icon']?>.png">
+			</div>
+			<div class="media-body"><?=$row['name']?></div>
 		</a>
 	</td>
 	<td class="col-size">
