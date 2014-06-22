@@ -132,14 +132,7 @@ return array(
 	|
 	*/
 
-	'custom_links' => array(
-		array(
-			'name' => 'PHPMyAdmin',
-			'uri'  => 'http://localhost/phpmyadmin',
-			'show' => array('/'),
-			'new'  => false,
-		),
-	),
+	'custom_links' => array(),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -183,6 +176,6 @@ return array(
 	|
 	*/
 
-	'debug_mode' => true,
+	'debug_mode' => false,
 
 );
