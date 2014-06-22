@@ -15,7 +15,7 @@ namespace RichJenks\Teepee;
 class AuthController extends Controller {
 
 	private $data;     // View data array
-	private $password; // Excpected password
+	private $password; // Expected password
 	private $timeout;  // Seconds of allowed inactivity
 
 	public function __construct() {
