@@ -10,7 +10,7 @@ Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
 
 **Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)**
 
-Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a slightly scaled-down version to use available space more efficiently. Anything smaller gets a fullscreen, no-frills version that relies on typography alone.
+Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a fullscreen, no-frills version that relies on typography alone.
 
 ## Features
 
@@ -47,6 +47,7 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 - **Custom Links**: Links shown beneath parent and above folders to wherever you like, e.g. PHPMyAdmin
 - **Password**: The password required to show your directory listings
 - **Timeout**: Seconds of inactivity before the password requires re-entry
+- **Debug Mode**: Whether to show app errors or not—useful if you want to report an issue
 
 ## Updating
 
@@ -59,18 +60,18 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 
 ## Requirements
 
-1. `mod_rewrite` must be enabled
-2. Site must be able to override `mod_rewrite` directives
-3. PHP 5.4
+1. Apache 2.4 & PHP 5.4
+2. `mod_rewrite` must be enabled
+3. Site must be able to override `mod_rewrite` directives
 
-### 1. mod_rewrite
+### mod_rewrite
 
 Enable mod_rewrite with:
 
     sudo a2enmod rewrite
     sudo service apache2 restart
 
-### 2. AllowOverride
+### AllowOverride
 
 For most cases on Linux, edit `/etc/apache2/sites-available/default` and ensure the `AllowOverride` directive has atleast `FileInfo`:
 
@@ -100,9 +101,14 @@ Props to [Adam Whitcroft for Apaxy](https://github.com/AdamWhitcroft/Apaxy), who
 ### v1.3.0
 
 - Feature: Added password protection feature
+- Feature: Debug mode option for outputting errors
 - Fix: Each row had 2 vertical px on unclickable space
 - Fix: Broken stylesheet link when Apache document root ends with a slash
+- Fix: General support for Windows
 - Core: Migrated styles to SASS and started minifying
+- Core: Helpers & Requires heavily refactored
+- Core: Icons are media objects that don't wrap below text
+- Core: `config.sample.php` now shipped instead of `config.php`
 
 ### v1.2.0
 
