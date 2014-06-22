@@ -14,9 +14,10 @@ namespace RichJenks\Teepee;
 
 class AuthController extends Controller {
 
-	private $data;     // View data array
-	private $password; // Expected password
-	private $timeout;  // Seconds of allowed inactivity
+	private $data;              // View data array
+	private $timeout;           // Seconds of allowed inactivity
+	private $password_expected; // Expected password
+	private $password_provided; // Provided password
 
 	public function __construct() {
 
@@ -25,8 +26,15 @@ class AuthController extends Controller {
 		session_start();
 
 		// Get relevant setting from config
-		$this->password = $config['password'];
-		$this->timeout  = $config['timeout'];
+		$this->timeout           = $config['timeout'];
+		$this->password_expected = $config['password'];
+
+		// Get provided password
+		if (isset($_POST['password'])) {
+			$this->password_provided = $_POST['password'];
+		} else {
+			$this->password_provided = false;
+		}
 
 		// Check for logout
 		if (isset($_GET['logout'])) {
@@ -49,46 +57,41 @@ class AuthController extends Controller {
 
 		global $notices;
 
-		if ($this->password === '') {
+		if ($this->password_expected === '') {
 
 			// Password is disabled
-			// Pass automatically
 			return true;
 
-		} elseif (!isset($_SESSION['timeout'])) {
+		} elseif ($this->password_provided && $this->password_provided === $this->password_expected) {
 
-			// Timeout isn't set
-			// Reset timeout & show login
+			// Correct password provided
 			$this->reset();
-			$this->show_login();
-			return false;
+			return true;
 
-		} elseif (isset($_POST['password']) && $_POST['password'] !== $this->password) {
+		} elseif ($this->password_provided && $this->password_provided !== $this->password_expected) {
 
-			// Password is submitted but is incorrect
-			// Show notice & login
+			// Incorrect password provided
 			$notices[] = 'Password incorrect; please try again.';
 			$this->show_login();
 			return false;
 
-		} elseif (isset($_POST['password']) && $_POST['password'] == $this->password) {
+		} elseif (!isset($_SESSION['timeout'])) {
 
-			// Password is submitted and is correct
-			// Reset timeout & show directory listing
-			$this->reset();
-			return true;
+			// Timeout not set, not authenticated
+			$this->show_login();
+			return false;
 
 		} elseif (time() - $_SESSION['timeout'] > $this->timeout) {
 
-			// Timeout has expired
-			// Show login & notice
+			// Timeout set but expired
 			$notices[] = 'Timeout has expired; please re-enter password.';
-			$this->show_login();
+			$this->logout();
+			return false;
 
 		} else {
 
-			// Timeout is set but hasn't expired
-			// Show directory listing
+			// Authenticated and not timed-out
+			$this->reset();
 			return true;
 
 		}
