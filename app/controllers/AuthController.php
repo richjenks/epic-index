@@ -71,7 +71,7 @@ class AuthController extends Controller {
 		} elseif ($this->password_provided && $this->password_provided !== $this->password_expected) {
 
 			// Incorrect password provided
-			$notices[] = 'Password incorrect; please try again.';
+			$notices[] = __('password_incorrect_notice');
 			$this->show_login();
 			return false;
 
@@ -84,7 +84,7 @@ class AuthController extends Controller {
 		} elseif (time() - $_SESSION['timeout'] > $this->timeout) {
 
 			// Timeout set but expired
-			$notices[] = 'Timeout has expired; please re-enter password.';
+			$notices[] = __('password_expired_notice');
 			$this->logout();
 			return false;
 
@@ -108,7 +108,7 @@ class AuthController extends Controller {
 
 		// Set view datas
 		$this->data = array(
-			'title' => 'Enter Password',
+			'title' => __('password'),
 			'hide_logout' => true,
 		);
 

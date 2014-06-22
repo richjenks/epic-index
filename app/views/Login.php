@@ -25,7 +25,7 @@ require TEEPEE_PATH.'app/views/partials/_notices.php';
 ?>
 
 <form method="post">
-	<input type="password" placeholder="Password" name="password" required autofocus>
-	<button type="submit">Login</button>
+	<input type="password" placeholder="<?=__('password');?>" name="password" required autofocus>
+	<button type="submit"><?=__('submit');?></button>
 </form>
 <?php require TEEPEE_PATH.'app/views/partials/_footer.php';?>
