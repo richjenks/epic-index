@@ -19,7 +19,15 @@ if (TEEPEE_URI.'index.php' === URIHelper::get_uri()) {
 
 // Configuration options
 global $config;
-$config = require TEEPEE_PATH.'config.php';
+
+// Check for config file
+if (file_exists(TEEPEE_PATH.'config.php')) {
+	$config = require TEEPEE_PATH.'config.php';
+} else {
+	die('Couldn\'t find <code>config.php</code>; rename <code>config.sample.php</code> to <code>config.php</code> to fix!');
+}
+
+// Validate config
 $config = ConfigHelper::check($config);
 
 // Debug mode?

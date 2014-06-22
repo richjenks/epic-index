@@ -26,12 +26,14 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 ## Installation
 
 1. Move the Teepee folder to your webserver
-2. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
-3. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
+2. Rename `config.sample.php` to `config.php`
+3. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
+4. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
 
     ```
     RewriteRule .* /resources/teepee/ [L]
     ```
+
 
 ## Options
 
@@ -52,7 +54,8 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 2. Backup your existing `config.php` file
 3. Delete all files in your existing Teepee folder
 4. Move the new version of Teepee into the folder
-5. Integrate settings from your backed-up `config.php` into the new version
+5. Rename `config.sample.php` to `config.php`
+6. Integrate settings from your backed-up `config.php` into the new version
 
 ## Requirements
 
