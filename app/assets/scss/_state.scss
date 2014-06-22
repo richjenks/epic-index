@@ -1,52 +1,30 @@
-/* Extra spacing on large screens */
-@media all and (min-width: 1023px) {
-
-	.wrapper {
-		padding: 2em 2.6em;
-	}
-
-	h1 {
-		margin-bottom: 1em;
-	}
-
-	.summary {
-		margin-top: 3em;
-	}
-
-}
-
-/* Make fullscreen on non-desktop-sized screens */
+// Fullscreen on non-large screens
 @media all and (max-width: 767px) {
 
 	body {
-		padding: 0;
-		margin: 0;
+		padding-top: 0;
 		background: white;
 	}
 
 	.wrapper {
-		padding: 1em;
+		padding: .5em;
 		border: none;
-		border-radius: 0;
 		box-shadow: none;
 	}
 
-	h1 {
-		margin-bottom: .3em;
-	}
-
 	.summary {
-		margin-top: 1.2em;
+		margin: 1.6em;
+		margin-bottom: .5em;
 	}
 
 	footer {
-		border-top: 1px solid #eee;
+		margin: 0;
 	}
 
 }
 
 /* Hide modified column on small screens */
-@media all and (max-width: 30em) {
+@media all and (max-width: 40em) {
 	.col-modified {
 		display: none;
 	}
