@@ -60,13 +60,16 @@ class Directory {
 		$this->path    = str_replace('\\', '/', $path);
 
 		// Set parent path
-		$this->parent_path	= dirname($this->path);
+		$this->parent_path= dirname($this->path);
 
 		// Get dir listings, without current and parent dir
 		$this->children = array_diff(scandir($this->path), array('.', '..'));
 
 		// Hide dotfiles?
 		if ($config['hide_dotfiles']) $this->children = $this->remove_dotfiles($this->children);
+
+		// Hide files/folders?
+		if (!empty($config['ignored_names'])) $this->children = $this->remove_names($this->children);
 
 		// Split into folders & files
 		$this->folders  = $this->get_folders($this->children);
@@ -373,6 +376,29 @@ class Directory {
 		foreach ($children as $key => $child) {
 			if (substr($child, 0, 1) === '.') {
 				unset($children[$key]);
+			}
+		}
+		return $children;
+	}
+
+	/**
+	 * remove_names
+	 *
+	 * Removes array items containing strings to ignore
+	 *
+	 * @since 1.4.0
+	 *
+	 * @param array $children Array of files/folders
+	 * @return array Children minus ignored files
+	 */
+
+	private function remove_names($children) {
+		global $config;
+		foreach ($children as $key => $child) {
+			foreach ($config['ignored_names'] as $name) {
+				if (strpos($child, $name) !== false) {
+					unset($children[$key]);
+				}
 			}
 		}
 		return $children;

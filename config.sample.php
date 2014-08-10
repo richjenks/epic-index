@@ -200,4 +200,15 @@ return array(
 
 	'hide_dotfiles' => false,
 
+	/**
+	 * Ignored Names
+	 *
+	 * @var array Names (or parts of names) to ignore in file/folder listings
+	 * @since 1.4.0
+	 *
+	 * Default: array();
+	 */
+
+	'ignored_names' => array(),
+
 );

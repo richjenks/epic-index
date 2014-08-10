@@ -69,6 +69,8 @@ class ConfigHelper {
 			'debug_mode'         => false,
 			'transitions'        => false,
 			'hide_dotfiles'      => false,
+			'ignored_names'      => array(),
+
 		);
 
 		// Set enabled languages
@@ -151,6 +153,11 @@ class ConfigHelper {
 		// Check hide dotfiles
 		if (!isset(self::$config['hide_dotfiles']) || !is_bool($config['hide_dotfiles'])) {
 			self::$config['hide_dotfiles'] = self::$defaults['hide_dotfiles'];
+		}
+
+		// Check ignored names
+		if (!isset(self::$config['ignored_names']) || !is_array($config['ignored_names'])) {
+			self::$config['ignored_names'] = self::$defaults['ignored_names'];
 		}
 
 	}
