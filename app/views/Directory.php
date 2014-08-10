@@ -15,7 +15,8 @@ namespace RichJenks\Teepee;
 global $config;
 global $notices;
 
-// Check for 404
+// Handle errors
+if (http_response_code() === 403) $notices[] = '403: Forbidden';
 if (http_response_code() === 404) $notices[] = '404: Not Found';
 
 // Header partial

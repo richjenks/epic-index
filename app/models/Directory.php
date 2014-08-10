@@ -63,7 +63,7 @@ class Directory {
 		$this->parent_path= dirname($this->path);
 
 		// Get dir listings, without current and parent dir
-		$this->children = array_diff(scandir($this->path), array('.', '..'));
+		$this->children = (is_readable($this->path)) ? array_diff(scandir($this->path), array('.', '..')) : array();
 
 		// Hide dotfiles?
 		if ($config['hide_dotfiles']) $this->children = $this->remove_dotfiles($this->children);

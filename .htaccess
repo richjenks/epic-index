@@ -12,7 +12,8 @@ RewriteCond %{REQUEST_FILENAME}/index\.php !-f
 # Path to Teepee from webroot
 RewriteRule .* /resources/teepee/ [L]
 
-# Handle 404s
+# Handle errors
+ErrorDocument 403 /resources/teepee/
 ErrorDocument 404 /resources/teepee/
 
 ################################# End Teepee ##################################
