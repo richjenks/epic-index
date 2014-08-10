@@ -29,6 +29,7 @@ class RequiresHelper {
 		require TEEPEE_PATH.'app/controllers/Controller.php';
 		require TEEPEE_PATH.'app/controllers/AuthController.php';
 		require TEEPEE_PATH.'app/controllers/DirectoryController.php';
+		require TEEPEE_PATH.'app/controllers/UpdateController.php';
 
 		// Models
 		require TEEPEE_PATH.'app/models/Links.php';

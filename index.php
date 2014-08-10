@@ -2,6 +2,8 @@
 
 namespace RichJenks\Teepee;
 
+session_start();
+
 // Path to Teepee
 define('TEEPEE_PATH', __DIR__.'/');
 
@@ -40,6 +42,9 @@ if ($config['debug_mode']) {
 
 // Notices global - defined here simply to document
 global $notices;
+
+// Update checker
+new UpdateController;
 
 // Authenticate
 $auth = new AuthController;
