@@ -24,9 +24,17 @@ class UpdateController {
 
 		// If update frequency has passed, get latest version & reset last update timestamp
 		if (time() - $_SESSION['last_update_check'] > $_SESSION['version_check_frequency']) {
-			$_SESSION['current_version']   = file_get_contents(TEEPEE_PATH.'/version');
-			$_SESSION['latest_version']    = file_get_contents('https://rawgit.com/richjenks/teepee/master/version');
+
+			// Reset last update check
 			$_SESSION['last_update_check'] = time();
+
+			// Get current version
+			$_SESSION['current_version'] = file_get_contents(TEEPEE_PATH.'/version');
+
+			// Get latest version, supressing errors
+			// Don't hound users to update, just let it fail silently until they have a connection
+			$_SESSION['latest_version'] = @file_get_contents('https://rawgit.com/richjenks/teepee/master/version');
+
 		}
 
 		// If latest version is higher than current version, show notice

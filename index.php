@@ -44,7 +44,7 @@ if ($config['debug_mode']) {
 global $notices;
 
 // Update checker
-new UpdateController;
+if (!$config['disable_update_checks']) new UpdateController;
 
 // Authenticate
 $auth = new AuthController;

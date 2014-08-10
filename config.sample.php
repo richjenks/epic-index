@@ -211,4 +211,15 @@ return array(
 
 	'ignored_names' => array(),
 
+	/**
+	 * Disable Update Checks
+	 *
+	 * @var bool Whether update checks should be disabled
+	 * @since 1.4.0
+	 *
+	 * Default: false;
+	 */
+
+	'disable_update_checks' => false,
+
 );

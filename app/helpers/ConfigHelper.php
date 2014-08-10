@@ -57,19 +57,20 @@ class ConfigHelper {
 
 		// Set config defaults
 		self::$defaults = array(
-			'filesize_precision' => 2,
-			'root_label'         => 'Home',
-			'date_format'        => '\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\> H:i\<\/\s\p\a\n\>',
-			'hover_info'         => true,
-			'show_footer'        => true,
-			'custom_links'       => array(),
-			'language'           => 'English',
-			'password'           => '',
-			'timeout'            => 1800,
-			'debug_mode'         => false,
-			'transitions'        => false,
-			'hide_dotfiles'      => false,
-			'ignored_names'      => array(),
+			'filesize_precision'    => 2,
+			'root_label'            => 'Home',
+			'date_format'           => '\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\>D\<\/\s\p\a\n\> Y-m-d\<\s\p\a\n\ \c\l\a\s\s\=\"\f\a\d\e\d\ \s\m\a\l\l\c\a\p\s\"\> H:i\<\/\s\p\a\n\>',
+			'hover_info'            => true,
+			'show_footer'           => true,
+			'custom_links'          => array(),
+			'language'              => 'English',
+			'password'              => '',
+			'timeout'               => 1800,
+			'debug_mode'            => false,
+			'transitions'           => false,
+			'hide_dotfiles'         => false,
+			'ignored_names'         => array(),
+			'disable_update_checks' => false,
 
 		);
 
@@ -158,6 +159,11 @@ class ConfigHelper {
 		// Check ignored names
 		if (!isset(self::$config['ignored_names']) || !is_array($config['ignored_names'])) {
 			self::$config['ignored_names'] = self::$defaults['ignored_names'];
+		}
+
+		// Check disable update checks
+		if (!isset(self::$config['disable_update_checks']) || !is_bool($config['disable_update_checks'])) {
+			self::$config['disable_update_checks'] = self::$defaults['disable_update_checks'];
 		}
 
 	}
