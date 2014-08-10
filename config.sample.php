@@ -175,4 +175,18 @@ return array(
 
 	'debug_mode' => false,
 
+	/**
+	 * Transitions
+	 *
+	 * EXPERIMENTAL
+	 *
+	 * @var bool Whether transition effects are shown
+	 * @todo Resolve issue whereby transition never stops if URI doesn't change
+	 * @since 1.4.0
+	 *
+	 * Default: false
+	 */
+
+	'transitions' => false,
+
 );

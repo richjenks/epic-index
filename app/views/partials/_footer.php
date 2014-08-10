@@ -23,13 +23,17 @@ namespace RichJenks\Teepee;
 				<?php endif;?>
 			</footer>
 
-			<!-- Overlay & spinner -->
-			<div style="display: none;" class="overlay"></div>
-			<img style="display: none;" class="overlay-spinner" src="<?=TEEPEE_URI.'/app/assets/img/spinner.gif';?>">
+			<?php if ($config['transitions']): ?>
 
-			<!-- JS -->
-			<script src="<?=TEEPEE_URI.'/app/assets/js/jquery-1.11.1.min.js';?>"></script>
-			<script src="<?=TEEPEE_URI.'/app/assets/js/script.js';?>"></script>
+				<!-- Overlay & spinner -->
+				<div style="display: none;" class="overlay"></div>
+				<img style="display: none;" class="overlay-spinner" src="<?=TEEPEE_URI.'/app/assets/img/spinner.gif';?>">
+
+				<!-- JS -->
+				<script src="<?=TEEPEE_URI.'/app/assets/js/jquery-1.11.1.min.js';?>"></script>
+				<script src="<?=TEEPEE_URI.'/app/assets/js/script.js';?>"></script>
+
+			<?php endif; ?>
 
 	</body>
 </html>
