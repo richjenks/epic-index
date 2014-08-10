@@ -68,6 +68,7 @@ class ConfigHelper {
 			'timeout'            => 1800,
 			'debug_mode'         => false,
 			'transitions'        => false,
+			'hide_dotfiles'      => false,
 		);
 
 		// Set enabled languages
@@ -145,6 +146,11 @@ class ConfigHelper {
 		// Check transitions
 		if (!isset(self::$config['transitions']) || !is_bool($config['transitions'])) {
 			self::$config['transitions'] = self::$defaults['transitions'];
+		}
+
+		// Check hide dotfiles
+		if (!isset(self::$config['hide_dotfiles']) || !is_bool($config['hide_dotfiles'])) {
+			self::$config['hide_dotfiles'] = self::$defaults['hide_dotfiles'];
 		}
 
 	}

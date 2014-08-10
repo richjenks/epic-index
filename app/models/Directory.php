@@ -49,6 +49,8 @@ class Directory {
 
 	public function __construct($request, $path) {
 
+		global $config;
+
 		// Set path vars
 		$this->request = str_replace('%20', ' ', $request);
 		$this->path    = str_replace('%20', ' ', $path);
@@ -64,6 +66,25 @@ class Directory {
 		$this->children = array_diff(scandir($this->path), array('.', '..'));
 		$this->folders  = $this->get_folders($this->children);
 		$this->files    = $this->get_files($this->children);
+
+		// Hide dotfiles?
+		if ($config['hide_dotfiles']) {
+
+			// Remove folder dotfiles
+			foreach ($this->folders as $key => $folder) {
+				if (substr($folder, 0, 1) === '.') {
+					unset($this->folders[$key]);
+				}
+			}
+
+			// Remove file dotfiles
+			foreach ($this->files as $key => $file) {
+				if (substr($file, 0, 1) === '.') {
+					unset($this->files[$key]);
+				}
+			}
+
+		}
 
 		// Count items
 		$this->count_items();
