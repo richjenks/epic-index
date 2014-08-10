@@ -62,29 +62,15 @@ class Directory {
 		// Set parent path
 		$this->parent_path	= dirname($this->path);
 
-		// Get dir listings, without current and parent dir, plus files/folders
+		// Get dir listings, without current and parent dir
 		$this->children = array_diff(scandir($this->path), array('.', '..'));
-		$this->folders  = $this->get_folders($this->children);
-		$this->files    = $this->get_files($this->children);
 
 		// Hide dotfiles?
-		if ($config['hide_dotfiles']) {
+		if ($config['hide_dotfiles']) $this->children = $this->remove_dotfiles($this->children);
 
-			// Remove folder dotfiles
-			foreach ($this->folders as $key => $folder) {
-				if (substr($folder, 0, 1) === '.') {
-					unset($this->folders[$key]);
-				}
-			}
-
-			// Remove file dotfiles
-			foreach ($this->files as $key => $file) {
-				if (substr($file, 0, 1) === '.') {
-					unset($this->files[$key]);
-				}
-			}
-
-		}
+		// Split into folders & files
+		$this->folders  = $this->get_folders($this->children);
+		$this->files    = $this->get_files($this->children);
 
 		// Count items
 		$this->count_items();
@@ -370,6 +356,26 @@ class Directory {
 			.number_format($this->file_count)
 			.' '
 			.$this->file_label;
+	}
+
+	/**
+	 * remove_dotfiles
+	 *
+	 * Removes array items starting with a dot
+	 *
+	 * @since 1.4.0
+	 *
+	 * @param array $children Array of files/folders
+	 * @return array Children minus dotfiles
+	 */
+
+	private function remove_dotfiles($children) {
+		foreach ($children as $key => $child) {
+			if (substr($child, 0, 1) === '.') {
+				unset($children[$key]);
+			}
+		}
+		return $children;
 	}
 
 }
