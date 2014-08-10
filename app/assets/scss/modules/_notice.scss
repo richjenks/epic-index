@@ -6,3 +6,7 @@
 	margin-bottom: #{$phi}em;
 	padding: .3em .5em;
 }
+
+.notice a:hover {
+	text-decoration: underline;
+}
