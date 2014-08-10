@@ -59,6 +59,7 @@ Teepee has several option in `config.php` that you may wish to change. They are:
 4. Move the new version of Teepee into the folder
 5. Rename `config.sample.php` to `config.php`
 6. Integrate settings from your backed-up `config.php` into the new version
+7. Replace your `.htaccess` file/section with the new version
 
 ## Requirements
 
