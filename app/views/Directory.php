@@ -13,6 +13,10 @@
 namespace RichJenks\Teepee;
 
 global $config;
+global $notices;
+
+// Check for 404
+if (http_response_code() === 404) $notices[] = '404: Not Found';
 
 // Header partial
 require TEEPEE_PATH.'app/views/partials/_header.php';
