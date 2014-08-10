@@ -28,10 +28,12 @@ Typical desktop screens get a large, spacious table and smaller screens (like ta
 1. Move the Teepee folder to your webserver
 2. Rename `config.sample.php` to `config.php`
 3. If you're not putting Teepee's files on the webroot, move `.htaccess` from the Teepee folder to the webroot or append its content to your current `.htaccess`
-4. Edit `.htaccess` so the following line points to the Teepee folder from the webroot:
+4. Edit `.htaccess` so the following lines point to the Teepee folder from the webroot:
 
     ```
     RewriteRule .* /resources/teepee/ [L]
+    ErrorDocument 403 /resources/teepee/
+    ErrorDocument 404 /resources/teepee/
     ```
 
 
