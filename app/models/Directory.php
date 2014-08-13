@@ -81,7 +81,7 @@ class Directory {
 		// Set current directory vars
 		$this->name     = basename($this->path);
 		$this->size     = $this->child_count.' <span class="faded">'.$this->child_label.'</span>';
-		$this->modified = stat($this->path)['mtime'];
+		$this->modified = (is_readable($this->path)) ? stat($this->path)['mtime'] : false;
 
 	}
 
