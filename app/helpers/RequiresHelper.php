@@ -17,6 +17,7 @@ class RequiresHelper {
 	public static function get() {
 
 		// Helpers
+		require TEEPEE_PATH.'app/helpers/AppHelper.php';
 		require TEEPEE_PATH.'app/helpers/ConfigHelper.php';
 		require TEEPEE_PATH.'app/helpers/DirectoryHelper.php';
 		require TEEPEE_PATH.'app/helpers/URIHelper.php';
