@@ -1,8 +1,12 @@
 .notice {
 	border: 1px solid $blue;
 	color: $blue;
-	display: inline-block;
+	display: block;
 	border-radius: $border-radius;
-	margin-bottom: #{$phi}em;
+	margin-bottom: 1em;
 	padding: .3em .5em;
+}
+
+.notice a:hover {
+	text-decoration: underline;
 }

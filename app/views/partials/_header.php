@@ -26,3 +26,6 @@ namespace RichJenks\Teepee;
 	</head>
 	<body>
 		<div class="wrapper">
+		<!--[if lt IE 9]>
+			<div class="notice"><a href="http://browsehappy.com/" target="_blank">You are using an outdated, insecure browser—upgrade now!</a></div>
+		<![endif]-->

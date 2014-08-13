@@ -23,8 +23,6 @@ class AuthController extends Controller {
 
 		global $config;
 
-		session_start();
-
 		// Get relevant setting from config
 		$this->timeout           = $config['timeout'];
 		$this->password_expected = $config['password'];

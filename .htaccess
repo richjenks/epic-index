@@ -1,8 +1,19 @@
+################################### Teepee ####################################
+
+# Start rewrite_module
 RewriteEngine On
 RewriteBase /
+
+# Only if directory without default document
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index\.html !-f
 RewriteCond %{REQUEST_FILENAME}/index\.php !-f
 
 # Path to Teepee from webroot
 RewriteRule .* /resources/teepee/ [L]
+
+# Handle errors
+ErrorDocument 403 /resources/teepee/
+ErrorDocument 404 /resources/teepee/
+
+################################# End Teepee ##################################

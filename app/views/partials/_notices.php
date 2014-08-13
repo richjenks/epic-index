@@ -19,5 +19,3 @@ if (isset($notices)) {
 		echo '<div class="notice">'.$notice.'</div>';
 	}
 }
-
-?>

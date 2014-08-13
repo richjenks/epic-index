@@ -17,6 +17,7 @@ class RequiresHelper {
 	public static function get() {
 
 		// Helpers
+		require TEEPEE_PATH.'app/helpers/AppHelper.php';
 		require TEEPEE_PATH.'app/helpers/ConfigHelper.php';
 		require TEEPEE_PATH.'app/helpers/DirectoryHelper.php';
 		require TEEPEE_PATH.'app/helpers/URIHelper.php';
@@ -29,6 +30,7 @@ class RequiresHelper {
 		require TEEPEE_PATH.'app/controllers/Controller.php';
 		require TEEPEE_PATH.'app/controllers/AuthController.php';
 		require TEEPEE_PATH.'app/controllers/DirectoryController.php';
+		require TEEPEE_PATH.'app/controllers/UpdateController.php';
 
 		// Models
 		require TEEPEE_PATH.'app/models/Links.php';

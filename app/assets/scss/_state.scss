@@ -23,11 +23,27 @@
 
 }
 
-/* Hide modified column on small screens */
+/* Small screens */
 @media all and (max-width: 40em) {
+
+	body,
+	.wrapper {
+		padding: 0;
+	}
+
+	table {
+		font-size: 1.1em;
+	}
+
+	.col-name .media-img {
+		position: relative;
+		top: .15em;
+	}
+
 	.col-modified {
 		display: none;
 	}
+
 }
 
 /* Hide size column on tiny screens */
