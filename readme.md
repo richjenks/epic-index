@@ -8,7 +8,8 @@
 
 Teepee is a simple, minimal and responsive replacement for Apache's autoindex.
 
-**Get Teepee at [https://github.com/richjenks/teepee/](https://github.com/richjenks/teepee/)**
+- [GitHub repo](https://github.com/richjenks/teepee)
+- [Plugin page](https://richjenks.com/dev/wp/teepee/)
 
 Typical desktop screens get a large, spacious table and smaller screens (like tablets and large phones) get a fullscreen, no-frills version that relies on typography alone.
 
